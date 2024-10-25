@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Party.PartyComponents;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
-using TaleWorlds.Library;
+using TaleWorlds.LinQuick;
 
 namespace TOR_Core.CampaignMechanics
 {
     public class TORFactionDiscontinuationCampaignBehavior : CampaignBehaviorBase
     {
         private const float SurvivalDurationForIndependentClanInWeeks = 4f;
-        private Dictionary<string, double> _independentClans = new Dictionary<string, double>();
+        private Dictionary<string, double> _independentClans = [];
 
         public override void RegisterEvents()
         {
@@ -62,9 +59,21 @@ namespace TOR_Core.CampaignMechanics
 
         private void DailyTickClan(Clan clan)
         {
-            if (_independentClans.ContainsKey(clan.StringId) && _independentClans[clan.StringId] < CampaignTime.Now.ToWeeks)
+            if (_independentClans.ContainsKey(clan.StringId))
             {
-                DiscontinueClan(clan);
+                if (MBRandom.RandomFloat > 0.7f)
+                {
+                    var candidateKingdoms = Kingdom.All.WhereQ(x => !x.IsEliminated && x.Culture == clan.Culture);
+                    if (candidateKingdoms != null && candidateKingdoms.Count() > 0)
+                    {
+                        var targetKingdom = candidateKingdoms.MinBy(x => x.TotalStrength);
+                        if (targetKingdom != null)
+                        {
+                            ChangeKingdomAction.ApplyByJoinToKingdom(clan, targetKingdom);
+                        }
+                    }
+                }
+                if (_independentClans[clan.StringId] < CampaignTime.Now.ToWeeks) DiscontinueClan(clan);
             }
         }
 
