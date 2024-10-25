@@ -48,7 +48,10 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
                 _isMissionStarted = false;
                 if (_currentSettlement != null)
                 {
-                    TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    if (Hero.MainHero.IsPrisoner && _currentWatchParty.PrisonRoster.Contains(CharacterObject.PlayerCharacter))
+                    {
+                        TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    }
                     DestroyPartyAction.ApplyForDisbanding(_currentWatchParty, _currentSettlement);
                 }
                 _currentWatchParty = null;
