@@ -70,6 +70,7 @@ namespace TOR_Core.CampaignMechanics
                         if (targetKingdom != null)
                         {
                             ChangeKingdomAction.ApplyByJoinToKingdom(clan, targetKingdom);
+                            return;
                         }
                     }
                 }
