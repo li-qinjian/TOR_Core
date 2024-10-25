@@ -61,7 +61,7 @@
       <Shrine id="sigmar_shrine_06" religion="cult_of_sigmar" background_crop_position="0.0" background_mesh="shrine_of_sigmar" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="sigmar_shrine_07" name="{=!}Abandoned Shrine of Sigmar" owner="Faction.lyonesse_clan_1" posX="896.596" posY="1096.772" culture="Culture.empire" text="{=!}Shrine of Sigmar">
+  <Settlement id="sigmar_shrine_07" name="{=!}Abandoned Shrine of Sigmar" owner="Faction.lyonesse_clan_1" posX="896.0383" posY="1100.768" culture="Culture.empire" text="{=!}Shrine of Sigmar">
     <Components>
       <Shrine id="sigmar_shrine_07" religion="cult_of_sigmar" background_crop_position="0.0" background_mesh="shrine_of_sigmar" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
@@ -3872,7 +3872,7 @@
     </CommonAreas>
   </Settlement>
   <!-- Nordland -->
-  <Settlement id="town_NL1" name="{=Settlements.Settlement.name.town_NL1}Salzenmund" owner="Faction.nordland_clan_1" posX="1354.768" posY="1302.227" culture="Culture.empire" gate_posX="1350.609" gate_posY="1299.878" text="{=!}Salzenmund, the capital city of the Imperial Electoral Province of Nordland and a principality of the Empire in its own right, rests among hills from which flow the tributaries that join to form the River Salz, from which the city gets its name. The Elector Counts built tall castles at the top of these hills overlooking the growing city, once the meeting place for the western scions of the Was Jutone tribe. So narrow is the approach to the keep named the Jutone's Nest that it needs no surrounding curtain wall: the great keep just sits there, watching over the region. It is said by the locals that the Elector Counts can see the whole of his province from the window of his throne room, which faces west so he can keep an eye on the Elves of Laurelorn Forest.">
+  <Settlement id="town_NL1" name="{=Settlements.Settlement.name.town_NL1}Salzenmund" owner="Faction.nordland_clan_1" posX="1354.768" posY="1302.227" culture="Culture.empire" gate_posX="1350.609" gate_posY="1299.877" text="{=!}Salzenmund, the capital city of the Imperial Electoral Province of Nordland and a principality of the Empire in its own right, rests among hills from which flow the tributaries that join to form the River Salz, from which the city gets its name. The Elector Counts built tall castles at the top of these hills overlooking the growing city, once the meeting place for the western scions of the Was Jutone tribe. So narrow is the approach to the keep named the Jutone's Nest that it needs no surrounding curtain wall: the great keep just sits there, watching over the region. It is said by the locals that the Elector Counts can see the whole of his province from the window of his throne room, which faces west so he can keep an eye on the Elves of Laurelorn Forest.">
     <Components>
       <Town id="town_comp_NL1" is_castle="false" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" prosperity="4500" />
     </Components>
@@ -8231,7 +8231,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AL4" name="{=Settlements.Settlement.name.castle_AL4}Tal Esth" owner="Faction.athel_loren_clan_5" posX="1277.316" posY="906.126" culture="Culture.battania" gate_posX="1276.976" gate_posY="906.7053" text="{=!}Arranoc, also known as The Summerstrand is one of the twelve realms of Athel Loren. It is always summer in Arranoc, and in some parts night rarely falls. This causes the Forest Spirits in the Summerstrand to be especially strong. Arranoc is ruled by Amadri Ironbark, a former Wood Elf noble who later became a Tree Kin. Arranoc is under constant threat, because on its borders are the Vaults of Winter.">
+  <Settlement id="castle_AL4" name="{=Settlements.Settlement.name.castle_AL4}Tal Esth" owner="Faction.athel_loren_clan_5" posX="1278.498" posY="905.2476" culture="Culture.battania" gate_posX="1277.858" gate_posY="905.4523" text="{=!}Arranoc, also known as The Summerstrand is one of the twelve realms of Athel Loren. It is always summer in Arranoc, and in some parts night rarely falls. This causes the Forest Spirits in the Summerstrand to be especially strong. Arranoc is ruled by Amadri Ironbark, a former Wood Elf noble who later became a Tree Kin. Arranoc is under constant threat, because on its borders are the Vaults of Winter.">
     <Components>
       <Town id="castle_comp_AL4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" prosperity="800" />
     </Components>
