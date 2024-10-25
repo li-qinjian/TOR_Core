@@ -45,30 +45,42 @@ public class ShrineMenuLogic : TORBaseSettlementMenuLogic
             args.MenuContext.GameMenu.StartWait();
         }, null, PrayConsequence, PrayingTick, GameMenu.MenuAndOptionType.WaitMenuShowProgressAndHoursOption, GameOverlays.MenuOverlayType.None, 4f, GameMenu.MenuFlags.None, null);
         starter.AddGameMenu("shrine_menu_pray_result", "{PRAY_RESULT} {NEWLINE} {FOLLOWERS_RESULT}", PrayResultInit);
-        starter.AddGameMenuOption("shrine_menu_pray_result", "return_to_root", "Continue", delegate(MenuCallbackArgs args)
+        starter.AddGameMenuOption("shrine_menu_pray_result", "return_to_root", "Continue", args =>
         {
             args.optionLeaveType = GameMenuOption.LeaveType.Continue;
+            return true;
+
+        }, args =>
+        {
+            var model = Campaign.Current.Models.GetFaithModel();
+            var settlement = Settlement.CurrentSettlement;
+            var component = settlement.SettlementComponent as ShrineComponent;
+            model.AddBlessingToParty(MobileParty.MainParty, component.Religion.StringId);
 
             if (Hero.MainHero.GetDominantReligion() != null && Hero.MainHero.GetPerkValue(TORPerks.Faith.Miracle) && MBRandom.RandomInt(0, 100) <= TORConstants.MIRACLE_CHANCE)
             {
                 var religion = Hero.MainHero.GetDominantReligion();
                 if (religion.ReligiousArtifacts.Count > 0) InkStoryManager.OpenStory("Miracle");
             }
+            GameMenu.SwitchToMenu("shrine_menu");
 
-            return true;
-        }, (MenuCallbackArgs args) => GameMenu.SwitchToMenu("shrine_menu"), true);
+        }, true);
         starter.AddWaitGameMenu("shrine_menu_defiling", "Defiling the shrine...", delegate(MenuCallbackArgs args)
         {
             _startWaitTime = CampaignTime.Now;
             PlayerEncounter.Current.IsPlayerWaiting = true;
             args.MenuContext.GameMenu.StartWait();
         }, null, DefileConsequence, DefilingTick, GameMenu.MenuAndOptionType.WaitMenuShowProgressAndHoursOption, GameOverlays.MenuOverlayType.None, 4f, GameMenu.MenuFlags.None, null);
-        starter.AddGameMenu("shrine_menu_defile_result", "You sucessfully gathered " + DefilingDarkEnergyPerTick * 4 + " Dark Energy {DARKENERGYICON}. Followers of {GOD_NAME} will perceive this as a crime.", DefileResultInit);
-        starter.AddGameMenuOption("shrine_menu_defile_result", "return_to_root", "Continue", delegate(MenuCallbackArgs args)
+        starter.AddGameMenu("shrine_menu_defile_result", "You sucessfully gathered " + DefilingDarkEnergyPerTick * 4 + " Dark Energy {DARKENERGYICON}. Followers of {GOD_NAME} will perceive this as a crime.", null);
+        starter.AddGameMenuOption("shrine_menu_defile_result", "return_to_root", "Continue", args => 
         {
             args.optionLeaveType = GameMenuOption.LeaveType.Continue;
             return true;
-        }, (MenuCallbackArgs args) => GameMenu.SwitchToMenu("shrine_menu"), true);
+        }, args =>
+        {
+            DefileResultConsequence();
+            GameMenu.SwitchToMenu("shrine_menu");
+        }, true);
     }
 
     private bool DefileCondtion(MenuCallbackArgs args)
@@ -111,7 +123,7 @@ public class ShrineMenuLogic : TORBaseSettlementMenuLogic
         args.optionLeaveType = GameMenuOption.LeaveType.ShowMercy;
         var godName = GameTexts.FindText("tor_religion_name_of_god", component.Religion.StringId);
         MBTextManager.SetTextVariable("GOD_NAME", godName);
-        MBTextManager.SetTextVariable("PRAY_TEXT", "{=tor_custom_settlement_shrine_pray_text_str}Pray to recieve the blessing of {GOD_NAME}");
+        MBTextManager.SetTextVariable("PRAY_TEXT", "{=tor_custom_settlement_shrine_pray_text_str}Pray to receive the blessing of {GOD_NAME}");
         if (MobileParty.MainParty.HasAnyActiveBlessing())
         {
             args.Tooltip = new TextObject("{=tor_custom_settlement_shrine_blessing_already_active_str}You already have an active blessing.", null);
@@ -209,7 +221,7 @@ public class ShrineMenuLogic : TORBaseSettlementMenuLogic
         }
     }
 
-    private void DefileResultInit(MenuCallbackArgs args)
+    private void DefileResultConsequence()
     {
         var settlement = Settlement.CurrentSettlement;
         if (settlement.SettlementComponent is not ShrineComponent component) return;
@@ -277,10 +289,6 @@ public class ShrineMenuLogic : TORBaseSettlementMenuLogic
             MBTextManager.SetTextVariable("FOLLOWER_RESULT_TROOP", troop.EncyclopediaLinkWithName);
             MBTextManager.SetTextVariable("FOLLOWERS_RESULT", "{=tor_custom_settlement_shrine_follower_result_str}Witnessing your prayers have inspired {FOLLOWER_RESULT_NUMBER} {FOLLOWER_RESULT_TROOP} to join your party.");
         }
-
-        var model = Campaign.Current.Models.GetFaithModel();
-
-        model.AddBlessingToParty(MobileParty.MainParty, component.Religion.StringId);
     }
 
 
