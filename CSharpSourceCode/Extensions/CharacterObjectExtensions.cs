@@ -211,6 +211,11 @@ namespace TOR_Core.Extensions
                     } 
                     
                     result = IsTroopInUpgradeTree(character, target);
+
+                    if (result)
+                    {
+                        break;
+                    }
                 }
             }
             return result;
