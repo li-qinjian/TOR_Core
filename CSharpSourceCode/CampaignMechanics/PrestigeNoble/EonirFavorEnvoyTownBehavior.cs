@@ -308,7 +308,7 @@ public class EonirFavorEnvoyTownBehavior : CampaignBehaviorBase
             () => EonirEnvoyDialogCondition()&& Hero.MainHero.Culture.StringId!=TORConstants.Cultures.EONIR, null, 200);
 
         campaignGameStarter.AddDialogLine("envoy_missRank", "start", "close_window",
-            "You do not have the previleg to serve the council. You are of no use. (Low Renown).", () => EonirEnvoyDialogCondition() && IsEmpireEnvoy() && !HasRenown2(),
+            "You do not have the privilege to serve the council. You are of no use. (Low Renown).", () => EonirEnvoyDialogCondition() && IsEmpireEnvoy() && !HasRenown2(),
             null, 200);
 
 
