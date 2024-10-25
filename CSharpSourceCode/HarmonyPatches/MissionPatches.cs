@@ -46,7 +46,7 @@ namespace TOR_Core.HarmonyPatches
         
         
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(HideoutMissionController), "OnInitialFadeOutOver")]
+        [HarmonyPatch(typeof(HideoutCinematicController), "StartCinematic")]
         public static bool PostOnInitialFadeOutOver()
         {
             var abilityManagerMissionLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();

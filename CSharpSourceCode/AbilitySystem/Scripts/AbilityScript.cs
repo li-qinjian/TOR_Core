@@ -292,8 +292,8 @@ namespace TOR_Core.AbilitySystem.Scripts
 
         public void Stop()
         {
-            if(IsFading) return;
-            if(GameEntity != null && Ability.Template.TriggerType == TriggerType.OnStop)
+            if (IsFading) return;
+            if (GameEntity != null && Ability.Template.TriggerType == TriggerType.OnStop)
             {
                 var frame = GameEntity.GetGlobalFrame();
                 TriggerEffects(frame.origin, frame.origin.NormalizedCopy());
