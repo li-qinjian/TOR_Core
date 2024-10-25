@@ -907,7 +907,9 @@
     <Resistances>
       <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.20" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
@@ -1741,7 +1743,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="35" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guard_seneschal">
     <Abilities />
@@ -1755,7 +1757,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="75" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_spearman">
     <Abilities />
@@ -1813,7 +1815,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="35" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guardian">
     <Abilities />
@@ -1827,7 +1829,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="75" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_black_knight">
     <Abilities />
@@ -1868,9 +1870,10 @@
     </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="0" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_cairn_wraith">
     <Abilities />
@@ -1883,9 +1886,10 @@
     </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="50" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_crypt_wraith">
     <Abilities />
@@ -1898,9 +1902,10 @@
     </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="75" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hex_wraith">
     <Abilities />
@@ -1913,9 +1918,10 @@
     </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="50" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hell_wraith">
     <Abilities />
@@ -1928,9 +1934,10 @@
     </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="75" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_con_carstein_noble">
     <Abilities />
@@ -1944,7 +1951,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="0" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_knight">
     <Abilities />
@@ -1958,7 +1965,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="10" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_templar">
     <Abilities />
@@ -1972,7 +1979,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="6" UpgradeCost="75" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="4" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_kastelan">
     <Abilities />
@@ -1988,7 +1995,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="100" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="100" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_initiate">
     <Abilities />
@@ -2003,7 +2010,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="0" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_knight">
     <Abilities />
@@ -2018,7 +2025,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="10" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_templar">
     <Abilities />
@@ -2033,7 +2040,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="6" UpgradeCost="75" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="4" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_kastelan">
     <Abilities />
@@ -2050,7 +2057,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="100" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="100" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lahmian_sister">
     <Abilities />
@@ -2065,7 +2072,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="0" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lahmian_noblewoman">
     <Abilities />
@@ -2080,7 +2087,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="6" UpgradeCost="150" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="4" UpgradeCost="150" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lahmian_countess">
     <Abilities />
@@ -2095,7 +2102,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
-    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="200" />
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="200" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_caravan_captain">
     <Abilities />
@@ -3194,6 +3201,24 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_klumpfs_buccaneer">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_nordland_mariner">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_nordland_seahawk">
     <Abilities />
     <Attributes />
     <Resistances />
