@@ -33,7 +33,6 @@ namespace TOR_Core.CampaignMechanics
 
         private void DailyTickEvents(MobileParty party)
         {
-
             if (party.IsLordParty && !party.IsMainParty && party.LeaderHero != null )
             {
                 var clan = party.LeaderHero.Clan;
@@ -72,7 +71,6 @@ namespace TOR_Core.CampaignMechanics
                 }
             }
         }
-        
 
         private void Initialize(CampaignGameStarter obj)
         {
@@ -183,7 +181,6 @@ namespace TOR_Core.CampaignMechanics
                    var currentNumber = recruiter.PartyBelongedTo.Party.MemberRoster.GetTroopCount(troop);
                    recruiter.PartyBelongedTo.Party.AddMember(troop, MBMath.ClampInt(-amount,-currentNumber,0));
                }
-
             }
 
             if (recruiter.CharacterObject.IsBrassKeepLord())
@@ -201,16 +198,13 @@ namespace TOR_Core.CampaignMechanics
                         recruiter.PartyBelongedTo.Party.AddMember(chaosKnight,amount);
                         recruiter.PartyBelongedTo.Party.AddMember(troop, -amount);
                     }
-              
                 }
                 else
                 {
                     var raider = MBObjectManager.Instance.GetObject<CharacterObject>("tor_chaos_norscan_raider");
                     recruiter.PartyBelongedTo.Party.AddMember(raider,amount);
                 }
-            }
-            
-            
+            }           
 
             if (recruiter.IsLord && troop.Culture.StringId == TORConstants.Cultures.MOUSILLON && recruiter.Culture.StringId == TORConstants.Cultures.BRETONNIA)
             {

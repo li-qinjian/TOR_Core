@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.CampaignSystem.GameComponents;
@@ -9,7 +7,6 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TOR_Core.CampaignMechanics.CustomResources;
-using TOR_Core.CampaignMechanics.Religion;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
 using TOR_Core.Extensions;
@@ -19,7 +16,6 @@ namespace TOR_Core.Models
 {
     public class TORPartyWageModel : DefaultPartyWageModel
     {
-
         public override int GetCharacterWage(CharacterObject character)
         {
             if (character.IsUndead()) return 0;
@@ -166,9 +162,8 @@ namespace TOR_Core.Models
             //vanilla copy paste.
             bool specialFlag = troop.Occupation == Occupation.Mercenary || troop.Occupation == Occupation.Gangster || troop.Occupation == Occupation.CaravanGuard;
 
-
             if (specialFlag)
-                troopRecruitmentCost = MathF.Round((float)troopRecruitmentCost * 2f);
+                troopRecruitmentCost = MathF.Round(troopRecruitmentCost * 2f);
             if (buyerHero != null)
             {
                 var explainedNumber = new ExplainedNumber(1f);
@@ -204,7 +199,7 @@ namespace TOR_Core.Models
                         explainedNumber.AddFactor(DefaultPerks.Charm.SlickNegotiator.PrimaryBonus);
                 }
                 
-                troopRecruitmentCost = MathF.Max(1, MathF.Round((float)troopRecruitmentCost * explainedNumber.ResultNumber));
+                troopRecruitmentCost = MathF.Max(1, MathF.Round(troopRecruitmentCost * explainedNumber.ResultNumber));
             }
             return troopRecruitmentCost;
         }

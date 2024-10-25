@@ -14,15 +14,20 @@ namespace TOR_Core.Models
     public class TORClanFinanceModel : DefaultClanFinanceModel
     {
         private static readonly string _cheatGoldAdjustmentName = "AI Gold Adjustment";
+        private static readonly int _aiGoldAdjustmentAmount = 10000;
 
         public override ExplainedNumber CalculateClanGoldChange(Clan clan, bool includeDescriptions = false, bool applyWithdrawals = false, bool includeDetails = false)
         {
             var num = base.CalculateClanGoldChange(clan, includeDescriptions, applyWithdrawals, includeDetails);
             AddCareerPerkBenefits(clan, ref num);
-            
-            if(num.ResultNumber < 0 && clan.Kingdom != null && clan != Clan.PlayerClan && !clan.IsMinorFaction && num.ResultNumber < 0 && clan.Gold < 100000)
+
+            if (num.ResultNumber < 0 && clan.Kingdom != null && clan != Clan.PlayerClan && !clan.IsMinorFaction && clan.Gold < 100000)
             {
-                AdjustIncomeForAI(ref num);
+                var cheat = num.GetLines().Where(x => x.name == _cheatGoldAdjustmentName);
+                if (cheat != null && cheat.Count() < 1)
+                {
+                    AdjustIncomeForAI(ref num);
+                }
             }
             
             if (Hero.MainHero.Clan == clan)
@@ -40,14 +45,13 @@ namespace TOR_Core.Models
         {
             var income = base.CalculateClanIncome(clan, includeDescriptions, applyWithdrawals, includeDetails);
             AddCareerPerkBenefits(clan, ref income);
+
             var num = CalculateClanGoldChange(clan, includeDescriptions, applyWithdrawals);
-            
             var cheat = num.GetLines().Where(x => x.name == _cheatGoldAdjustmentName);
             if(cheat != null && cheat.Count() > 0)
             {
                 income.Add(cheat.FirstOrDefault().number, new TextObject(_cheatGoldAdjustmentName));
             }
-
 
             if (Hero.MainHero.Clan == clan)
             {
@@ -83,7 +87,7 @@ namespace TOR_Core.Models
 
         private void AdjustIncomeForAI(ref ExplainedNumber num)
         {
-            num.Add(Math.Abs(num.ResultNumber) + 200, new TextObject(_cheatGoldAdjustmentName));
+            num.Add(Math.Abs(num.ResultNumber) + _aiGoldAdjustmentAmount, new TextObject(_cheatGoldAdjustmentName));
         }
     }
 }
