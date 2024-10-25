@@ -38,7 +38,7 @@ namespace TOR_Core.BattleMechanics.CustomArenaModes
         public override void OpenMission(Settlement settlement, bool isPlayerParticipating)
         {
             int upgradeLevel = settlement.IsTown ? settlement.Town.GetWallLevel() : 1;
-            TorMissionManager.OpenArcheryContestMission(LocationComplex.Current.GetScene("arena", upgradeLevel), this, settlement, settlement.Culture, isPlayerParticipating);
+            TorMissionManager.OpenArcheryContestMission(LocationComplex.Current.GetScene("arena", upgradeLevel), this, settlement, settlement.OriginalCulture(), isPlayerParticipating);
         }
     }
 }

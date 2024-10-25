@@ -20,7 +20,8 @@ namespace TOR_Core.BattleMechanics.CustomArenaModes
 
         public override bool CanBeAParticipant(CharacterObject character, bool considerSkills)
         {
-            if (character.Race == FaceGen.GetRaceOrDefault("large_humanoid_monster") || 
+            if (character.Race == FaceGen.GetRaceOrDefault("large_humanoid_monster") ||
+                character.Race == FaceGen.GetRaceOrDefault("medium_humanoid_monster") ||
                 character.HasAttribute("HasAnimationTriggeredEffects") || 
                 character.Culture?.StringId == "chaos_culture")
             {
@@ -33,7 +34,7 @@ namespace TOR_Core.BattleMechanics.CustomArenaModes
         public override void OpenMission(Settlement settlement, bool isPlayerParticipating)
         {
             int upgradeLevel = settlement.IsTown ? settlement.Town.GetWallLevel() : 1;
-            TorMissionManager.OpenJoustingFightMission(LocationComplex.Current.GetScene("arena", upgradeLevel), this, settlement, settlement.Culture, isPlayerParticipating);
+            TorMissionManager.OpenJoustingFightMission(LocationComplex.Current.GetScene("arena", upgradeLevel), this, settlement, settlement.OriginalCulture(), isPlayerParticipating);
         }
     }
 }

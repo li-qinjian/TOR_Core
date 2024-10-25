@@ -34,11 +34,11 @@ namespace TOR_Core.Missions
 		private bool _isSimulated;
 		private bool _forceEndMatch;
 		private bool _cheerStarted = false;
-		private CultureObject _culture = culture;
+		private readonly CultureObject _culture = culture;
 		private List<TournamentParticipant> _aliveParticipants;
 		private List<TournamentTeam> _aliveTeams;
-		private List<Agent> _currentTournamentAgents = [];
-		private List<Agent> _currentTournamentMountAgents = [];
+		private readonly List<Agent> _currentTournamentAgents = [];
+		private readonly List<Agent> _currentTournamentMountAgents = [];
 		private MissionCameraFadeView _cameraView;
 		private JoustFightState _currentState = JoustFightState.MountedCombat;
 
@@ -146,7 +146,7 @@ namespace TOR_Core.Missions
 				throw new ArgumentException("The number of teams in a jousting tournament match is other than 2.");
 			}
 
-			List<Team> list = new List<Team>();
+			List<Team> list = [];
 			int num = 0;
 
 			foreach (TournamentTeam tournamentTeam in _match.Teams)
@@ -230,12 +230,11 @@ namespace TOR_Core.Missions
 
 		private List<Equipment> GetParticipantWeaponEquipmentList()
 		{
-			List<Equipment> list = new List<Equipment>();
-			CultureObject culture = PlayerEncounter.EncounterSettlement.Culture;
-			CharacterObject characterObject = culture.TournamentTeamTemplatesForOneParticipant.FirstOrDefault();
+			List<Equipment> list = [];
+			CharacterObject characterObject = _culture.TournamentTeamTemplatesForOneParticipant.FirstOrDefault();
 			foreach (Equipment sourceEquipment in characterObject.BattleEquipments)
 			{
-				Equipment equipment = new Equipment();
+				Equipment equipment = new();
 				equipment.FillFrom(sourceEquipment, true);
 				list.Add(equipment);
 			}
