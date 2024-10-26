@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
@@ -8,6 +8,7 @@ using TaleWorlds.Localization;
 using TOR_Core.CampaignMechanics.ServeAsAHireling;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Models
 {
@@ -15,12 +16,14 @@ namespace TOR_Core.Models
     {
         private static readonly string _cheatGoldAdjustmentName = "AI Gold Adjustment";
         private static readonly int _aiGoldAdjustmentAmount = 10000;
+        private static readonly TextObject _mercenaryExpensesStr = new TextObject("{=5aElrlUt}Payment to Mercenaries");
+        
 
         public override ExplainedNumber CalculateClanGoldChange(Clan clan, bool includeDescriptions = false, bool applyWithdrawals = false, bool includeDetails = false)
         {
             var num = base.CalculateClanGoldChange(clan, includeDescriptions, applyWithdrawals, includeDetails);
             AddCareerPerkBenefits(clan, ref num);
-
+            
             if (num.ResultNumber < 0 && clan.Kingdom != null && clan != Clan.PlayerClan && !clan.IsMinorFaction && clan.Gold < 100000)
             {
                 var cheat = num.GetLines().Where(x => x.name == _cheatGoldAdjustmentName);
@@ -36,11 +39,27 @@ namespace TOR_Core.Models
                 {
                     ServeAsAHirelingHelpers.AddHirelingWage(Hero.MainHero, ref num);
                 }
+                
+                if (clan.Kingdom.RulingClan != clan)
+                {
+                    var num2 = base.CalculateClanGoldChange(clan, true, applyWithdrawals, includeDetails); //for daily income, it uses the non includeDetails version
+
+                    var lines = num2.GetLines();
+                    foreach (var line in lines )
+                    {
+                        var value = line.number;
+                        if (line.name == _mercenaryExpensesStr.ToString())
+                        { 
+                            num.Add( - value,_mercenaryExpensesStr);
+                            break;
+                        }
+                    }
+                }
             }
             
             return num;
         }
-
+        
         public override ExplainedNumber CalculateClanIncome(Clan clan, bool includeDescriptions = false, bool applyWithdrawals = false, bool includeDetails = false)
         {
             var income = base.CalculateClanIncome(clan, includeDescriptions, applyWithdrawals, includeDetails);
@@ -59,12 +78,12 @@ namespace TOR_Core.Models
                 {
                     ServeAsAHirelingHelpers.AddHirelingWage(Hero.MainHero, ref income);
                 }
+                
             }
             
             return income;
         }
-
-
+        
         private void AddCareerPerkBenefits(Clan clan, ref ExplainedNumber income)
         {
             if(clan != Clan.PlayerClan) return;
