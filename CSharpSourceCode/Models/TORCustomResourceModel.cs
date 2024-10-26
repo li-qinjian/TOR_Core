@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.LinQuick;
 using TaleWorlds.Localization;
@@ -75,7 +76,7 @@ public class TORCustomResourceModel : GameModel
                         }
                     }
 
-                    if (hero.Clan.Kingdom!=null && hero.Culture.StringId is TORConstants.Cultures.SYLVANIA or TORConstants.Cultures.MOUSILLON)
+                    if (hero.Clan.Kingdom!=null && (hero.Culture.StringId == TORConstants.Cultures.SYLVANIA || hero.Culture.StringId ==  TORConstants.Cultures.MOUSILLON))
                     {
                         var kingdom = hero.Clan.Kingdom;
 
@@ -266,13 +267,15 @@ public class TORCustomResourceModel : GameModel
                             }
                         }
 
-                        if (hero.Culture.StringId is TORConstants.Cultures.SYLVANIA or TORConstants.Cultures.MOUSILLON)
+                        if (hero.Culture.StringId ==  TORConstants.Cultures.SYLVANIA || hero.Culture.StringId ==  TORConstants.Cultures.MOUSILLON)
                         {
-                            if (hero.PartyBelongedTo != null && hero.PartyBelongedTo.Army != null)
+                            if (hero.PartyBelongedTo != null && hero.PartyBelongedTo.Army != null && hero.PartyBelongedTo.Army.LeaderParty != MobileParty.MainParty)
                             {
                                 unitUpkeet.AddFactor(-0.5f, new TextObject("Part of Army"));
+                            }else if (hero.PartyBelongedTo != null && hero.PartyBelongedTo.BesiegedSettlement != null)
+                            {
+                                unitUpkeet.AddFactor(-0.5f, new TextObject("Siege Camp Bonus"));
                             }
-
                         }
                     }
                     
