@@ -1619,28 +1619,28 @@
   <string id="HirelingActivity4.BlackGrailKnight" text="Discipline the peasantry" />
 
   <string id="HirelingActivity0.BloodKnight" text="Train with a sword" />
-  <string id="HirelingActivity4.BloodKnight" text="Train with a great sword" />
-  <string id="HirelingActivity1.BloodKnight" text="Ride in the vanguard" />
-  <string id="HirelingActivity2.BloodKnight" text="Participate in strategy meetings" />
-  <string id="HirelingActivity3.BloodKnight" text="Seperate the weak from the strong" />
+  <string id="HirelingActivity1.BloodKnight" text="Train with a great sword" />
+  <string id="HirelingActivity2.BloodKnight" text="Ride in the vanguard" />
+  <string id="HirelingActivity3.BloodKnight" text="Participate in strategy meetings" />
+  <string id="HirelingActivity4.BloodKnight" text="Seperate the weak from the strong" />
 
   <string id="HirelingActivity0.MinorVampire" text="Spar with the troops" />
-  <string id="HirelingActivity4.MinorVampire" text="Curry favor with the commander" />
-  <string id="HirelingActivity1.MinorVampire" text="Focus on the vile energies in the area" />
-  <string id="HirelingActivity2.MinorVampire" text="Search for prey to feed on" />
-  <string id="HirelingActivity3.MinorVampire" text="Command the sheep" />
+  <string id="HirelingActivity1.MinorVampire" text="Curry favor with the commander" />
+  <string id="HirelingActivity2.MinorVampire" text="Focus on the vile energies in the area" />
+  <string id="HirelingActivity3.MinorVampire" text="Search for prey to feed on" />
+  <string id="HirelingActivity4.MinorVampire" text="Command the sheep" />
 
-  <string id="HirelingActivity1.Necrarch" text="Hone your Witchsight" />
-  <string id="HirelingActivity2.Necrarch" text="Search for prey to feed on" />
-  <string id="HirelingActivity3.Necrarch" text="Dissect test subjects" />
-  <string id="HirelingActivity4.Necrarch" text="Study arcane blueprints" />
-  <string id="HirelingActivity5.Necrarch" text="Issue orders to your servants" />
+  <string id="HirelingActivity0.Necrarch" text="Hone your Witchsight" />
+  <string id="HirelingActivity1.Necrarch" text="Search for prey to feed on" />
+  <string id="HirelingActivity2.Necrarch" text="Dissect test subjects" />
+  <string id="HirelingActivity3.Necrarch" text="Study arcane blueprints" />
+  <string id="HirelingActivity4.Necrarch" text="Issue orders to your servants" />
 
   <string id="HirelingActivity0.Necromancer" text="Study tomes of knowledge" />
   <string id="HirelingActivity1.Necromancer" text="Raid nearby cemeteries" />
   <string id="HirelingActivity2.Necromancer" text="Experiment on dead bodies" />
-  <string id="HirelingActivity2.Necromancer" text="Send your minions ahead of the army" />
-  <string id="HirelingActivity2.Necromancer" text="Assist the vampire lieutenants" />
+  <string id="HirelingActivity3.Necromancer" text="Send your minions ahead of the army" />
+  <string id="HirelingActivity4.Necromancer" text="Assist the vampire lieutenants" />
 
   <string id="HirelingActivity0.WitchHunter" text="Great sword sparring" />
   <string id="HirelingActivity1.WitchHunter" text="Target practice with crossbows" />
