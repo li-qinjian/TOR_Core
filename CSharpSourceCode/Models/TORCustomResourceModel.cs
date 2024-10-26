@@ -58,6 +58,53 @@ public class TORCustomResourceModel : GameModel
                             number.Add(choice.GetPassiveValue(),choice.BelongsToGroup.Name);
                         }
                     }
+                    if (hero.HasCareer(TORCareers.Necromancer) && hero.PartyBelongedTo != null)
+                    {
+                        
+                        if (hero.HasCareerChoice("BookofWsoranPassive4"))
+                        {
+                            var choice = TORCareerChoices.GetChoice("BookofWsoranPassive4");
+                            var elements = hero.PartyBelongedTo.MemberRoster.GetTroopRoster().WhereQ(x => x.Character.StringId.Contains("grave_guard")).ToList();
+                            var bonus = 0f;
+                            foreach (var element in elements)
+                            {
+                                bonus += element.Number * choice.GetPassiveValue();
+                            }
+                            
+                            number.Add((int)bonus, choice.BelongsToGroup.Name);
+                        }
+                    }
+
+                    if (hero.Clan.Kingdom!=null && hero.Culture.StringId is TORConstants.Cultures.SYLVANIA or TORConstants.Cultures.MOUSILLON)
+                    {
+                        var kingdom = hero.Clan.Kingdom;
+
+                        var kingdomSettlements = kingdom.Settlements;
+                        var bonus = 0;
+                        foreach (var settlement  in kingdomSettlements)
+                        {
+                            
+                            if (settlement.IsCastle)
+                            {
+                                bonus += 2;
+                            }
+                            else if (settlement.IsTown)
+                            {
+                                bonus += 3;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+                            if (settlement.OwnerClan == Clan.PlayerClan)
+                            {
+                                bonus *= 2;
+                            }
+                        }
+                        
+                        number.Add(bonus, new TextObject("Dark Tribute"));
+                    }
 
                     if (hero.Culture.StringId == TORConstants.Cultures.ASRAI)
                     {
@@ -97,12 +144,9 @@ public class TORCustomResourceModel : GameModel
                             harmonyFactor= ForestHarmonyHelper.CalculateForestGain(harmonyFactor);
                             number.AddFactor(harmonyFactor, new TextObject("Thriving Leaves"));
                         }
-                        
                     }
                 }
                 
-                
-
                 if (hero.HasCareer(TORCareers.BlackGrailKnight)&& hero.HasCareerChoice("BlackGrailVowPassive4"))
                 {
                     var choice = TORCareerChoices.GetChoice("BlackGrailVowPassive4");
@@ -145,7 +189,6 @@ public class TORCustomResourceModel : GameModel
                             number.Add(hero.GetExtendedInfo().WindsOfMagicRechargeRate * CampaignTime.HoursInDay, choice.BelongsToGroup.Name);
                         }
                     }
-                    
                 }
 
                 if (hero.Culture.StringId == TORConstants.Cultures.BRETONNIA)
@@ -160,7 +203,6 @@ public class TORCustomResourceModel : GameModel
                                 
                                 number.Add(15,new TextObject("Blessing of the Lady"));
                             }
-                            
                         }
                     }
 
@@ -186,7 +228,6 @@ public class TORCustomResourceModel : GameModel
                     {
                         number.Add(15,new TextObject(ChivalryLevel.Honourable.ToString()));
                     }
-                    
                 }
             } 
             return number;
@@ -223,6 +264,15 @@ public class TORCustomResourceModel : GameModel
                             {
                                 unitUpkeet.AddFactor(1f, ForestHarmonyHelper.TreeSymbolText("WEOrionSymbol"));
                             }
+                        }
+
+                        if (hero.Culture.StringId is TORConstants.Cultures.SYLVANIA or TORConstants.Cultures.MOUSILLON)
+                        {
+                            if (hero.PartyBelongedTo != null && hero.PartyBelongedTo.Army != null)
+                            {
+                                unitUpkeet.AddFactor(-0.5f, new TextObject("Part of Army"));
+                            }
+
                         }
                     }
                     

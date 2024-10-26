@@ -148,7 +148,7 @@ namespace TOR_Core.CharacterDevelopment.CareerSystem.Choices
                     }
                 },new CareerChoiceObject.PassiveEffect()); 
             
-            _deArcanisKadonKeystone.Initialize(CareerID, "Pressing Ability key allows to switch between characters; Harbinger acts indenpendant.", "DeArcanisKadon", false,
+            _deArcanisKadonKeystone.Initialize(CareerID, "Pressing Ability key allows to switch between characters; Harbinger acts independent.", "DeArcanisKadon", false,
                 ChoiceType.Keystone, new List<CareerChoiceObject.MutationObject>()
                 {
                 },new CareerChoiceObject.PassiveEffect());  // switch controls
@@ -221,8 +221,7 @@ namespace TOR_Core.CharacterDevelopment.CareerSystem.Choices
             _bookofWsoranPassive1.Initialize(CareerID, "Increases Party size by 50.", "BookOfWsoran", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(50, PassiveEffectType.PartySize));
             _bookofWsoranPassive2.Initialize(CareerID, "Increase hex durations by 50%.", "BookOfWsoran", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(50f, PassiveEffectType.DebuffDuration,true));
             _bookofWsoranPassive3.Initialize(CareerID, "Undead troops gain 25% Ward save.", "BookOfWsoran", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(PassiveEffectType.TroopResistance, new DamageProportionTuple(DamageType.All, 25), AttackTypeMask.All, BookofWsoranPassive3));
-            _bookofWsoranPassive4.Initialize(CareerID, "Reduce the Dark Energy upkeep for grave guard troops by 25%.", "BookOfWsoran", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(-35, PassiveEffectType.CustomResourceUpkeepModifier,true, 
-                characterObject => characterObject.StringId.Contains("grave_guard")));
+            _bookofWsoranPassive4.Initialize(CareerID, "Gain 0.5 Dark Energy for every Grave guard troop.", "BookOfWsoran", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(0.5f, PassiveEffectType.Special, false)); 
             
             _grimoireNecrisPassive1.Initialize(CareerID, "Undead troops gain 10% extra magical melee damage.", "GrimoireNecris", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(PassiveEffectType.TroopDamage, new DamageProportionTuple(DamageType.Magical, 10), AttackTypeMask.Melee, LiberMortisPassive3));
             _grimoireNecrisPassive2.Initialize(CareerID, "Dark Energy Upkeep costs are reduced by 25%", "GrimoireNecris", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(-25, PassiveEffectType.CustomResourceUpkeepModifier,true));
