@@ -417,7 +417,6 @@ namespace TOR_Core.CharacterDevelopment
                         break;
                     case AttackTypeMask.Spell:
                         return explainedNumber.ResultNumber;
-                        break;
                     case AttackTypeMask.All:
                         break;
                     default:
@@ -439,7 +438,6 @@ namespace TOR_Core.CharacterDevelopment
                         return 0;
                     case AttackTypeMask.Spell:
                         return explainedNumber.ResultNumber;
-                        break;
                     case AttackTypeMask.All:
                         break;
                     default:

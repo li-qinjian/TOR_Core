@@ -875,13 +875,9 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
             upgradeCount++;
         }
 
-        
-        
-
         if (targetList.Count == upgradeCount) return "";
 
         throw new Exception("Upgrade could not be found");
-        return "";
     }
 
 

@@ -8,6 +8,7 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade.GauntletUI.Widgets.Multiplayer;
 using TaleWorlds.ObjectSystem;
 using TOR_Core.CampaignMechanics.Religion;
 using TOR_Core.CharacterDevelopment;
@@ -31,7 +32,7 @@ namespace TOR_Core.CampaignMechanics
 
         private void WandererSetup(Hero hero, MobileParty mobileParty)
         {
-            if(mobileParty!=null&&mobileParty.LeaderHero!=Hero.MainHero) return;
+            if (mobileParty != null && mobileParty.LeaderHero != Hero.MainHero) return;
             
             //Seems only to happen when a hero joins the player not anywhere else
             if (hero.IsWanderer)
@@ -68,7 +69,7 @@ namespace TOR_Core.CampaignMechanics
 
         private void CanHeroDie(Hero hero, KillCharacterAction.KillCharacterActionDetail detail, ref bool result)
         {
-            if((hero.IsLord || hero.IsPlayerCompanion || hero.IsWanderer) && detail != KillCharacterAction.KillCharacterActionDetail.Executed)
+            if ((hero.IsLord || hero.IsPlayerCompanion || hero.IsWanderer) && detail != KillCharacterAction.KillCharacterActionDetail.Executed)
             {
                 result = false;
             }
@@ -113,19 +114,9 @@ namespace TOR_Core.CampaignMechanics
             for (int i = 0; i < settlement.HeroesWithoutParty.Count; i++)
             {
                 var wanderer = settlement.HeroesWithoutParty[i];
-                if (wanderer != null && wanderer.Occupation == Occupation.Wanderer && wanderer.Culture != settlement.Culture)
+                if (wanderer != null && wanderer.Occupation == Occupation.Wanderer)
                 {
-                    //look for empty suitable settlement to move unsuitable wanderer
-                    var suitableTown = (from x in Town.AllTowns
-                                        where x.Settlement.Culture == wanderer.Culture
-                                        orderby x.Settlement.HeroesWithoutParty.Count ascending
-                                        select x).FirstOrDefault()
-                        ?.Settlement;
-                    if (suitableTown != null)
-                    {
-                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, suitableTown);
-                    }
-                    else
+                    if (wanderer.Template == null || wanderer.Culture != settlement.Culture)
                     {
                         LeaveSettlementAction.ApplyForCharacterOnly(wanderer);
                         wanderer.ChangeState(Hero.CharacterStates.NotSpawned);

@@ -44,7 +44,7 @@ public class MindControlScript : CareerAbilityScript
     {
         base.OnBeforeTick(dt);
 
-        var tries = getAmountOfTries();
+        var tries = GetAmountOfTries();
         
         
         var targets = Mission.Current.GetNearbyAgents(_targetPosition.AsVec2, 5, new MBList<Agent>());
@@ -85,7 +85,7 @@ public class MindControlScript : CareerAbilityScript
         Stop();
     }
 
-    private int getAmountOfTries()
+    private int GetAmountOfTries()
     {
         var count = 1;
         if(Hero.MainHero.HasCareerChoice("CaelithsWisdomKeystone"))
