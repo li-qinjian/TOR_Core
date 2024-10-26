@@ -61,7 +61,7 @@
       <Shrine id="sigmar_shrine_06" religion="cult_of_sigmar" background_crop_position="0.0" background_mesh="shrine_of_sigmar" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
   </Settlement>
-  <Settlement id="sigmar_shrine_07" name="{=!}Abandoned Shrine of Sigmar" owner="Faction.lyonesse_clan_1" posX="896.0383" posY="1100.768" culture="Culture.empire" text="{=!}Shrine of Sigmar">
+  <Settlement id="sigmar_shrine_07" name="{=!}Abandoned Shrine of Sigmar" owner="Faction.lyonesse_clan_1" posX="896.038" posY="1100.768" culture="Culture.empire" text="{=!}Shrine of Sigmar">
     <Components>
       <Shrine id="sigmar_shrine_07" religion="cult_of_sigmar" background_crop_position="0.0" background_mesh="shrine_of_sigmar" wait_mesh="wait_empire_village" gate_rotation="0.0" />
     </Components>
@@ -8231,7 +8231,7 @@
       <Area type="Bog" name="{=iXA5SttU}Bog" />
     </CommonAreas>
   </Settlement>
-  <Settlement id="castle_AL4" name="{=Settlements.Settlement.name.castle_AL4}Tal Esth" owner="Faction.athel_loren_clan_5" posX="1278.498" posY="905.2476" culture="Culture.battania" gate_posX="1277.858" gate_posY="905.4523" text="{=!}Arranoc, also known as The Summerstrand is one of the twelve realms of Athel Loren. It is always summer in Arranoc, and in some parts night rarely falls. This causes the Forest Spirits in the Summerstrand to be especially strong. Arranoc is ruled by Amadri Ironbark, a former Wood Elf noble who later became a Tree Kin. Arranoc is under constant threat, because on its borders are the Vaults of Winter.">
+  <Settlement id="castle_AL4" name="{=Settlements.Settlement.name.castle_AL4}Tal Esth" owner="Faction.athel_loren_clan_5" posX="1278.498" posY="905.248" culture="Culture.battania" gate_posX="1277.859" gate_posY="905.4531" text="{=!}Arranoc, also known as The Summerstrand is one of the twelve realms of Athel Loren. It is always summer in Arranoc, and in some parts night rarely falls. This causes the Forest Spirits in the Summerstrand to be especially strong. Arranoc is ruled by Amadri Ironbark, a former Wood Elf noble who later became a Tree Kin. Arranoc is under constant threat, because on its borders are the Vaults of Winter.">
     <Components>
       <Town id="castle_comp_AL4" is_castle="true" level="3" background_crop_position="0.0" background_mesh="menu_empire_1" wait_mesh="empire_city_background" gate_rotation="0.908" prosperity="800" />
     </Components>
