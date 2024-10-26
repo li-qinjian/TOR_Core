@@ -1,5 +1,6 @@
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.LinQuick;
 using TaleWorlds.MountAndBlade;
@@ -34,9 +35,18 @@ namespace TOR_Core.AbilitySystem.Scripts
                 if (agentHero != null)
                 {
                     var targets = Mission.Current.GetNearbyAgents(agentHero.Position.AsVec2, 5, new MBList<Agent>()).WhereQ(x => x.BelongsToMainParty()).ToMBList();
-                        
-                    list.AddRange(targets);
+
+                    if (!targets.IsEmpty())
+                    {
+                        list.AddRange(targets);
+                    }
+                    
                 }
+            }
+
+            if (list.IsEmpty())
+            {
+                return;
             }
                 
             SetExplicitTargetAgents(list);
