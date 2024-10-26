@@ -40,7 +40,7 @@ namespace TOR_Core.Models
                     ServeAsAHirelingHelpers.AddHirelingWage(Hero.MainHero, ref num);
                 }
                 
-                if (clan.Kingdom.RulingClan != clan)
+                if (clan.Kingdom !=null && clan.Kingdom.RulingClan != clan)
                 {
                     var num2 = base.CalculateClanGoldChange(clan, true, applyWithdrawals, includeDetails); //for daily income, it uses the non includeDetails version
 
