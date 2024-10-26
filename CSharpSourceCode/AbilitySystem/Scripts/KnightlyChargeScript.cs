@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
 using TaleWorlds.LinQuick;
@@ -33,7 +33,7 @@ namespace TOR_Core.AbilitySystem.Scripts
 
                 if (agentHero != null)
                 {
-                    var targets = Mission.Current.GetNearbyAgents(agentHero.Position.AsVec2, 5, new MBList<Agent>());
+                    var targets = Mission.Current.GetNearbyAgents(agentHero.Position.AsVec2, 5, new MBList<Agent>()).WhereQ(x => x.BelongsToMainParty()).ToMBList();
                         
                     list.AddRange(targets);
                 }
