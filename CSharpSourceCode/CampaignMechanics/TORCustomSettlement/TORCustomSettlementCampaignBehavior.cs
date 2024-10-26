@@ -13,6 +13,8 @@ using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 using TOR_Core.CampaignMechanics.TORCustomSettlement.CustomSettlementMenus;
 using TOR_Core.Extensions;
+using TOR_Core.Extensions.ExtendedInfoSystem;
+using TOR_Core.Items;
 using TOR_Core.Models;
 using TOR_Core.Utilities;
 
@@ -121,9 +123,34 @@ public class TORCustomSettlementCampaignBehavior : CampaignBehaviorBase
             {
                 comp.IsActive = false;
                 var list = new List<InquiryElement>();
-                var item = MBObjectManager.Instance.GetObject<ItemObject>(comp.RewardItemId);
-                list.Add(new InquiryElement(item, item.Name.ToString(), new ImageIdentifier(item)));
-                var inq = new MultiSelectionInquiryData("Victory!", new TextObject("{=tor_custom_settlement_chaos_portal_victory_str}You are Victorious! Claim your reward!").ToString(), list, false, 1, 1, "OK", null, OnRewardClaimed, null);
+                var itemIds = comp.RewardItemIds;
+
+                if (itemIds.Count > 5)
+                {
+                    itemIds = itemIds.TakeRandom(5).ToList(); 
+                }
+                
+
+                foreach (var id in itemIds)
+                {
+                    
+                    var item = MBObjectManager.Instance.GetObject<ItemObject>(id);
+
+
+                    if (item != null)
+                    {
+                        var hintInfo = ExtendedItemObjectManager.GetAdditionalProperties(item.StringId);
+                        var hintText = "";
+                        if (hintInfo != null)
+                        {
+                            hintText = hintInfo.Description;
+                        }
+                        
+                        list.Add(new InquiryElement(item, item.Name.ToString(), new ImageIdentifier(item),true,hintText));
+                    }
+                }
+                
+                var inq = new MultiSelectionInquiryData("Victory!", new TextObject("{=tor_custom_settlement_chaos_portal_victory_str}You are Victorious! Claim your reward! Select one!").ToString(), list, false, 1, 1, "OK", null, OnRewardClaimed, null);
                 MBInformationManager.ShowMultiSelectionInquiry(inq);
             }
             else

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Party;
@@ -57,7 +58,7 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
         public int RaidingPartyCount => MobileParty.All.Where(x => x.IsRaidingParty() && x.HomeSettlement == Settlement).Count();
         public abstract string BattleSceneName { get; }
         public bool IsBattleUnderway { get; set; }
-        public abstract string RewardItemId { get; }
+        public abstract List<string> RewardItemIds { get; }
         public abstract void SpawnNewParty(out MobileParty party, Settlement initialTarget);
     }
 }

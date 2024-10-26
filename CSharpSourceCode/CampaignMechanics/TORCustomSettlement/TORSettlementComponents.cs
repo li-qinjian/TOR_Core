@@ -1,6 +1,7 @@
 ﻿using SandBox;
 using SandBox.View.Map;
 using System;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Party;
@@ -105,7 +106,61 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
     {
         public override string BattleSceneName => "TOR_chaos_portal_001_forceatmo";
 
-        public override string RewardItemId => "tor_empire_weapon_sword_runefang_001";
+        public override List<string> RewardItemIds => new()
+        {
+            "tor_empire_weapon_sword_runefang_001",
+            
+            "tor_chaos_weapon_metal_ud_lance_001",
+            
+            "tor_chaos_arm_gauntlet_slaneesh_warrior_001",
+            "tor_chaos_arm_gauntlet_khorne_warrior_001",
+            "tor_chaos_arm_gauntlet_khorne_warrior_002",
+            "tor_chaos_arm_gauntlet_tzeentch_warrior_001",
+            "tor_chaos_arm_gauntlet_hallow",
+            "tor_chaos_arm_bracers_marauder_001",
+            
+            "tor_chaos_leg_boots_slaneesh_warrior_001",
+            "tor_chaos_leg_boots_nurgle_knight_001",
+            "tor_chaos_leg_boots_khorne_warrior_001",
+            "tor_chaos_leg_boots_khorne_warrior_002",
+            "tor_chaos_leg_boots_tzeentch_warrior_001",
+            "tor_chaos_leg_boots_hallow",
+            "tor_chaos_leg_boots_marauder_001",
+            "tor_chaos_leg_boots_chaos_warrior_001",
+            
+            "tor_chaos_body_armor_slaneesh_warrior_001",
+            "tor_chaos_body_armor_khorne_warrior_001",
+            "tor_chaos_body_armor_khorne_warrior_002",
+            "tor_chaos_body_armor_tzeentch_warrior_001",
+            "tor_chaos_body_armor_nurgle_knight_001",
+            "tor_chaos_body_robe_cultist_001",
+            "tor_chaos_body_armor_abomination",
+            "tor_chaos_body_armor_marauder_001",
+            "tor_chaos_body_armor_marauder_002",
+            "tor_chaos_body_armor_chaos_warrior_001",
+            
+            "tor_chaos_shoulder_pauldron_nurgle_001",
+            "tor_chaos_shoulder_pauldron_nurgle_002",
+            "tor_chaos_shoulder_pauldron_slaneesh_warrior_001",
+            "tor_chaos_shoulder_pauldron_chosen_001",
+            "tor_chaos_shoulder_pauldron_khorne_warrior_001",
+            "tor_chaos_shoulder_pauldron_khorne_warrior_002",
+            "tor_chaos_shoulder_pauldron_tzeentch_warrior_001",
+            "tor_chaos_shoulder_cape_marauder_001",
+            "tor_chaos_shoulder_fur_marauder_001",
+            "tor_chaos_shoulder_cape_chaos_warrior_001",
+            
+            "tor_empire_staff_cw_001_combined",
+            "tor_empire_staff_cw_002_combined",
+            "tor_empire_staff_cw_003_combined",
+            "tor_empire_staff_bw_001_combined",
+            "tor_empire_staff_bw_002_combined",
+            "tor_empire_staff_lw_001_combined",
+            "tor_empire_staff_lw_002_combined",
+            "tor_empire_staff_lw_003_combined",
+            
+        };
+        
 
         public override void SpawnNewParty(out MobileParty party, Settlement initialTarget)
         {
@@ -124,7 +179,56 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
     {
         public override string BattleSceneName => "TOR_beastmen_herdstone_001";
 
-        public override string RewardItemId => "tor_empire_weapon_sword_runefang_001";
+        public override List<string> RewardItemIds =>
+            new()
+            {
+                
+                "tor_vc_blood_keep_grandmaster_helm",
+                
+                "tor_empire_weapon_mace_holy_hammer",
+                
+                "tor_vc_shoulder_pauldron_vlad",
+                "tor_vc_shoulder_pauldron_red_duke",
+                "tor_vc_shoulder_pauldron_blood_dragon_knight_001",
+                
+                
+                
+                "tor_vc_arm_gauntlet_vlad",
+                "tor_vc_arm_gauntlet_red_duke",
+                "tor_vc_arm_gauntlet_blood_dragon_knight_001",
+                
+                "tor_empire_weapon_scythe_morr_001",
+                
+                
+                "tor_vc_body_armor_red_duke",
+                "tor_vc_body_armor_vlad",
+                "tor_vc_body_armor_blood_dragon_knight_001",
+                
+                
+                "tor_vc_leg_boots_vlad",
+                "tor_vc_leg_boots_blood_dragon_knight_001",
+                "tor_vc_leg_boots_red_duke",
+                
+                "tor_he_weapon_2h_sword_001",
+                
+                "tor_vc_weapon_thaxe_black_axe_of_krell",
+                
+                "tor_empire_weapon_sword_runefang_001", 
+                
+                "tor_we_weapon_bow_legendary",
+                
+                "tor_vc_weapon_sword_khopesh_001",
+                
+                
+                "tor_empire_staff_cw_001_combined",
+                "tor_empire_staff_cw_002_combined",
+                "tor_empire_staff_cw_003_combined",
+                "tor_empire_staff_bw_001_combined",
+                "tor_empire_staff_bw_002_combined",
+                "tor_empire_staff_lw_001_combined",
+                "tor_empire_staff_lw_002_combined",
+                "tor_empire_staff_lw_003_combined",
+            };
 
         public override void SpawnNewParty(out MobileParty party, Settlement initialTarget)
         {
@@ -143,7 +247,44 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
     {
         public override string BattleSceneName => "TOR_slaver_bay_001";
 
-        public override string RewardItemId => "tor_empire_weapon_sword_runefang_001";
+        public override List<string> RewardItemIds => 
+        new()
+        {
+            "tor_he_head_helm_phoenix_001",
+            "tor_he_head_helm_whitelion_001",
+            
+            "tor_he_shoulder_cape_phoenix_001",
+            "tor_he_shoulder_cape_whitelion_001",
+            "tor_he_body_armour_phoenix_001",
+            "tor_he_body_armour_whitelion_001",
+            
+            "tor_he_arm_bracers_phoenix_001",
+            "tor_he_leg_boots_phoenix_001",
+            
+            "tor_he_leg_boots_whitelion_001",
+            "tor_he_arm_bracers_whitelion_001",
+            
+            "tor_he_weapon_2h_axe_whitelion_001",
+            
+            "tor_he_weapon_halberd_phoenix_001",
+            
+            "tor_we_weapon_bow_legendary",
+                
+            "tor_vc_weapon_sword_khopesh_001",
+                
+                
+            "tor_empire_staff_cw_001_combined",
+            "tor_empire_staff_cw_002_combined",
+            "tor_empire_staff_cw_003_combined",
+            "tor_empire_staff_bw_001_combined",
+            "tor_empire_staff_bw_002_combined",
+            "tor_empire_staff_lw_001_combined",
+            "tor_empire_staff_lw_002_combined",
+            "tor_empire_staff_lw_003_combined",
+            
+            
+    
+        };
 
         public override void SpawnNewParty(out MobileParty party, Settlement initialTarget)
         {

@@ -299,6 +299,9 @@
         </Followers>
         <ReligiousTroops>
         </ReligiousTroops>
+		<ReligiousArtifacts>
+            <ArtifactItem id="Item.tor_we_weapon_bow_legendary" />
+        </ReligiousArtifacts>
     </Religion>
     <Religion id="cult_of_vaul" Name="Cult of Vaul" Culture="Culture.battania" Affinity="Order" DeityName="Vaul">
         <HostileReligions>
