@@ -81,7 +81,7 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
 
         private static void QuarterDailyTick(MobileParty mobileParty)
         {
-            if (!mobileParty.IsLordParty) return;
+            if (mobileParty != MobileParty.MainParty) return;
             PunishmentForMissingResource(mobileParty);
         }
 
