@@ -49,6 +49,16 @@ public class TORCustomResourceModel : GameModel
                         number.Add(5,new TextObject("Part of Army"));
                     }
 
+                    if (hero.HasCareer(TORCareers.Spellsinger) && hero.PartyBelongedTo != null && hero.PartyBelongedTo.HasBlessing("cult_of_isha"))
+                    {
+                        var choice = TORCareerChoices.GetChoice("ArielsBlessingPassive3");
+
+                        if (choice != null)
+                        {
+                            number.Add(choice.GetPassiveValue(),choice.BelongsToGroup.Name);
+                        }
+                    }
+
                     if (hero.Culture.StringId == TORConstants.Cultures.ASRAI)
                     {
                         var weSettlements = Campaign.Current.Settlements.WhereQ(x => x.StringId.Contains("_AL")).ToList();

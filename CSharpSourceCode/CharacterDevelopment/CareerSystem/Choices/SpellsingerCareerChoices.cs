@@ -235,8 +235,8 @@ public class SpellsingerCareerChoices : TORCareerChoicesBase
          
          _arielsBlessingPassive1.Initialize(CareerID, "20% extra magical melee damage.", "ArielsBlessing", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(PassiveEffectType.Damage, new DamageProportionTuple(DamageType.Magical, 20), AttackTypeMask.Melee));
          _arielsBlessingPassive2.Initialize(CareerID, "Increases maximum winds of magic capacities by 15.", "ArielsBlessing", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(15, PassiveEffectType.WindsOfMagic));
-         _arielsBlessingPassive3.Initialize(CareerID, "Ariels blessing also provides winds recharge.", "ArielsBlessing", false, ChoiceType.Passive,
-             null, new CareerChoiceObject.PassiveEffect(25, PassiveEffectType.Special, true)); //TODO
+         _arielsBlessingPassive3.Initialize(CareerID, "Isha's blessing also provides 20 Forest harmony daily", "ArielsBlessing", false, ChoiceType.Passive,
+             null, new CareerChoiceObject.PassiveEffect(20, PassiveEffectType.Special));
          _arielsBlessingPassive4.Initialize(CareerID, "Spell effect radius is increased by 20%.", "ArielsBlessing", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(20f, PassiveEffectType.SpellRadius,true));
          
          _magicOfAthelLorenPassive1.Initialize(CareerID, "15% extra magical spell damage.", "MagicOfAthelLoren", false, ChoiceType.Passive, null, new CareerChoiceObject.PassiveEffect(PassiveEffectType.Damage, new DamageProportionTuple(DamageType.Magical, 15), AttackTypeMask.Spell));
