@@ -144,6 +144,14 @@
         RegimentName="Van Klumpf Buccaneers"
         RegimentHQName="Tavern of the Van Klumpf Buccaneers"
 	/>
+		<RORSettlementTemplate
+		SettlementId="town_NL2"
+        BaseTroopId="tor_ror_nordland_mariner"
+        MenuHeaderText="The town is a home to the famous Nordland Seahawks, ready to board any Norscan longship."
+        MenuBackgroundImageId="invalid"
+        RegimentName="Nordland Seahawks"
+        RegimentHQName="Barracks of the Nordland Seahawks"
+	/>
 	<RORSettlementTemplate
         SettlementId="castle_village_AQ3_2"
         BaseTroopId="tor_ror_bergerac_herrimault"
