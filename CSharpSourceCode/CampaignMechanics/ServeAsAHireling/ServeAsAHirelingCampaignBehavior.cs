@@ -24,7 +24,7 @@ namespace TOR_Core.CampaignMechanics.ServeAsAHireling
     public class ServeAsAHirelingCampaignBehavior : CampaignBehaviorBase
     {
         private ServeAsAHirelingActivities _activities;
-        private const float MinimumServeDays = 20;
+        private const float MinimumServeDays = 1;
         private const float RatioPartyAgainstEnemyStrength = 0.30f;
         
         private float _durationInDays;
