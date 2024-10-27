@@ -55,6 +55,7 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
 
     public abstract class BaseRaiderSpawnerComponent : TORBaseSettlementComponent
     {
+        public virtual int BattlePartySize => 250;
         public int RaidingPartyCount => MobileParty.All.Where(x => x.IsRaidingParty() && x.HomeSettlement == Settlement).Count();
         public abstract string BattleSceneName { get; }
         public bool IsBattleUnderway { get; set; }

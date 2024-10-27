@@ -104,6 +104,7 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
 
     public class ChaosPortalComponent : BaseRaiderSpawnerComponent
     {
+        public override int BattlePartySize => 550;
         public override string BattleSceneName => "TOR_chaos_portal_001_forceatmo";
 
         public override List<string> RewardItemIds => new()
@@ -176,6 +177,7 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
 
     public class HerdStoneComponent : BaseRaiderSpawnerComponent
     {
+        public override int BattlePartySize => 400;
         public override string BattleSceneName => "TOR_beastmen_herdstone_001";
 
         public override List<string> RewardItemIds =>
@@ -230,6 +232,7 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
 
     public class SlaverCampComponent : BaseRaiderSpawnerComponent
     {
+        public override int BattlePartySize => 400;
         public override string BattleSceneName => "TOR_slaver_bay_001";
 
         public override List<string> RewardItemIds => 
