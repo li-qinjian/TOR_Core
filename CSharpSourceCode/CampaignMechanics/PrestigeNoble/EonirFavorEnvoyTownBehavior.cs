@@ -16,6 +16,7 @@ using TaleWorlds.MountAndBlade;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
 using TaleWorlds.ScreenSystem;
+using TaleWorlds.TwoDimension;
 using TOR_Core.AbilitySystem.SpellBook;
 using TOR_Core.AbilitySystem.Spells;
 using TOR_Core.CampaignMechanics.CustomResources;
@@ -863,10 +864,10 @@ public class EonirFavorEnvoyTownBehavior : CampaignBehaviorBase
             
             var asurBaseTroop = MBObjectManager.Instance.GetObject<CharacterObject>("tor_he_seaelf_militia");
 
-            var skillValue = Hero.MainHero.GetSkillValue(DefaultSkills.Charm);
+            var skillValue = Mathf.Min(Hero.MainHero.GetSkillValue(DefaultSkills.Charm),300);
             var finished = false;
             var count = 3;
-            while (!finished || count>=25)
+            while (!finished && count < 25)
             {
                 if (MBRandom.RandomFloat < ((float)skillValue -10) / 300)
                 {
@@ -886,14 +887,14 @@ public class EonirFavorEnvoyTownBehavior : CampaignBehaviorBase
                 {
                     if (troop.UpgradeTargets == null || troop.UpgradeTargets.Length == 0)
                     {
-                        if (MBRandom.RandomFloat < ((float)skillValue -150)/ 300)
+                        if (MBRandom.RandomFloat < ((float)(skillValue -250)/ 300))
                         {
                             troop = MBObjectManager.Instance.GetObject<CharacterObject>("tor_he_white_lion_chrace");
                         }
                         break;
                     }
                   
-                    if (MBRandom.RandomFloat < ((float)skillValue -50)/ 300)
+                    if (MBRandom.RandomFloat < ((float)skillValue -100)/ 300)
                     {
                         troop = troop.UpgradeTargets.GetRandomElement();
                     }
