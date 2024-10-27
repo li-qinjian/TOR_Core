@@ -531,6 +531,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_queens_guard_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_head_helm_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_de_head_helmet_infantry_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1262,6 +1265,12 @@
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_kotr_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_grail_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_grail_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_pilgrim_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1383,6 +1392,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_he_body_armour_phoenix_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_body_armour_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_de_body_armor_infantry_001">
@@ -1626,6 +1638,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_grail_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_pilgrim_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1711,6 +1726,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_he_arm_bracers_infantry_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_arm_bracers_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_de_arm_bracers_infantry_001">
@@ -1987,6 +2005,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_grail_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_prophetess_001">
     <ItemTraits>
       <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
@@ -2063,6 +2084,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_he_leg_boots_spearmen_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_leg_boots_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_beastmen_accessories_2_001">
@@ -2243,6 +2267,12 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="0.25" />
       <DamageProportionTuple DamageType="Magical" Percent="0.75" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_greenskin_weapon_sword_testorc_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_reiksguard_knight_001">
