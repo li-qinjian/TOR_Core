@@ -134,7 +134,6 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
             "tor_chaos_body_armor_tzeentch_warrior_001",
             "tor_chaos_body_armor_nurgle_knight_001",
             "tor_chaos_body_robe_cultist_001",
-            "tor_chaos_body_armor_abomination",
             "tor_chaos_body_armor_marauder_001",
             "tor_chaos_body_armor_marauder_002",
             "tor_chaos_body_armor_chaos_warrior_001",
@@ -190,35 +189,21 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
                 "tor_vc_shoulder_pauldron_vlad",
                 "tor_vc_shoulder_pauldron_red_duke",
                 "tor_vc_shoulder_pauldron_blood_dragon_knight_001",
-                
-                
-                
                 "tor_vc_arm_gauntlet_vlad",
                 "tor_vc_arm_gauntlet_red_duke",
                 "tor_vc_arm_gauntlet_blood_dragon_knight_001",
-                
                 "tor_empire_weapon_scythe_morr_001",
-                
-                
                 "tor_vc_body_armor_red_duke",
                 "tor_vc_body_armor_vlad",
                 "tor_vc_body_armor_blood_dragon_knight_001",
-                
-                
                 "tor_vc_leg_boots_vlad",
                 "tor_vc_leg_boots_blood_dragon_knight_001",
                 "tor_vc_leg_boots_red_duke",
-                
                 "tor_he_weapon_2h_sword_001",
-                
                 "tor_vc_weapon_thaxe_black_axe_of_krell",
-                
                 "tor_empire_weapon_sword_runefang_001", 
-                
                 "tor_we_weapon_bow_legendary",
-                
                 "tor_vc_weapon_sword_khopesh_001",
-                
                 
                 "tor_empire_staff_cw_001_combined",
                 "tor_empire_staff_cw_002_combined",

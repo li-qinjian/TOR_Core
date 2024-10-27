@@ -30,7 +30,7 @@ namespace TOR_Core.AbilitySystem.Scripts
 
             foreach (var hero in heroes)
             {
-                var agentHero= Mission.Current.Agents.WhereQ(x => x.GetHero() == hero).First();
+                var agentHero= Mission.Current.Agents.WhereQ(x => x.GetHero() == hero).FirstOrDefault();
 
                 if (agentHero != null)
                 {
