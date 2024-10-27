@@ -41,7 +41,7 @@ namespace TOR_Core.HarmonyPatches
             {
                 foreach (ItemObject obj in allItemsInGroup)
                 {
-                    if (townComponent != null && obj.Culture == townComponent.Culture && obj.ItemCategory == itemGroupBase && obj.IsTorItem())
+                    if (townComponent != null && obj.Culture == townComponent.Culture && obj.ItemCategory == itemGroupBase)
                     {
                         possibleItems.Add(obj);
                     }
