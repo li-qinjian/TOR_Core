@@ -37,7 +37,7 @@
 -> Start
 
 ===Start===
-
+{ResetRaiderSites()}
 A sickly green glow comes over the horizon, Morrslieb the Dark Moon is rising. Its mocking presence fills the sky, growing brighter as it bathes the world in its foul, tainted light., All across the land, dark magic begins to pool in places no sane man would dare to tread, causing the Winds of Magic to become erratic. #STR_START1
 The worshippers of darkness will seize upon this night to advance their twisted schemes and agendas. Beastmen gather howling and chanting, cultists undertake all manner of blasphemous ceremonies, and daemons start to walk the material plane stalking for prey. #STR_START2
 If one was to dare look directly at the moon they could swear it was smiling, smirking ominously at the terror it was to bring upon the world. However, if those who had looked upon it kept watching they would have seen this smile fade, turning into an almost angry frown as the moon found itself no longer alone in the sky. #STR_START3
