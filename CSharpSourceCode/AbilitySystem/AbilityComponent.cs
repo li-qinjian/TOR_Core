@@ -17,6 +17,15 @@ namespace TOR_Core.AbilitySystem
 {
     public class AbilityComponent : AgentComponent
     {
+        private Ability _currentAbility = null;
+        private readonly List<Ability> _knownAbilitySystem = new List<Ability>();
+        public bool LastCastWasQuickCast;
+        public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
+        public event CurrentAbilityChangedHandler CurrentAbilityChanged;
+        public CareerAbility CareerAbility { get; private set; }
+        public List<Ability> KnownAbilitySystem { get => _knownAbilitySystem; }
+        
+
         public AbilityComponent(Agent agent) : base(agent)
         {
             if(Game.Current.GameType is Campaign && agent.GetHero() != null && agent.GetHero() == Hero.MainHero)
@@ -30,8 +39,7 @@ namespace TOR_Core.AbilitySystem
                         CareerAbility = (CareerAbility)ability;
                         CareerAbility.OnCastStart += OnCastStart;
                         CareerAbility.OnCastComplete += OnCastComplete;
-                        if(!agent.IsSpellCaster())
-                            _knownAbilitySystem.Add(CareerAbility);
+                        _knownAbilitySystem.Add(CareerAbility);
                     }
                 }
             }
@@ -84,7 +92,7 @@ namespace TOR_Core.AbilitySystem
                             }
                         }
                     }
-                    else if(hero.Culture?.StringId == "empire")
+                    else if(hero.Culture?.StringId == TORConstants.Cultures.EMPIRE)
                     {
                         var ability1 = (ItemBoundAbility)AbilityFactory.CreateNew("GreatCannonSpawner", agent);
                         if (ability1 != null)
@@ -104,7 +112,7 @@ namespace TOR_Core.AbilitySystem
                             _knownAbilitySystem.Add(ability2);
                         }
                     }
-                    else if (hero.Culture?.StringId == "vlandia")
+                    else if (hero.Culture?.StringId == TORConstants.Cultures.BRETONNIA)
                     {
                         var ability3 = (ItemBoundAbility)AbilityFactory.CreateNew("FieldTrebuchetSpawner", agent);
                         if (ability3 != null)
@@ -121,7 +129,7 @@ namespace TOR_Core.AbilitySystem
                 else if(Game.Current.GameType is CustomGame)
                 {
                     var heroChar = Agent.Character;
-                    if (heroChar.Culture?.StringId == "empire")
+                    if (heroChar.Culture?.StringId == TORConstants.Cultures.EMPIRE)
                     {
                         var ability1 = (ItemBoundAbility)AbilityFactory.CreateNew("GreatCannonSpawner", agent);
                         if (ability1 != null)
@@ -141,7 +149,7 @@ namespace TOR_Core.AbilitySystem
                             _knownAbilitySystem.Add(ability2);
                         }
                     }
-                    else if (heroChar.Culture?.StringId == "vlandia")
+                    else if (heroChar.Culture?.StringId == TORConstants.Cultures.BRETONNIA)
                     {
                         var ability3 = (ItemBoundAbility)AbilityFactory.CreateNew("FieldTrebuchetSpawner", agent);
                         if (ability3 != null)
@@ -185,7 +193,11 @@ namespace TOR_Core.AbilitySystem
                 AbilityCrosshair crosshair = AbilityFactory.InitializeCrosshair(ability.Template);
                 ability.SetCrosshair(crosshair);
             }
-            SelectAbility(0);
+        }
+        
+        public void SelectAbility(Ability ability)
+        {
+            if(KnownAbilitySystem.Contains(ability)) CurrentAbility = ability;
         }
 
         public void SelectAbility(int index)
@@ -194,32 +206,6 @@ namespace TOR_Core.AbilitySystem
             {
                 CurrentAbility = _knownAbilitySystem[index];
             }
-        }
-
-        public void SelectNextAbility()
-        {
-            if (_currentAbilityIndex < _knownAbilitySystem.Count - 1)
-            {
-                _currentAbilityIndex++;
-            }
-            else
-            {
-                _currentAbilityIndex = 0;
-            }
-            SelectAbility(_currentAbilityIndex);
-        }
-
-        public void SelectPreviousAbility()
-        {
-            if (_currentAbilityIndex > 0)
-            {
-                _currentAbilityIndex--;
-            }
-            else
-            {
-                _currentAbilityIndex = _knownAbilitySystem.Count - 1;
-            }
-            SelectAbility(_currentAbilityIndex);
         }
 
         public void OnInterrupt()
@@ -244,6 +230,18 @@ namespace TOR_Core.AbilitySystem
 
             return null;
         }
+        
+        public int GetCurrentAbilityIndex()
+        {
+            for (var index = 0; index < _knownAbilitySystem.Count; index++)
+            {
+                var ability = _knownAbilitySystem[index];
+                if (ability == CurrentAbility)
+                    return index;
+            }
+
+            return 0;
+        }
 
         public override void OnTickAsAI(float dt)
         {
@@ -254,9 +252,6 @@ namespace TOR_Core.AbilitySystem
             }
         }
 
-        private Ability _currentAbility = null;
-        private readonly List<Ability> _knownAbilitySystem = new List<Ability>();
-        private int _currentAbilityIndex;
         public Ability CurrentAbility
         {
             get => _currentAbility;
@@ -277,6 +272,13 @@ namespace TOR_Core.AbilitySystem
                     if (Game.Current.GameType is Campaign)
                     {
                         CareerHelper.ApplyBasicCareerPassives(Agent.GetHero(), ref cooldown, PassiveEffectType.PrayerCoolDownReduction, true);
+
+
+                        if (Hero.MainHero.HasCareerChoice("CrusherOfTheWeakPassive4"))
+                        {
+                            ability.SetCoolDown(0);
+                            return;
+                        }
                     }
                 }
                 
@@ -296,10 +298,5 @@ namespace TOR_Core.AbilitySystem
                 }
             }
         }
-        
-        public CareerAbility CareerAbility { get; private set; }
-        public List<Ability> KnownAbilitySystem { get => _knownAbilitySystem; }
-        public delegate void CurrentAbilityChangedHandler(AbilityCrosshair crosshair);
-        public event CurrentAbilityChangedHandler CurrentAbilityChanged;
     }
 }

@@ -51,6 +51,15 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_mask_gold_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_balthazar_gelt">
     <ItemTraits>
       <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
@@ -74,7 +83,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_luthor_huss">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -82,7 +91,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_valten">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -120,7 +129,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_head_helm_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -165,6 +174,24 @@
         <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
         <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
         <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_life_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_head_hat_beast_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -243,6 +270,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_blood_knight_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_blood_dragon_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_head_helm_grave_guard_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -294,6 +324,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -303,7 +336,10 @@
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chosen_005">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_chaos_knight_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_slaneesh_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_slaneesh_warrior_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_khorne_warrior_001">
@@ -322,6 +358,18 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_tzeentch_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_marauder_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_marauder_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_marauder_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_head_helm_marauder_004">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_head_helm_greathelm_001">
@@ -375,10 +423,118 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_head_louen_leoncoeur">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_head_helm_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_head_helm_bgk_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_mask_fabric_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eonir_head_mask_fabric_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_spellsinger_crown_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_mask_leather_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_mask_eternalguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_mask_dancer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_helmet_lord_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_helmet_lord_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_helmet_lord_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_helmet_lord_004">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_sister_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_arahan_mask_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_naestra_mask_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_mask_wildrider_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_ancient_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_hood_ranger_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_dryad_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_crown_exiled_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_head_daith_blindfold_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_accessories_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_phoenix_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_whitelion_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_spearmen_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_spearmen_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_head_helm_kithband_helmet_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_head_dragon_helmet_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_queens_guard_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_head_helm_queens_guard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_head_helm_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_head_helmet_infantry_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_head_helm_knight_001">
@@ -437,7 +593,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_valten">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -445,7 +601,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_luthor_huss">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -453,7 +609,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_volkmar">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -470,9 +626,17 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_pauldron_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_kotww_011">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Frost Amplification" IconName="blessing_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% frost damage amplification</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Frost" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -487,10 +651,19 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_balthazar_gelt">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
-        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
-        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
-        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_shoulder_cape_gold_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -551,10 +724,22 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_blood_knight_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_blood_dragon_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_pauldron_mannfred">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_cape_necromancer_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_shoulder_basic_cape_necrarch_001">
     <ItemTraits>
       <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
@@ -602,7 +787,7 @@
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_nurgle_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_chaos_knight_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_slaneesh_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_chosen_001">
@@ -615,6 +800,15 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_pauldron_tzeentch_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_cape_marauder_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_fur_marauder_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_shoulder_cape_chaos_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_shoulder_pauldron_knight_001">
@@ -641,10 +835,76 @@
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_shoulder_pauldron_pilgrim_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_shoulder_pauldron_louen_leoncoeur">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_shoulder_grail_knight_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_shoulder_pauldron_bgk_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_eternalguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_lord_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_lord_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_wildrider_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_gladeguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_ranger_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_exiled_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_shoulder_cape_spellsinger_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_shoulder_cape_phoenix_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_shoulder_cape_whitelion_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_shoulder_pauldrons_infantry_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_shoulder_shoulderpads_queens_guard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_shoulder_shoulderpads_scale_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_shoulder_shoulderpads_scale_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_shoulder_shoulderpads_envoy_scale_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_shoulder_pauldrons_infantry_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_shoulder_necklace_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_shoulder_pauldron_knight_001">
@@ -718,7 +978,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_luthor_huss">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -726,7 +986,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_volkmar">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -737,10 +997,37 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_balthazar_gelt">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
-        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
-        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
-        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_gold_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_beast_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_robe_life_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -749,7 +1036,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_valten">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -763,9 +1050,17 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armor_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_body_armour_kotww_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Frost Amplification" IconName="blessing_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% frost damage amplification</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Frost" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -838,6 +1133,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_blood_knight_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_blood_dragon_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_armor_vlad">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -848,6 +1146,15 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_robe_necromancer_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_body_basic_robe_necrarch_001">
     <ItemTraits>
       <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
@@ -892,7 +1199,7 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_body_breastplate_dh_templar_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_chaos_knight_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_slaneesh_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_khorne_warrior_001">
@@ -911,6 +1218,15 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_abomination">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_marauder_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_marauder_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_body_armor_chaos_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_knight_001">
@@ -949,6 +1265,12 @@
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_kotr_002">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_grail_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_grail_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_pilgrim_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -964,10 +1286,118 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_body_armor_louen_leoncoeur">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_body_armor_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_body_armor_bgk_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_civil_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_civil_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_civil_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_militia_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_militia_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_militia_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_eternalguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_eternalguard_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_ranger_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_ranger_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_lord_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_lord_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_sister_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_dancer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_wildrider_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_gladeguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armor_ancient_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armour_dryad_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armour_exiled_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_armour_spellsinger_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_body_dress_female_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_body_kithband_leather_scale_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_eo_body_kithband_metal_scale_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_body_armour_phoenix_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_body_armour_whitelion_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_body_armour_spearmen_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_body_armour_whitelion_sleeves_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_body_armour_phoenix_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_body_armour_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_body_armor_infantry_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_body_armor_knight_001">
@@ -988,6 +1418,12 @@
   <ExtendedItemObjectProperties ItemStringId="tor_estalia_body_armor_noble_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_body_minotaur_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_body_armour_gor_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_beastmen_body_armor_ungor_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -999,9 +1435,17 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_kotww_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Frost Amplification" IconName="blessing_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% frost damage amplification</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Frost" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -1043,7 +1487,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_luthor_huss">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1051,7 +1495,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_valten">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1059,7 +1503,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_volkmar">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1070,10 +1514,10 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_balthazar_gelt">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
-        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
-        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
-        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -1101,6 +1545,15 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_bracers_gold_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_arm_gauntlet_pistolier_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1120,6 +1573,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_blood_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_blood_dragon_knight_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_vlad">
@@ -1152,7 +1608,7 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_arm_gauntlet_dh_templar_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_chaos_knight_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_slaneesh_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_khorne_warrior_001">
@@ -1167,6 +1623,12 @@
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_gauntlet_hallow">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_bracers_marauder_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_arm_bracer_chaos_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_questing_knight_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1174,6 +1636,9 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_kotr_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_grail_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_pilgrim_001">
@@ -1188,10 +1653,85 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_arm_gauntlet_louen_leoncoeur">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_arm_gauntlet_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_arm_gauntlet_bgk_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_eternalguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_ranger_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_lord_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_lord_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_sister_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_dancer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_wildrider_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_gladeguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_arms_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_arms_ancient_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_arms_dryad_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_rings_exiled_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_arm_bracers_spellsinger_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_arm_hands_minotaur_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_arm_bracers_gor_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_arm_bracers_phoenix_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_arm_bracers_whitelion_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_arm_bracers_infantry_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_arm_bracers_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_arm_bracers_infantry_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tiliean_arm_gauntlet_knight_001">
@@ -1223,7 +1763,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_luthor_huss">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1231,7 +1771,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_valten">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1239,7 +1779,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_volkmar">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1247,9 +1787,17 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_kotww_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Frost Amplification" IconName="blessing_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% frost damage amplification</ItemTraitDescription>
+        <AmplifierTuple AmplifiedDamageType="Frost" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -1258,10 +1806,10 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_balthazar_gelt">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
-        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
-        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
-        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
@@ -1334,6 +1882,15 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_gold_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_leg_boots_pistolier_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1373,6 +1930,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vampire_lord_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_blood_dragon_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vc_wight_king_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1409,7 +1969,7 @@
   <ExtendedItemObjectProperties ItemStringId="tor_vc_leg_boots_vc_dh_templar_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_chaos_knight_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_slaneesh_warrior_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_nurgle_knight_001">
@@ -1427,6 +1987,12 @@
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_hallow">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_marauder_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_leg_boots_chaos_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_knight_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
@@ -1439,6 +2005,9 @@
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_grail_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_prophetess_001">
     <ItemTraits>
       <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
@@ -1448,10 +2017,82 @@
       </ItemTrait>
     </ItemTraits>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_leg_boots_louen_leoncoeur">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_leg_boots_kotr_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_mousillon_leg_boots_bgk_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_militia_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_militia_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_militia_003">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_eternalguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_ranger_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_lord_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_lord_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_sister_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_dancer_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_wildrider_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_gladeguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_legs_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_legs_ancient_treeman_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_legs_dryad_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_leg_boots_exiled_wizard_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_leg_boots_phoenix_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_leg_boots_whitelion_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_leg_boots_spearmen_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_dw_leg_boots_warrior_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_accessories_2_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_legs_gor_001">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_tilean_leg_boots_knight_001">
@@ -1628,6 +2269,12 @@
       <DamageProportionTuple DamageType="Magical" Percent="0.75" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_greenskin_weapon_sword_testorc_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_sword_reiksguard_knight_001">
     <ItemTraits />
     <DamageProportions>
@@ -1784,6 +2431,30 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_lord_sword_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_sword_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_sword_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_weapon_sword_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_beastmen_weapon_sword_ungor_001">
     <ItemTraits />
     <DamageProportions>
@@ -1828,7 +2499,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_thsword_de_lyonesse">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -1856,6 +2527,18 @@
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_thsword_squire_003">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_weapon_2h_sword_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_2h_sword_001">
     <ItemTraits />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
@@ -1917,7 +2600,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_thaxe_taal">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -1950,6 +2633,30 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_2h_axe_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_weapon_2h_axe_whitelion_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_beastmen_weapon_greataxe_minotaur_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_chaos_2h_weapon_warrior_greataxe_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_thaxe_nurgle_001">
     <ItemTraits />
     <DamageProportions>
@@ -1958,7 +2665,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_comet_flail">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -1971,7 +2678,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -1983,7 +2690,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_warrior_priest_002">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -1995,7 +2702,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_warrior_priest_003">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -2007,7 +2714,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_warrior_priest_004">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -2019,7 +2726,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -2049,7 +2756,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_huss">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -2110,7 +2817,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_holy_hammer">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2122,7 +2829,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_mace_flagellant_002">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2134,7 +2841,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_thmace_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2146,7 +2853,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_thmace_warrior_priest_002">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2158,7 +2865,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_thmace_warrior_priest_003">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2176,7 +2883,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_polehammer_warrior_priest_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2188,7 +2895,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_polehammer_warrior_priest_002">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2200,7 +2907,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_polehammer_warrior_priest_003">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2246,6 +2953,12 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnian_trident_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_spear_001">
     <ItemTraits />
     <DamageProportions>
@@ -2259,6 +2972,54 @@
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_weapon_spear_003">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_wildrider_spear_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_spear_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_spear_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_spear_003">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_spear_004">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_weapon_spearmen_spear_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_weapon_spear_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_weapon_spear_002">
     <ItemTraits />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
@@ -2378,7 +3139,33 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_weapon_halberd_phoenix_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.75" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_bw_001">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.25" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.75" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_staff_exiled_wizard_001">
     <ItemTraits>
       <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
@@ -2406,7 +3193,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_staff_volkmar">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
         <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
       </ItemTrait>
@@ -2613,7 +3400,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_scythe_morr_001">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2625,7 +3412,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_scythe_morr_002">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2637,7 +3424,7 @@
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_scythe_morr_003">
     <ItemTraits>
-      <ItemTrait ItemTraitName="Holy Amplification" IconName="winds_icon_45">
+      <ItemTrait ItemTraitName="Holy Amplification" IconName="blessing_icon_45">
         <ItemTraitDescription>This item provides its wearer 10% holy damage amplification</ItemTraitDescription>
         <AmplifierTuple AmplifiedDamageType="Holy" DamageAmplifier="0.10" />
       </ItemTrait>
@@ -2665,10 +3452,101 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_treeman_fist">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_crossbow_empire_crossbow_001">
     <ItemTraits />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_001">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_002">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_003">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_004">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_005">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_006">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_007">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_008">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_009">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_010">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_011">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_012">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_013">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_bow_legendary">
+    <ItemTraits />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
     </DamageProportions>
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_neutral_weapon_gun_old_rifle">
@@ -2818,16 +3696,22 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_banner_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_faction_banner_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_faction_banner_001_t1">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_banner_t1_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_faction_banner_001_t2">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_banner_t2_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_faction_banner_001_t3">
     <ItemTraits />
   </ExtendedItemObjectProperties>
-  <ExtendedItemObjectProperties ItemStringId="tor_empire_banner_t3_001">
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_banner_001_t1">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_banner_001_t2">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_banner_001_t3">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_vc_weapon_banner_001">
@@ -2846,6 +3730,15 @@
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_chaos_weapon_banner_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_fake_faction_banner_001_t1">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_fake_faction_banner_001_t2">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_fake_faction_banner_001_t3">
     <ItemTraits />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_001">
@@ -3018,11 +3911,146 @@
   <ExtendedItemObjectProperties ItemStringId="tor_empire_weapon_shield_kotr_003">
     <ItemTraits />
   </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_mousillon_weapon_shield_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_mousillon_weapon_shield_knight_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_mousillon_weapon_shield_black_grail_knight_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_shield_eternalguard_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_we_weapon_shield_lord_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_weapon_shield_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_he_weapon_shield_002">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_de_weapon_shield_001">
+    <ItemTraits />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_cw_001_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_cw_002_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_cw_003_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Lightning Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% lightning resistance as well as 10% lightning damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Lightning" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Lightning" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_bw_001_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_bw_002_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Fire Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% fire resistance as well as 10% fire damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Fire" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_lw_001_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_lw_002_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_lw_003_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_volkmar">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Holy Additional Damage" IconName="blessing_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% additional holy damage</ItemTraitDescription>
+        <AdditionalDamageTuple DamageType="Holy" Percent="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_empire_staff_gelt">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_prophetess_staff_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_vc_nm_staff_001_combined">
+    <ItemTraits>
+      <ItemTrait ItemTraitName="Magical Resistance and Amplification" IconName="winds_icon_45">
+        <ItemTraitDescription>This item provides its wearer 10% magical resistance as well as 10% magical damage amplification.</ItemTraitDescription>
+        <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+        <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.10" />
+      </ItemTrait>
+    </ItemTraits>
+  </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_artillery_mortar_001">
     <ItemTraits />
     <Description />
   </ExtendedItemObjectProperties>
   <ExtendedItemObjectProperties ItemStringId="tor_empire_artillery_cannon_001">
+    <ItemTraits />
+    <Description />
+  </ExtendedItemObjectProperties>
+  <ExtendedItemObjectProperties ItemStringId="tor_bretonnia_artillery_fieldtrebuchet_001">
     <ItemTraits />
     <Description />
   </ExtendedItemObjectProperties>

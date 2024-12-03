@@ -1,4 +1,3 @@
-using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.CampaignSystem.GameComponents;
@@ -7,30 +6,48 @@ using TaleWorlds.CampaignSystem.Roster;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
-using TOR_Core.CampaignMechanics.Religion;
+using TOR_Core.CampaignMechanics.CustomResources;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Models
 {
     public class TORPartyWageModel : DefaultPartyWageModel
     {
-
         public override int GetCharacterWage(CharacterObject character)
         {
             if (character.IsUndead()) return 0;
+            if (character.IsTreeSpirit()) return 0;
+            var value = 0;
+            value = GetWageForTier(character.Tier);
+
+            if (character.Culture.StringId == TORConstants.Cultures.BRETONNIA && character.IsKnightUnit())
+            {
+                value *= 2;
+            }
             
-            switch (character.Tier)
+            if (character.Culture.StringId == TORConstants.Cultures.EONIR && character.IsEliteTroop())
+            {
+                value *= 3;
+            }
+
+            return value;
+        }
+
+        private static int GetWageForTier(int tier)
+        {
+            switch (tier)
             {
                 case 0:
-                    return 1;
+                    return  1;
                 case 1:
                     return 2;
                 case 2:
                     return 3;
                 case 3:
-                    return 5;
+                    return  5;
                 case 4:
                     return 8;
                 case 5:
@@ -46,9 +63,8 @@ namespace TOR_Core.Models
             }
         }
 
-        public override ExplainedNumber GetTotalWage(MobileParty mobileParty, bool includeDescriptions = true)
+        public override ExplainedNumber GetTotalWage(MobileParty mobileParty, bool includeDescriptions)
         {
-            includeDescriptions = true;
             var value = base.GetTotalWage(mobileParty, includeDescriptions);
 
             if (mobileParty.IsMainParty)
@@ -58,16 +74,76 @@ namespace TOR_Core.Models
                     TroopRosterElement elementCopyAtIndex = mobileParty.MemberRoster.GetElementCopyAtIndex(index);
                     if (mobileParty.LeaderHero.HasAnyCareer())
                     {
-                        var careerID = mobileParty.LeaderHero.GetCareer().StringId;
-                        var careerFactors = new ExplainedNumber(0, true);
+                        var careerFactors = new ExplainedNumber(0, true); 
                         careerFactors = AddCareerSpecificWagePerks(careerFactors, mobileParty.LeaderHero, elementCopyAtIndex);
                         foreach (var line in careerFactors.GetLines())
                         {
                             value.Add(line.number, new TextObject(line.name));
                         }
                     }
+                    if(elementCopyAtIndex.Character.IsHero && elementCopyAtIndex.Character.HeroObject == Hero.MainHero)
+                         continue;
+                    float  troopwage = elementCopyAtIndex.Character.TroopWage * elementCopyAtIndex.Number;
+                    if (Hero.MainHero.Culture.StringId == TORConstants.Cultures.BRETONNIA && elementCopyAtIndex.Character.IsKnightUnit())
+                    {
+                        var level = mobileParty.LeaderHero.GetChivalryLevel();
+                        var factor = 0f;
+                        switch (level)
+                        {
+                            case ChivalryLevel.Unknightly:
+                                factor=0.75f;
+                                break;
+                            case ChivalryLevel.Uninspiring:
+                                factor=0.5f;
+                                break;
+                            case ChivalryLevel.Sincere:
+                                factor=0.25f;
+                                break;
+                            case ChivalryLevel.Noteworthy:
+                                factor=0.1f;
+                                break;
+                            case ChivalryLevel.PureHearted:
+                                break;
+                            case ChivalryLevel.Honourable:
+                                factor=-0.1f;
+                                break;
+                            case ChivalryLevel.Chivalrous:
+                                factor=-0.2f;
+                                break;
+                        }
+                        value.Add((troopwage * factor),new TextObject(level.ToString()));
+                    }
 
+                    if (Hero.MainHero.Culture.StringId == TORConstants.Cultures.ASRAI)
+                    {
+                        if (Hero.MainHero.HasAttribute("WEOrionSymbol"))
+                        {
+                            if (elementCopyAtIndex.Character.IsElf() && elementCopyAtIndex.Character.Culture.StringId== TORConstants.Cultures.ASRAI)
+                            {
+                                value.Add(-0.5f * troopwage, ForestHarmonyHelper.TreeSymbolText("WEOrionSymbol"));
+                            }
+                        }
 
+                        if (Hero.MainHero.HasAttribute("WEArielSymbol"))
+                        {
+                            value.Add(0.5f * troopwage, ForestHarmonyHelper.TreeSymbolText("WEArielSymbol"));
+                        }
+                        
+                        if (Hero.MainHero.HasAttribute("WEWandererSymbol"))
+                        {
+                            value.Add(0.5f * troopwage, ForestHarmonyHelper.TreeSymbolText("WEWandererSymbol"));
+                        }
+                        
+                        if (Hero.MainHero.HasAttribute("WETreekinSymbol") && !elementCopyAtIndex.Character.IsTreeSpirit())
+                        {
+                            value.Add(0.25f * troopwage, ForestHarmonyHelper.TreeSymbolText("WETreekinSymbol"));
+                        }
+                        
+                        if (Hero.MainHero.HasAttribute("WEKithbandSymbol"))
+                        {
+                            value.Add(0.15f * troopwage, ForestHarmonyHelper.TreeSymbolText("WEKithbandSymbol"));
+                        }
+                    }
                 }
             }
             return value;
@@ -86,9 +162,8 @@ namespace TOR_Core.Models
             //vanilla copy paste.
             bool specialFlag = troop.Occupation == Occupation.Mercenary || troop.Occupation == Occupation.Gangster || troop.Occupation == Occupation.CaravanGuard;
 
-
             if (specialFlag)
-                troopRecruitmentCost = MathF.Round((float)troopRecruitmentCost * 2f);
+                troopRecruitmentCost = MathF.Round(troopRecruitmentCost * 2f);
             if (buyerHero != null)
             {
                 var explainedNumber = new ExplainedNumber(1f);
@@ -123,7 +198,8 @@ namespace TOR_Core.Models
                     if (buyerHero.GetPerkValue(DefaultPerks.Charm.SlickNegotiator))
                         explainedNumber.AddFactor(DefaultPerks.Charm.SlickNegotiator.PrimaryBonus);
                 }
-                troopRecruitmentCost = MathF.Max(1, MathF.Round((float)troopRecruitmentCost * explainedNumber.ResultNumber));
+                
+                troopRecruitmentCost = MathF.Max(1, MathF.Round(troopRecruitmentCost * explainedNumber.ResultNumber));
             }
             return troopRecruitmentCost;
         }
@@ -131,110 +207,26 @@ namespace TOR_Core.Models
 
         private ExplainedNumber AddCareerSpecificWagePerks(ExplainedNumber resultValue, Hero hero, TroopRosterElement unit)
         {
+            if (hero != Hero.MainHero || !Hero.MainHero.HasAnyCareer()) return resultValue;
             var choices = hero.GetAllCareerChoices();
-
-            if (choices.Contains("SigmarsProclaimerPassive2"))
+            foreach (var choiceID in choices)
             {
-                if (unit.Character.IsSoldier)
+                var choice = TORCareerChoices.GetChoice(choiceID);
+                if (choice == null)
+                    continue;
+                if (choice.Passive==null) continue;
+                if (choice.Passive.PassiveEffectType != PassiveEffectType.TroopWages) continue;
+                
+                if (!choice.Passive.IsValidCharacterObject(unit.Character))
                 {
-                    var choice = TORCareerChoices.GetChoice("SigmarsProclaimerPassive2");
-                    var includeRegularTroops = choices.Contains("ArchLectorPassive4");
-                    var value = CalculateSigmarsProclaimerPerk(unit, includeRegularTroops, choice);
-                    resultValue.Add(value, choice.BelongsToGroup.Name);
-                }
-            }
-
-            if (choices.Contains("DuelistPassive3"))
-            {
-                if (!unit.Character.IsMounted)
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "DuelistPassive3", out text);
-                    resultValue.Add(value, text);
-                }
-            }
-
-            if (choices.Contains("CommanderPassive1"))
-            {
-                if (unit.Character.Tier > 4 && !unit.Character.IsHero)
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "CommanderPassive1", out text);
-                    resultValue.Add(value, text);
-                }
-            }
-
-            if (choices.Contains("LordlyPassive3"))
-            {
-                if (unit.Character.IsVampire() && unit.Character != Hero.MainHero.CharacterObject)
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "LordlyPassive3", out text);
-                    resultValue.Add(value, text);
-                }
-            }
-
-            if (choices.Contains("InspirationOfTheLadyPassive3"))
-            {
-                if (unit.Character.IsKnightUnit())
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "LordlyPassive3", out text);
-                    resultValue.Add(value, text);
-                }
-            }
-
-            if (choices.Contains("AvatarOfDeathPassive2"))
-            {
-                if (unit.Character.IsVampire() && unit.Character != Hero.MainHero.CharacterObject)
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "AvatarOfDeathPassive2", out text);
-                    resultValue.Add(value, text);
-                }
-            }
-
-            if (choices.Contains("MonsterSlayerPassive4"))
-            {
-                if (unit.Character != Hero.MainHero.CharacterObject && !unit.Character.IsKnightUnit() && unit.Character.Culture.StringId == "vlandia")
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "MonsterSlayerPassive4", out text);
-                    resultValue.Add(value, text);
-                }
-            }
-
-            if (choices.Contains("MasterHorsemanPassive4"))
-            {
-                if (unit.Character != Hero.MainHero.CharacterObject && unit.Character.IsKnightUnit())
-                {
-                    TextObject text;
-                    var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, "MasterHorsemanPassive4", out text);
-                    resultValue.Add(value, text);
+                    continue;
                 }
 
+                var value = CareerHelper.CalculateTroopWageCareerPerkEffect(unit, choice, out var textObject);
+                resultValue.Add(value, textObject);
             }
-
+                
             return resultValue;
         }
-
-
-
-        private float CalculateSigmarsProclaimerPerk(TroopRosterElement unit, bool includeRegularTroops, CareerChoiceObject choice)
-        {
-            if (!unit.Character.UnitBelongsToCult("cult_of_sigmar"))
-            {
-                if (!includeRegularTroops)
-                {
-                    return 0f;
-                }
-            }
-            if (choice?.Passive == null) return 0;
-            var effectMagnitude = choice.Passive.EffectMagnitude;
-            if (choice.Passive.InterpretAsPercentage) effectMagnitude /= 100;
-            var value = -(unit.Character.TroopWage * unit.Number) * (effectMagnitude);
-            return value;
-        }
-
     }
 }

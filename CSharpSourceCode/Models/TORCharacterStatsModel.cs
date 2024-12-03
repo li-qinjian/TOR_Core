@@ -1,9 +1,18 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using System.Linq;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
+using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using TaleWorlds.MountAndBlade;
+using TOR_Core.AbilitySystem;
+using TOR_Core.CampaignMechanics.CustomResources;
+using TOR_Core.CampaignMechanics.TORCustomSettlement;
+using TOR_Core.CampaignMechanics.TORCustomSettlement.CustomSettlementMenus;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
+using FaceGen = TaleWorlds.Core.FaceGen;
 
 namespace TOR_Core.Models
 {
@@ -20,6 +29,18 @@ namespace TOR_Core.Models
 
         private ExplainedNumber CalculateHitPoints(ExplainedNumber number, CharacterObject character)
         {
+            if (character.IsMinotaur())
+            {
+                number.Add(250f, new TextObject("Minotaur bonus"));
+            }
+            if(character.IsTreeSpirit() && character.Race != FaceGen.GetRaceOrDefault("large_humanoid_monster"))
+            {
+                number.Add(100f, new TextObject("Dryad bonus"));
+            }
+            if (character.Race == FaceGen.GetRaceOrDefault("large_humanoid_monster"))
+            {
+                number.Add(1000f, new TextObject("Large Monster"));
+            }
             if (character.IsHero)
             {
                 return CalculateHeroHealth(number, character.HeroObject);
@@ -48,10 +69,19 @@ namespace TOR_Core.Models
                     number.Add(character.Tier * 10);
                     break;
             }
-            if (character.IsUndead()&&!character.IsHero)
+            if (character.IsUndead()&&!character.IsHero && !character.HasAttribute("NecromancerChampion"))
             {
                 number.Add(-50);
             }
+
+            if (character.HasAttribute("NecromancerChampion"))
+            {
+                if (Mission.Current == null) return number;
+                var playerMainAgent = Mission.Current.Agents.FirstOrDefault(x => x.IsHero && x.GetHero() == Hero.MainHero);
+                var value = playerMainAgent.GetComponent<AbilityComponent>().CareerAbility.Template.ScaleVariable1;
+                number.Add((int)value);
+            }
+            
             return number;
         }
 
@@ -81,10 +111,92 @@ namespace TOR_Core.Models
                     number.Add(100, new TextObject("Vampire body"));
                 }
 
+                if (hero.HasAttribute("Everchosen"))
+                {
+                    number.Add(2000);
+                }
+
                 if (hero.HasAnyCareer())
                 {
-                    CareerHelper.ApplyBasicCareerPassives(hero, ref number, PassiveEffectType.Health);
+                    CareerHelper.ApplyBasicCareerPassives(hero, ref number, PassiveEffectType.Health, false);
                 }
+
+                if (hero.PartyBelongedTo!=null&& hero.IsPlayerCompanion)
+                {
+                    if (Hero.MainHero.HasCareerChoice("GuiltyByAssociationPassive3"))
+                    {
+                        var choice = TORCareerChoices.GetChoice("GuiltyByAssociationPassive3");
+                        number.Add(choice.GetPassiveValue());
+                    }
+                    
+                    if (Hero.MainHero.HasCareerChoice("CommanderPassive4"))
+                    {
+                        var choice = TORCareerChoices.GetChoice("CommanderPassive4");
+                        number.Add(choice.GetPassiveValue());
+                    }
+                    
+                    if (Hero.MainHero.HasCareerChoice("EnvoyOfTheLadyPassive2"))
+                    {
+                        if (hero.IsBretonnianKnight())
+                        {
+                            var choice = TORCareerChoices.GetChoice("EnvoyOfTheLadyPassive2");
+                            number.AddFactor(choice.GetPassiveValue());
+                        }
+                    }
+                    if (Hero.MainHero.HasCareerChoice("HolyCrusaderPassive2"))
+                    {
+                        if (hero.IsBretonnianKnight())
+                        {
+                            var choice = TORCareerChoices.GetChoice("HolyCrusaderPassive2");
+                            var heroes =Hero.MainHero.PartyBelongedTo.GetMemberHeroes();
+                            heroes.Remove(Hero.MainHero);
+                            var extraHealth= heroes.Where(knight => hero.IsBretonnianKnight()).Sum(knight=> 15);
+                            number.Add(extraHealth,choice.BelongsToGroup.Name);
+                        }
+                    }
+                    
+                    
+                    
+                }
+
+                if (hero.PartyBelongedTo!=null && (hero.PartyBelongedTo.IsMainParty ||  hero == Hero.MainHero)  && hero.Culture.StringId == TORConstants.Cultures.ASRAI)
+                {
+
+                    if (!Hero.MainHero.HasAttribute("WEWandererSymbol"))
+                    {
+                        var level = hero.PartyBelongedTo.LeaderHero.GetForestHarmonyLevel();
+                        switch (level)
+                        {
+                            case ForestHarmonyLevel.Harmony: break;
+                            case ForestHarmonyLevel.Unbound:
+                                number.AddFactor(ForestHarmonyHelper.HealthDebuffUnBound, new TextObject(ForestHarmonyLevel.Unbound.ToString()));
+                                break;
+                            case ForestHarmonyLevel.Bound:
+                                number.AddFactor(ForestHarmonyHelper.HealthDebuffBound,new TextObject(ForestHarmonyLevel.Bound.ToString()));
+                                break;
+                        }
+                    }
+                    
+                    var settlementBehavior = Campaign.Current.GetCampaignBehavior<TORCustomSettlementCampaignBehavior>();
+                    var list = settlementBehavior.GetUnlockedOakUpgradeCategory("WEHealthUpgrade");
+                    foreach (var attribute in  list)
+                    {
+                        number.AddFactor(0.1f, new TextObject("Oak of Ages"));
+                    }
+
+
+                    if (Hero.MainHero.HasAttribute("WEWardancerSymbol"))
+                    {
+                        number.AddFactor(0.25f, ForestHarmonyHelper.TreeSymbolText("WEWardancerSymbol"));
+                    }
+                    
+                    if(hero == Hero.MainHero&& Hero.MainHero.HasAttribute("WEDurthuSymbol"))
+                    {
+                        number.AddFactor(0.25f);
+                    }
+
+                }
+                
 
                 if (hero.HasAttribute("GiftOfNurgle")) number.Add(20, new TextObject("Gift of Nurgle"));
             }

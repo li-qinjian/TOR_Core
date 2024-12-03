@@ -2,6 +2,7 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TOR_Core.AbilitySystem.Spells;
 using TOR_Core.Extensions;
@@ -20,34 +21,47 @@ namespace TOR_Core.AbilitySystem
         private bool _isSpell;
         private float _windsOfMagicValue;
         private string _windsCost = "";
+        private AbilityManagerMissionLogic _abilityLogic;
+        private bool _isDisabled;
+        private string _disabledText;
+        private string _abilityType;
 
         public AbilityHUD_VM() : base() { }
 
-        public void UpdateProperties()
+        public override void RefreshValues()
         {
             _ability = Agent.Main.GetCurrentAbility();
-            IsVisible = _ability != null && (Mission.Current.Mode == MissionMode.Battle || Mission.Current.Mode == MissionMode.Stealth);
+            if(_abilityLogic == null) _abilityLogic = Mission.Current.GetMissionBehavior<AbilityManagerMissionLogic>();
+            IsVisible = _ability != null && _abilityLogic != null && (Mission.Current.Mode == MissionMode.Battle || Mission.Current.Mode == MissionMode.Stealth);
             if (IsVisible)
             {
+                AbilityType = "(" + _ability.Template.AbilityType.ToString() + ")";
                 IsSpell = _ability is Spell;
                 SpriteName = _ability.Template.SpriteName;
-                Name = _ability.Template.Name;
+                Name = new TextObject(_ability.Template.Name).ToString();
                 WindsCost = _ability.Template.WindsOfMagicCost.ToString();
                 CoolDownLeft = _ability.GetCoolDownLeft().ToString();
                 IsOnCoolDown = _ability.IsOnCooldown();
-                if (Game.Current.GameType is Campaign && _ability is Spell)
+                TextObject disabledReason;
+                if(_ability.IsDisabled(Agent.Main, out disabledReason))
                 {
-                    SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetExtendedInfo()?.CurrentWindsOfMagic));
+                    IsDisabled = true;
+                    DisabledText = disabledReason.ToString();
+                }
+                else
+                {
+                    IsDisabled = false;
+                    DisabledText = string.Empty;
+                }
+                if (Game.Current.GameType is Campaign)
+                {
+                    if (Agent.Main!=null&& Agent.Main.IsSpellCaster())
+                    {
+                        SetWindsOfMagicValue((float)(Agent.Main?.GetHero()?.GetCustomResourceValue("WindsOfMagic")));
+                    }
+                    
                     var windsCost = AddPerkEffectsToWindsCost(Agent.Main?.GetHero(), _ability.Template);
                     WindsCost = windsCost.ToString();
-                    if (_windsOfMagicValue < windsCost)
-                    {
-                        if (!IsOnCoolDown)
-                        {
-                            CoolDownLeft = "";
-                        }
-                        IsOnCoolDown = true;
-                    }
                 }
             }
         }
@@ -103,7 +117,7 @@ namespace TOR_Core.AbilitySystem
         }
 
         [DataSourceProperty]
-        public string Name
+        public String Name
         {
             get
             {
@@ -113,6 +127,7 @@ namespace TOR_Core.AbilitySystem
             {
                 if (value != _name)
                 {
+                    
                     _name = value;
                     base.OnPropertyChangedWithValue(value, "Name");
                 }
@@ -200,6 +215,57 @@ namespace TOR_Core.AbilitySystem
                 {
                     _isSpell = value;
                     base.OnPropertyChangedWithValue(value, "IsSpell");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public string AbilityType
+        {
+            get
+            {
+                return _abilityType;
+            }
+            set
+            {
+                if (value != _abilityType)
+                {
+                    _abilityType = value;
+                    base.OnPropertyChangedWithValue(value, "AbilityType");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public bool IsDisabled
+        {
+            get
+            {
+                return _isDisabled;
+            }
+            set
+            {
+                if (value != _isDisabled)
+                {
+                    _isDisabled = value;
+                    base.OnPropertyChangedWithValue(value, "IsDisabled");
+                }
+            }
+        }
+
+        [DataSourceProperty]
+        public string DisabledText
+        {
+            get
+            {
+                return _disabledText;
+            }
+            set
+            {
+                if (value != _disabledText)
+                {
+                    _disabledText = value;
+                    base.OnPropertyChangedWithValue(value, "DisabledText");
                 }
             }
         }

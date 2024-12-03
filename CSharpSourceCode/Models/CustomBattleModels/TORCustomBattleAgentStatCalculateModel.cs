@@ -11,12 +11,37 @@ using TOR_Core.BattleMechanics.Crosshairs;
 using TOR_Core.BattleMechanics.StatusEffect;
 using TOR_Core.Extensions;
 using TOR_Core.Utilities;
+using FaceGen = TaleWorlds.Core.FaceGen;
 
 namespace TOR_Core.Models.CustomBattleModels
 {
     public class TORCustomBattleAgentStatCalculateModel : CustomBattleAgentStatCalculateModel
     {
         private CustomCrosshairMissionBehavior _crosshairBehavior;
+
+        public override float GetEffectiveMaxHealth(Agent agent)
+        {
+            if(agent.IsHuman && agent.Character != null)
+            {
+                if (agent.Character.Race == FaceGen.GetRaceOrDefault("large_humanoid_monster"))
+                {
+                    return 1000f;
+                }
+                if (agent.Character.IsTreeSpirit())
+                {
+                    return 250f;
+                }
+            }
+            
+            return base.GetEffectiveMaxHealth(agent);
+        }
+
+        public override void InitializeAgentStats(Agent agent, Equipment spawnEquipment, AgentDrivenProperties agentDrivenProperties, AgentBuildData agentBuildData)
+        {
+            base.InitializeAgentStats(agent, spawnEquipment, agentDrivenProperties, agentBuildData);
+            agent.HealthLimit = GetEffectiveMaxHealth(agent);
+            agent.Health = agent.HealthLimit;
+        }
 
         public override float GetMaxCameraZoom(Agent agent)
         {
@@ -51,6 +76,16 @@ namespace TOR_Core.Models.CustomBattleModels
         public override void UpdateAgentStats(Agent agent, AgentDrivenProperties agentDrivenProperties)
         {
             base.UpdateAgentStats(agent, agentDrivenProperties);
+
+            if (agent.IsHuman)
+            {
+                if (agent.Character.IsTreeSpirit())
+                {
+                    agent.SetAgentFlags(agent.GetAgentFlags() & ~AgentFlag.CanDefend);
+                    agent.Defensiveness = 0.001f;
+                }
+            }
+
             UpdateDynamicAgentDrivenProperties(agent, agentDrivenProperties);
         }
 

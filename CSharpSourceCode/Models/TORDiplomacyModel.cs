@@ -1,5 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
+using TaleWorlds.Core;
+using TaleWorlds.LinQuick;
 using TaleWorlds.Localization;
 using TOR_Core.CampaignMechanics.Religion;
 using TOR_Core.CharacterDevelopment;
@@ -10,9 +15,12 @@ namespace TOR_Core.Models
 {
     public class TORDiplomacyModel : DefaultDiplomacyModel
     {
+        public override int GetInfluenceCostOfProposingPeace(Clan proposingClan) => 150;
+        public override int GetInfluenceCostOfProposingWar(Clan proposingClan) => 150;
+
         public override float GetRelationIncreaseFactor(Hero hero1, Hero hero2, float relationChange)
         {
-            var baseValue =  base.GetRelationIncreaseFactor(hero1, hero2, relationChange);
+            var baseValue = base.GetRelationIncreaseFactor(hero1, hero2, relationChange);
             var values = new ExplainedNumber(baseValue);
 
             var playerHero = hero1.IsHumanPlayerCharacter || hero2.IsHumanPlayerCharacter ? (hero1.IsHumanPlayerCharacter ? hero1 : hero2) : null;
@@ -35,233 +43,184 @@ namespace TOR_Core.Models
                         }
                     }
                 }
-                
+
                 if (choices.Contains("JustCausePassive4"))
                 {
                     if (baseValue > 0)
                     {
-                        if (conversationHero != null && conversationHero.Culture.StringId == "vlandia")
+                        if (conversationHero != null && conversationHero.Culture.StringId == TORConstants.Cultures.BRETONNIA)
                         {
                             var choice = TORCareerChoices.GetChoice("JustCausePassive4");
                             if (choice != null)
                             {
                                 var value = choice.Passive.InterpretAsPercentage ? choice.Passive.EffectMagnitude / 100 : choice.Passive.EffectMagnitude;
                                 values.AddFactor(value);
-                            } 
+                            }
                         }
                     }
                 }
             }
             return values.ResultNumber;
         }
-        
+
         public override float GetScoreOfDeclaringWar(IFaction factionDeclaresWar, IFaction factionDeclaredWar, IFaction evaluatingClan, out TextObject warReason)
         {
-            float scoreOfDeclaringWar = base.GetScoreOfDeclaringWar(factionDeclaresWar, factionDeclaredWar, evaluatingClan, out warReason);
-            float determineEffectOfReligion = DetermineEffectOfReligion(factionDeclaresWar, factionDeclaredWar, (Clan)evaluatingClan);
-            //TORCommon.Say("War support Score: " + scoreOfDeclaringWar + " + Religion effect:" + determineEffectOfReligion);
-            return scoreOfDeclaringWar + determineEffectOfReligion;
+            warReason = new TextObject("It is time to declare war!");
+
+            if(factionDeclaresWar is Kingdom kingdom)
+            {
+                if (kingdom.GetNumActiveKingdomWars() < TORConfig.NumMinKingdomWars) return 100000;
+                if (kingdom.GetNumActiveKingdomWars() >= TORConfig.NumMaxKingdomWars) return -100000;
+                else return 5000;
+            }
+
+            return base.GetScoreOfDeclaringWar(factionDeclaresWar, factionDeclaredWar, evaluatingClan, out warReason);
         }
 
-
-        private float DetermineEffectOfReligion(IFaction factionDeclaresWar, IFaction factionToDeclareWarOn, IFaction evaluatingClan)
+        public override float GetScoreOfDeclaringPeace(IFaction factionDeclaresPeace, IFaction factionDeclaredPeace, IFaction evaluatingClan, out TextObject peaceReason)
         {
-            var kingdomHeroes = factionDeclaresWar.Heroes;
+            peaceReason = new TextObject("We see no reason to stop hostilities");
 
-            float religionValue = 0f;
-
-            foreach (var hero in kingdomHeroes)
+            // Chaos really shouldn't be allowed to make peace
+            if (factionDeclaresPeace.Culture.StringId == TORConstants.Cultures.CHAOS || factionDeclaredPeace.Culture.StringId == TORConstants.Cultures.CHAOS)
             {
-                var otherSideHeroes = factionToDeclareWarOn.Heroes;
-                foreach (var enemy in otherSideHeroes)
-                {
-                    foreach (var religion in ReligionObject.All)
-                    {
-                        if (hero.GetDevotionLevelForReligion(religion) == DevotionLevel.None)
-                            continue;
-                        foreach (var comparedToReligion in ReligionObject.All)
-                        {
-                            religionValue += DeterminePositiveEffect(hero, religion, enemy, comparedToReligion);
-                            religionValue += DetermineNegativeEffect(hero, religion, enemy, comparedToReligion);
-                        }
-                    }
-                }
+                return float.MinValue;
             }
 
-            return religionValue; // / factionToDeclareWarOn.Heroes.Count;
+            if(factionDeclaresPeace is Kingdom kingdom && factionDeclaredPeace is Kingdom)
+            {
+                if (kingdom.GetNumActiveKingdomWars() <= TORConfig.NumMinKingdomWars) return -100000;
+                if (kingdom.GetNumActiveKingdomWars() > TORConfig.NumMaxKingdomWars) return 100000;
+            }
+
+            return base.GetScoreOfDeclaringPeace(factionDeclaresPeace, factionDeclaredPeace, evaluatingClan, out peaceReason);
         }
 
-        public static float DeterminePositiveEffect(Hero hero, ReligionObject religion, Hero enemy, ReligionObject comparedToReligion)
+        public override float GetScoreOfMercenaryToJoinKingdom(Clan mercenaryClan, Kingdom kingdom)
         {
-            if (religion.HostileReligions.Contains(comparedToReligion))
-                return 0;
+            var score = base.GetScoreOfMercenaryToJoinKingdom(mercenaryClan, kingdom);
 
-            var value = 0;
-            var heroDevotion = hero.GetDevotionLevelForReligion(religion);
-            var enemyDevotion = enemy.GetDevotionLevelForReligion(comparedToReligion);
+            if (kingdom == null || mercenaryClan == null) return score;
 
-            var shareAffinity = religion.Affinity == comparedToReligion.Affinity;
-            var isSame = religion.Name == comparedToReligion.Name;
-
-            if (isSame)
+            if (kingdom.Culture.StringId == TORConstants.Cultures.BRETONNIA)
             {
-                switch (heroDevotion)
+                if (mercenaryClan.Culture.StringId == TORConstants.Cultures.BRETONNIA)
                 {
-                    case DevotionLevel.Fanatic:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                        {
-                            value += 100;
-                        }
-                        break;
-                    case DevotionLevel.Devoted:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                            value += 25;
-                        else
-                            value += 50;
-                        break;
-                    case DevotionLevel.Follower:
-                        if (enemyDevotion != DevotionLevel.Fanatic)
-                            value += 10;
-                        break;
-                    case DevotionLevel.None:
-                        break;
+                    score = +1000;
                 }
-
-            }
-            else if (shareAffinity)
-            {
-                switch (heroDevotion)
+                else
                 {
-                    case DevotionLevel.Fanatic:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                            value += 10;
-                        break;
-                    case DevotionLevel.Devoted:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                            value += 25;
-                        else
-                            value += 50;
-                        break;
-                    case DevotionLevel.Follower:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                            value += 0;
-                        else
-                            value += 25;
-                        break;
-                    case DevotionLevel.None:
-                        break;
+                    score = -10000;
                 }
             }
-            return value;
+            
+            if (kingdom.Culture.StringId != TORConstants.Cultures.BRETONNIA && mercenaryClan.Culture.StringId == TORConstants.Cultures.BRETONNIA)
+            {
+                score = -10000;
+            }
+            
+            if (mercenaryClan.StringId == "tor_dog_clan_hero_curse" && (kingdom.Culture.StringId == TORConstants.Cultures.SYLVANIA || kingdom.Culture.StringId == "mousillon" || kingdom.Culture.StringId == TORConstants.Cultures.BRETONNIA))
+            {
+                score = -10000;
+            }
+
+            if(mercenaryClan.Culture.StringId == TORConstants.Cultures.DRUCHII)
+            {
+                score = -10000;
+            }
+
+            return score;
         }
 
-        private float DetermineNegativeEffect(Hero hero, ReligionObject religion, Hero enemy, ReligionObject comparedToReligion)
+        public Kingdom GetWarDeclarationTargetCandidate(Kingdom consideringKingdom)
         {
-            var value = 0;
+            if(consideringKingdom == null) return null;
 
-            var heroDevotion = hero.GetDevotionLevelForReligion(religion);
-            var enemyDevotion = enemy.GetDevotionLevelForReligion(comparedToReligion);
+            var permissionModel = Campaign.Current?.Models?.KingdomDecisionPermissionModel;
+            if (permissionModel == null) return null;
 
-            if (heroDevotion == DevotionLevel.None) //If a hero is not devoted at all, he should also not care about any hostility.
-                return value;
+            var kingdomCandidates = Kingdom.All.WhereQ(x => 
+                !x.IsEliminated && 
+                x != consideringKingdom && 
+                permissionModel.IsWarDecisionAllowedBetweenKingdoms(consideringKingdom, x, out _) && 
+                !consideringKingdom.IsAtWarWith(x) &&
+                (x.GetStanceWith(consideringKingdom)?.PeaceDeclarationDate == null || 
+                x.GetStanceWith(consideringKingdom)?.PeaceDeclarationDate.ElapsedDaysUntilNow > TORConfig.MinPeaceDays)).ToListQ();
 
-            var shareAffinity = religion.Affinity == comparedToReligion.Affinity;
-            var isSame = religion.Name == comparedToReligion.Name;
-
-            if (isSame) //The Person is only hostile if he is fanatic about his religion, and thinks other don't follow enough
+            var distanceModel = Campaign.Current?.Models?.MapDistanceModel as TORSettlementDistanceModel;
+            
+            if (kingdomCandidates.Count > 0 && distanceModel != null)
             {
-                switch (heroDevotion)
+                
+                var kingdomListByDistance = kingdomCandidates.SelectQ(x => new Tuple<Kingdom, float>(x, distanceModel.GetDistance(consideringKingdom.FactionMidSettlement, x.FactionMidSettlement))).ToListQ();
+                var kingdomListByStrength = kingdomCandidates.SelectQ(x => new Tuple<Kingdom, float>(x, x.TotalStrength)).ToListQ();
+                var hostileReligionKingdoms = kingdomCandidates.SelectQ(x => 
+                    new Tuple<Kingdom, float>(x, ReligionObjectHelper.CalculateSimilarityScore(x.Leader.GetDominantReligion(), consideringKingdom.Leader.GetDominantReligion()))).ToListQ();
+
+                Dictionary<Kingdom, float> candidateScores = [];
+                float minDistance = kingdomListByDistance.MinBy(x => x.Item2).Item2;
+                float maxDistance = kingdomListByDistance.MaxBy(x => x.Item2).Item2;
+
+                foreach(var tuple in kingdomListByDistance)
                 {
-                    case DevotionLevel.Fanatic:
-                        if (enemyDevotion == DevotionLevel.None)
-                        {
-                            value += -20;
-                        }
-                        break;
+                    candidateScores[tuple.Item1] = Math.Abs(MapToRange(tuple.Item2, minDistance, maxDistance, 0, 1) - 1) * TORConfig.DeclareWarScoreDistanceMultiplier;
+                }
+
+                foreach (var tuple in kingdomListByStrength)
+                {
+                    candidateScores[tuple.Item1] += (consideringKingdom.TotalStrength / tuple.Item1.TotalStrength) * TORConfig.DeclareWarScoreFactionStrengthMultiplier;
+                }
+
+                foreach (var tuple in hostileReligionKingdoms)
+                {
+                    candidateScores[tuple.Item1] += -tuple.Item2 * TORConfig.DeclareWarScoreReligiousEffectMultiplier;
+                }
+                var candidate = candidateScores.MaxBy(x => x.Value).Key;
+                return candidate;
+            }
+            return null;
+        }
+
+        public Kingdom GetPeaceDeclarationTargetCandidate(Kingdom consideringKingdom, bool isEmergency = false)
+        {
+            if (consideringKingdom == null) return null;
+
+            var permissionModel = Campaign.Current?.Models?.KingdomDecisionPermissionModel;
+            if (permissionModel == null) return null;
+
+            var kingdomCandidates = Kingdom.All.WhereQ(x =>
+                !x.IsEliminated &&
+                x != consideringKingdom &&
+                permissionModel.IsPeaceDecisionAllowedBetweenKingdoms(consideringKingdom, x, out _) &&
+                consideringKingdom.IsAtWarWith(x) &&
+                (x.GetStanceWith(consideringKingdom)?.WarStartDate.ElapsedDaysUntilNow > TORConfig.MinWarDays ||
+                isEmergency)).ToListQ();
+
+            if (kingdomCandidates.Count > 0)
+            {
+                var kingdomListByStrength = kingdomCandidates.SelectQ(x => new Tuple<Kingdom, float>(x, x.TotalStrength)).ToListQ();
+
+                Dictionary<Kingdom, float> candidateScores = [];
+
+                foreach (var tuple in kingdomListByStrength)
+                {
+                    candidateScores[tuple.Item1] = tuple.Item1.TotalStrength / consideringKingdom.TotalStrength;
+                }
+
+                var maxvalue = candidateScores.Values.Max();
+                if(maxvalue > 1)
+                {
+                    var candidate = candidateScores.MaxBy(x => x.Value).Key;
+                    return candidate;
                 }
             }
-            else if (shareAffinity)
-            {
-                switch (heroDevotion)
-                {
-                    case DevotionLevel.Fanatic:
-                        switch (enemyDevotion)
-                        {
-                            case DevotionLevel.Fanatic:
-                                value += -50;
-                                break;
-                            case DevotionLevel.Follower:
-                            case DevotionLevel.Devoted:
-                                value += -20;
-                                break;
-                        }
+            return null;
+        }
 
-                        break;
-                    case DevotionLevel.Devoted:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                            value += -30;
-                        else
-                            value += -15;
-                        break;
-                    case DevotionLevel.Follower:
-                        switch (enemyDevotion)
-                        {
-                            case DevotionLevel.Fanatic:
-                                value += -30;
-                                break;
-                            case DevotionLevel.Follower:
-                            case DevotionLevel.Devoted:
-                                value += -20;
-                                break;
-                        }
-
-                        break;
-                    case DevotionLevel.None:
-                        break;
-                }
-            }
-            else // hostile and neutral gods.
-            {
-                switch (heroDevotion)
-                {
-                    case DevotionLevel.Fanatic:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                        {
-                            value += -100;
-                        }
-                        break;
-                    case DevotionLevel.Devoted:
-                        if (enemyDevotion == DevotionLevel.Fanatic)
-                            value += -50;
-                        else
-                            value += -25;
-                        break;
-                    case DevotionLevel.Follower:
-                        switch (enemyDevotion)
-                        {
-                            case DevotionLevel.Fanatic:
-                                value += -30;
-                                break;
-                            case DevotionLevel.Follower:
-                            case DevotionLevel.Devoted:
-                                value += -20;
-                                break;
-                        }
-                        ;
-                        break;
-                    case DevotionLevel.None:
-                        break;
-                }
-            }
-
-            if (enemyDevotion == DevotionLevel.None) return value;
-
-            if (religion.HostileReligions.Contains(comparedToReligion))
-            {
-                value += -25; //additional base value if the god is hostile, irrespective about the state of religion.
-            }
-
-            return value;
+        private static float MapToRange(float value, float minSource, float maxSource, float minTarget = float.MinValue, float maxTarget = float.MaxValue)
+        {
+            var result = (value - minSource) / (maxSource - minSource) * (maxTarget - minTarget) + minTarget;
+            return result;
         }
     }
 }

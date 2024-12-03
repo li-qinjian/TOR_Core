@@ -1,13 +1,16 @@
 ﻿using Helpers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.CampaignSystem.MapEvents;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Roster;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 using TOR_Core.CampaignMechanics.TORCustomSettlement;
 using TOR_Core.CharacterDevelopment;
@@ -26,7 +29,27 @@ namespace TOR_Core.CampaignMechanics.Religion
             CampaignEvents.OnItemsDiscardedByPlayerEvent.AddNonSerializedListener(this, OnItemsDiscarded);
             CampaignEvents.HourlyTickPartyEvent.AddNonSerializedListener(this, HourlyPartyTick);
             CampaignEvents.MapEventEnded.AddNonSerializedListener(this, MapEventEnded);
+            CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this, PlayerBattleEnded);
             TORCampaignEvents.Instance.DevotionLevelChanged += OnDevotionLevelChanged;
+        }
+
+        private void PlayerBattleEnded(MapEvent mapEvent)
+        {
+            if (mapEvent.IsPlayerMapEvent && mapEvent.PlayerSide == mapEvent.WinningSide && Hero.MainHero.PartyBelongedTo.HasBlessing("cult_of_anath_raema"))
+            {
+                var roster = PlayerEncounter.Current.RosterToReceiveLootItems;
+                if (roster != null && roster.Count > 0)
+                {
+                    var randomIndex = MBRandom.RandomInt(0, roster.Count - 1);
+
+                    var item = roster[randomIndex].EquipmentElement;
+
+                    if (!item.IsEmpty)
+                    {
+                        roster.AddToCounts(item, 7);
+                    }
+                }
+            }
         }
 
         private void MapEventEnded(MapEvent mapEvent)
@@ -77,7 +100,7 @@ namespace TOR_Core.CampaignMechanics.Religion
                 Hero.MainHero.GetPerkValue(TORPerks.Faith.Offering) &&
                 itemRoster.Count > 0)
             {
-                GainRenownAction.Apply(Hero.MainHero, Math.Max(1, itemRoster.TotalValue / 1000));
+                Hero.MainHero.AddSkillXp(TORSkills.Faith, Math.Max(1, itemRoster.TotalValue / 100));
             }
         }
 
@@ -90,7 +113,12 @@ namespace TOR_Core.CampaignMechanics.Religion
         {
             if((int)e.NewDevotionLevel > (int)e.OldDevotionLevel && e.Hero == Hero.MainHero)
             {
-                MBInformationManager.AddQuickInformation(new TextObject(e.Hero.Name.ToString() + " is now a " + e.NewDevotionLevel.ToString() + " of the " + e.Religion.Name));
+                var devotionLevelText = GameTexts.FindText ("tor_religion_devotionlevel", e.NewDevotionLevel.ToString());
+                var religionNameText = GameTexts.FindText ("tor_religion_name_of_god", e.Religion.StringId);
+                MBTextManager.SetTextVariable ("TOR_DEVOTION_LEVEL",devotionLevelText);
+                MBTextManager.SetTextVariable ("TOR_RELIGION",religionNameText);
+                MBTextManager.SetTextVariable ("PLAYER.NAME",Hero.MainHero.Name);
+                MBInformationManager.AddQuickInformation(GameTexts.FindText ("tor_religion_change_notification_frame"));
             }
         }
 
@@ -114,10 +142,10 @@ namespace TOR_Core.CampaignMechanics.Religion
                     }
                 }
             }
-            SetIntialReliationForAllNPCCharacters();
+            SetInitialReligionForAllNPCCharacters();
         }
 
-        private void SetIntialReliationForAllNPCCharacters()
+        private void SetInitialReligionForAllNPCCharacters()
         {
             foreach(var hero in Hero.AllAliveHeroes)
             {

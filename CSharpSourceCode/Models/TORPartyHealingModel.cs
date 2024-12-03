@@ -4,9 +4,11 @@ using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
+using TOR_Core.CampaignMechanics.CustomResources;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Models
 {
@@ -41,6 +43,19 @@ namespace TOR_Core.Models
                     if (choice != null)
                         return result + choice.GetPassiveValue();
                 }
+                if(choices.Contains( "CodexMortificaPassive4"))
+                {
+                    var choice = TORCareerChoices.GetChoice("CodexMortificaPassive4");
+                    if (choice != null)
+                        return result + choice.GetPassiveValue();
+                }
+                
+                if(choices.Contains( "WellspringOfDharPassive2"))
+                {
+                    var choice = TORCareerChoices.GetChoice("WellspringOfDharPassive2");
+                    if (choice != null)
+                        return result + choice.GetPassiveValue();
+                }
             }
 
             
@@ -59,6 +74,13 @@ namespace TOR_Core.Models
             {
                 result = new ExplainedNumber(0, true, new TextObject("{=!}Inside a cursed region"));
             }
+            
+            
+            if (Hero.MainHero.HasAttribute("WEWardancerSymbol"))
+            {
+                result.AddFactor(-0.25f);
+            }
+            
             return result;
         }
 
@@ -66,7 +88,7 @@ namespace TOR_Core.Models
         {
             var result = base.GetDailyHealingHpForHeroes(party, includeDescriptions);
             if (party == MobileParty.MainParty) AddCareerPassivesForHeroRegeneration(party, ref result);
-            if (party.HasBlessing("cult_of_sigmar")) result.AddFactor(0.2f, GameTexts.FindText("tor_religion_blessing_name", "cult_of_sigmar"));
+            if (party.HasBlessing("cult_of_shallya")) result.AddFactor(0.2f, GameTexts.FindText("tor_religion_blessing_name", "cult_of_shallya"));
             if (party.IsAffectedByCurse())
             {
                 result = new ExplainedNumber(0, true, new TextObject("{=!}Inside a cursed region"));
@@ -77,16 +99,37 @@ namespace TOR_Core.Models
                 result.AddFactor(0.2f);
             }
             
+            if (party.IsMainParty && party.LeaderHero!=null &&  party.LeaderHero.Culture.StringId == TORConstants.Cultures.ASRAI)
+            {
+                if (!Hero.MainHero.HasAttribute("WEWandererSymbol"))
+                {
+                    var level = Hero.MainHero.GetForestHarmonyLevel();
+                    switch (level)
+                    {
+                        case ForestHarmonyLevel.Harmony: break;
+                        case ForestHarmonyLevel.Unbound:
+                            result.AddFactor(ForestHarmonyHelper.HealthRegDebuffUnBound, new TextObject(ForestHarmonyLevel.Unbound.ToString()));
+                            break;
+                        case ForestHarmonyLevel.Bound:
+                            result.AddFactor(ForestHarmonyHelper.HealthRegDebuffBound,new TextObject(ForestHarmonyLevel.Bound.ToString()));
+                            break;
+                    }
+                }
+
+                if (Hero.MainHero.HasAttribute("WEWardancerSymbol"))
+                {
+                    result.AddFactor(0.25f);
+                }
+            }
+            
             return result;
         }
-
-
 
         private void AddCareerPassivesForTroopRegeneration(MobileParty party, ref ExplainedNumber explainedNumber)
         {
             if (party.LeaderHero.HasAnyCareer())
             {
-                CareerHelper.ApplyBasicCareerPassives(party.LeaderHero, ref explainedNumber, PassiveEffectType.TroopRegeneration);
+                CareerHelper.ApplyBasicCareerPassives(party.LeaderHero, ref explainedNumber, PassiveEffectType.TroopRegeneration, false);
             }
         }
         
@@ -94,7 +137,7 @@ namespace TOR_Core.Models
         {
             if (party.LeaderHero.HasAnyCareer())
             {
-                CareerHelper.ApplyBasicCareerPassives(party.LeaderHero, ref explainedNumber, PassiveEffectType.HealthRegeneration);
+                CareerHelper.ApplyBasicCareerPassives(party.LeaderHero, ref explainedNumber, PassiveEffectType.HealthRegeneration, false);
             }
         }
     }

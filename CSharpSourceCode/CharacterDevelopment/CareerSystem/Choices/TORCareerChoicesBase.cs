@@ -1,7 +1,11 @@
-﻿using TaleWorlds.CampaignSystem;
+﻿using System.Collections.Generic;
+using TaleWorlds.CampaignSystem;
 using TOR_Core.CharacterDevelopment;
 using TaleWorlds.Core;
+using TaleWorlds.Localization;
 using TOR_Core.CharacterDevelopment.CareerSystem;
+using TOR_Core.CharacterDevelopment.CareerSystem.Button;
+using TOR_Core.CharacterDevelopment.CareerSystem.CareerButton;
 using TOR_Core.Extensions;
 
 namespace TOR_Core.CampaignMechanics.Choices
@@ -9,6 +13,7 @@ namespace TOR_Core.CampaignMechanics.Choices
     public abstract class TORCareerChoicesBase
     {
         protected CareerObject CareerID=null;
+        
 
 
         public CareerObject GetID()
@@ -43,7 +48,7 @@ namespace TOR_Core.CampaignMechanics.Choices
         {
             var mainhero = Hero.MainHero;
             var tierText = "CareerTier";
-            if(mainhero.HasAttribute(tierText + tier))return;
+            if(mainhero.HasUnlockedCareerChoiceTier(tier))return;
             
             switch (tier)
             {
@@ -75,10 +80,7 @@ namespace TOR_Core.CampaignMechanics.Choices
 
         public virtual void InitialCareerSetup()
         {
-            //this should only be meaningful in 
+            
         }
-
-
-
     }
 }

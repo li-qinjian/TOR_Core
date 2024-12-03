@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.ObjectSystem;
 using TOR_Core.AbilitySystem;
 using TOR_Core.BattleMechanics.StatusEffect;
@@ -19,36 +20,35 @@ namespace TOR_Core.CharacterDevelopment
     public class TORCareerChoices
     {
         public static TORCareerChoices Instance { get; private set; }
-        public WarriorPriestCareerChoices WarriorPriestCareerChoices { get; private set; }
-        
-        public VampireCountCareerChoices VampireCountCareerChoices { get; private set; }
-        
-        public BloodKnightCareerChoices BloodKnightCareerChoices { get; private set; }
-        
-        public MercenaryCareerChoices MercenaryCareerChoices { get; private set; }
-        
-        public GrailKnightCareerChoices GrailKnightCareerChoices { get; private set; }
-        
-        public GrailDamselCareerChoices GrailDamselCareerChoices { get; private set; }
 
-        private List<TORCareerChoicesBase> _allCareers =new List<TORCareerChoicesBase>();
+        private readonly List<TORCareerChoicesBase> _allCareers;
 
         public TORCareerChoices()
         {
             Instance = this;
-            WarriorPriestCareerChoices = new WarriorPriestCareerChoices(TORCareers.WarriorPriest);
-            VampireCountCareerChoices = new VampireCountCareerChoices(TORCareers.MinorVampire);
-            BloodKnightCareerChoices = new BloodKnightCareerChoices(TORCareers.BloodKnight);
-            MercenaryCareerChoices = new MercenaryCareerChoices(TORCareers.Mercenary);
-            GrailDamselCareerChoices = new GrailDamselCareerChoices(TORCareers.GrailDamsel);
-            GrailKnightCareerChoices = new GrailKnightCareerChoices(TORCareers.GrailKnight);
-            _allCareers.Add(WarriorPriestCareerChoices);
-            _allCareers.Add(VampireCountCareerChoices);
-            _allCareers.Add(BloodKnightCareerChoices);
-            _allCareers.Add(MercenaryCareerChoices);
-            _allCareers.Add(GrailKnightCareerChoices);
-            _allCareers.Add(GrailDamselCareerChoices);
+            SetBasicTextVariables();
+            
+            _allCareers =
+            [
+                new WarriorPriestCareerChoices(TORCareers.WarriorPriest),
+                new VampireCountCareerChoices(TORCareers.MinorVampire),
+                new BloodKnightCareerChoices(TORCareers.BloodKnight),
+                new MercenaryCareerChoices(TORCareers.Mercenary),
+                new GrailDamselCareerChoices(TORCareers.GrailDamsel),
+                new GrailKnightCareerChoices(TORCareers.GrailKnight),
+                new WitchHunterCareerChoices(TORCareers.WitchHunter),
+                new NecromancerCareerChoices(TORCareers.Necromancer),
+                new BlackGrailKnightCareerChoices(TORCareers.BlackGrailKnight),
+                new NecrarchCareerChoices(TORCareers.Necrarch),
+                new WarriorPriestUlricCareerChoices(TORCareers.WarriorPriestUlric),
+                new ImperialMagisterCareerChoices(TORCareers.ImperialMagister),
+                new WaywatcherCareerChoices(TORCareers.Waywatcher),
+                new SpellsingerCareerChoices(TORCareers.Spellsinger),
+                new GreyLordCareerChoices(TORCareers.GreyLord)
+            ];
         }
+
+
 
         public static CareerChoiceObject GetChoice(string id) => Game.Current.ObjectManager.GetObject<CareerChoiceObject>(x => x.StringId == id);
 
@@ -57,8 +57,14 @@ namespace TOR_Core.CharacterDevelopment
         {
             return _allCareers.FirstOrDefault(x => x.GetID() ==id);
         }
-        
-        
 
+        private void SetBasicTextVariables()
+        {
+            foreach (var type in Enum.GetValues(typeof(PassiveEffectType)).Cast<PassiveEffectType>())
+            {
+                GameTexts.SetVariable("TOR_CHOICE_"+type.ToString().ToUpper(),GameTexts.FindText("tor_careerchoice_basic", type.ToString()));
+            }
+            
+        }
     }
 }

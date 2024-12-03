@@ -8,10 +8,12 @@ using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade.GauntletUI.Widgets.Multiplayer;
 using TaleWorlds.ObjectSystem;
 using TOR_Core.CampaignMechanics.Religion;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.CampaignMechanics
 {
@@ -30,21 +32,44 @@ namespace TOR_Core.CampaignMechanics
 
         private void WandererSetup(Hero hero, MobileParty mobileParty)
         {
-            if(mobileParty!=null&&mobileParty.LeaderHero!=Hero.MainHero) return;
+            if (mobileParty != null && mobileParty.LeaderHero != Hero.MainHero) return;
             
             //Seems only to happen when a hero joins the player not anywhere else
             if (hero.IsWanderer)
             {
-                if (hero.Culture.StringId == "khuzait" || hero.Culture.StringId == "mousillon")
+                
+                var shallyaLevel = hero.GetTraitLevel(TORCharacterTraits.ShallyaDevoted);
+                if(shallyaLevel > 0)
                 {
-                    hero.AddReligiousInfluence(ReligionObject.All.FirstOrDefault(x => x.StringId == "cult_of_nagash"), 60, false);
+                    var religion = ReligionObject.All.FirstOrDefault(x => x.StringId == "cult_of_shallya");
+                    hero.AddReligiousInfluence(religion, 30, false);
+                }
+                var sigmarLevel = hero.GetTraitLevel(TORCharacterTraits.SigmarDevoted);
+                if(sigmarLevel > 0)
+                {
+
+                    var religion = ReligionObject.All.FirstOrDefault(x => x.StringId == "cult_of_sigmar");
+                    hero.AddReligiousInfluence(religion, 30, false);
+                }
+                var ulricLevel = hero.GetTraitLevel(TORCharacterTraits.UlricDevoted);
+                if(ulricLevel > 0)
+                {
+                    var religion = ReligionObject.All.FirstOrDefault(x => x.StringId == "cult_of_ulric");
+                    hero.AddReligiousInfluence(religion, 30, false);
+                }
+                
+                var nagashLevel = hero.GetTraitLevel(TORCharacterTraits.NagashCorrupted);
+                if(nagashLevel > 0)
+                {
+                    var religion = ReligionObject.All.FirstOrDefault(x => x.StringId == "cult_of_nagash");
+                    hero.AddReligiousInfluence(religion, 30, false);
                 }
             }
         }
 
         private void CanHeroDie(Hero hero, KillCharacterAction.KillCharacterActionDetail detail, ref bool result)
         {
-            if((hero.IsLord || hero.IsPlayerCompanion || hero.IsWanderer) && detail != KillCharacterAction.KillCharacterActionDetail.Executed)
+            if ((hero.IsLord || hero.IsPlayerCompanion || hero.IsWanderer) && detail != KillCharacterAction.KillCharacterActionDetail.Executed)
             {
                 result = false;
             }
@@ -89,19 +114,9 @@ namespace TOR_Core.CampaignMechanics
             for (int i = 0; i < settlement.HeroesWithoutParty.Count; i++)
             {
                 var wanderer = settlement.HeroesWithoutParty[i];
-                if (wanderer != null && wanderer.Occupation == Occupation.Wanderer && wanderer.Culture != settlement.Culture)
+                if (wanderer != null && wanderer.Occupation == Occupation.Wanderer)
                 {
-                    //look for empty suitable settlement to move unsuitable wanderer
-                    var suitableTown = (from x in Town.AllTowns
-                                        where x.Settlement.Culture == wanderer.Culture
-                                        orderby x.Settlement.HeroesWithoutParty.Count ascending
-                                        select x).FirstOrDefault()
-                        ?.Settlement;
-                    if (suitableTown != null)
-                    {
-                        EnterSettlementAction.ApplyForCharacterOnly(wanderer, suitableTown);
-                    }
-                    else
+                    if (wanderer.Template == null || wanderer.Culture != settlement.Culture)
                     {
                         LeaveSettlementAction.ApplyForCharacterOnly(wanderer);
                         wanderer.ChangeState(Hero.CharacterStates.NotSpawned);

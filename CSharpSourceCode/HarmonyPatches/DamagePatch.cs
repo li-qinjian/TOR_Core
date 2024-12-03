@@ -5,6 +5,7 @@ using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TOR_Core.AbilitySystem;
+using TOR_Core.BattleMechanics;
 using TOR_Core.BattleMechanics.DamageSystem;
 using TOR_Core.BattleMechanics.SFX;
 using TOR_Core.BattleMechanics.TriggeredEffect;
@@ -32,19 +33,23 @@ namespace TOR_Core.HarmonyPatches
                 return true;
             }
 
+            if (victim == attacker)
+            {
+                return true;
+            }
+
             AttackTypeMask attackTypeMask = DetermineMask(b);
 
             float[] damageCategories = new float[(int)DamageType.All + 1];
-            var attackerPropertyContainer = AgentPropertyContainer.InitNew();
-            var victimPropertyContainer = AgentPropertyContainer.InitNew();
-            if (!Mission.Current.IsArenaMission())
-            { 
-                attackerPropertyContainer = attacker.GetProperties(PropertyMask.Attack, attackTypeMask); 
-                victimPropertyContainer = victim.GetProperties(PropertyMask.Defense, attackTypeMask);
-            }
- 
+            var attackerPropertyContainer = attacker.GetProperties(PropertyMask.Attack, attackTypeMask); 
+            var victimPropertyContainer = victim.GetProperties(PropertyMask.Defense, attackTypeMask);
+            
+            var friendlyFire = attacker.Team == victim.Team;
+            var damageProportions = new float[7];
             //attack properties;
-            var damageProportions = attackerPropertyContainer.DamageProportions;
+            
+            damageProportions = attackerPropertyContainer.DamageProportions;
+            
             var damageAmplifications = attackerPropertyContainer.DamagePercentages;
             var additionalDamagePercentages = attackerPropertyContainer.AdditionalDamagePercentages;
             //defense properties
@@ -53,52 +58,40 @@ namespace TOR_Core.HarmonyPatches
             var wardSaveFactor = 1f;
             if (Game.Current.GameType is Campaign)
             {
+                //troop specific benefits
+                if (CareerHelper.IsValidCareerMissionInteractionBetweenAgents(attacker, victim))
+                {
+                    var property = PropertyMask.All;
+
+               
+                    if (attacker.BelongsToMainParty())
+                    {
+                        property = PropertyMask.Attack;
+                        var careerBonuses = CareerHelper.AddCareerPassivesForDamageValues(attacker, victim, attackTypeMask, property);
+                        for (var index = 0; index < careerBonuses.Length; index++)
+                        {
+                            additionalDamagePercentages[index] += careerBonuses[index];
+                        } 
+                    }
+                    
+                    if(victim.BelongsToMainParty())
+                    {
+                        property = PropertyMask.Defense;
+                        var careerBonuses = CareerHelper.AddCareerPassivesForDamageValues(attacker, victim, attackTypeMask, property);
+                        for (var index = 0; index < careerBonuses.Length; index++)
+                        {
+                            resistancePercentages[index] += careerBonuses[index];
+                        } 
+                    }
+                    
+                }
+                
                 var model = MissionGameModels.Current.AgentApplyDamageModel;
                 if(model != null && model is TORAgentApplyDamageModel)
                 {
                     var torModel = model as TORAgentApplyDamageModel;
-                    wardSaveFactor = torModel.CalculateWardSaveFactor(victim, attackTypeMask);
+                    wardSaveFactor = torModel.CalculateWardSaveFactor(victim, resistancePercentages, friendlyFire);
                 }
-
-                if (attacker.GetOriginMobileParty()==MobileParty.MainParty)
-                {
-                    var choices = Hero.MainHero.GetAllCareerChoices();
-
-                    if ((victim.Character.Race == 0||victim.Character.IsCultist()) && choices.Contains("MartiallePassive3"))        //other humans should be added if applicable
-                    {
-                        var choice = TORCareerChoices.GetChoice("MartiallePassive3");
-                        if (choice != null)
-                        {
-                            var value = choice.GetPassiveValue();
-                            additionalDamagePercentages[(int)DamageType.Physical] += value;
-                        }
-                    }
-                    
-                    //Need to stay here because they need information about victim
-                    
-                    
-                    if (victim.Character.Race != 0 && choices.Contains("HolyPurgePassive3"))
-                    {
-                        var choice = TORCareerChoices.GetChoice("HolyPurgePassive3");
-                        if (choice != null)
-                        {
-                            var value = choice.GetPassiveValue();
-                            additionalDamagePercentages[(int)DamageType.Physical] += value;
-                        }
-                    }
-                    if (!attacker.IsHero&&attacker.HasMount&&choices.Contains("DreadKnightPassive3"))
-                    {
-                        var choice = TORCareerChoices.GetChoice("DreadKnightPassive3");
-                        if (choice != null)
-                        {
-                            var value = choice.GetPassiveValue();
-                            additionalDamagePercentages[(int)DamageType.Physical] += value;
-                        }
-                        
-                    }
-                   
-                }
-                
             }
 
             string abilityName = "";
@@ -115,14 +108,13 @@ namespace TOR_Core.HarmonyPatches
                         attackTypeMask = AttackTypeMask.Spell;
                         abilityName = magicSpellMissile.Weapon.Item.ToString();
                     }
-
                 }
             }
 
             //calculating spell damage
-            if (TORSpellBlowHelper.IsSpellBlow(b)|| (attackTypeMask ==AttackTypeMask.Spell&&abilityName!="") )      //checking the Attackmask should be enough IsSpellBlow is checked before!
+            if (TORSpellBlowHelper.IsSpellBlow(b) || (attackTypeMask == AttackTypeMask.Spell && abilityName != ""))      //checking the Attackmask should be enough IsSpellBlow is checked before!
             {
-                var abilityId="";
+                string abilityId = string.Empty;
                 int damageType = 0;
                 if (abilityName != "")
                 {
@@ -139,13 +131,8 @@ namespace TOR_Core.HarmonyPatches
                     abilityId = spellInfo.OriginAbilityTemplateId;
                     damageCategories[damageType] = b.InflictedDamage;
                 }
-
-                damageAmplifications[damageType] += additionalDamagePercentages[damageType];
-                damageAmplifications[damageType] -= resistancePercentages[damageType];
-                damageCategories[damageType] *= 1 + damageAmplifications[damageType];
-                resultDamage = (int)damageCategories[damageType];
                 
-                if(Game.Current.GameType is Campaign)
+                if(Game.Current.GameType is Campaign && abilityId != string.Empty && abilityId != null)
                 {
                     var abilityTemplate = AbilityFactory.GetTemplate(abilityId);
                     if (attacker.IsHero && abilityTemplate != null)
@@ -154,23 +141,76 @@ namespace TOR_Core.HarmonyPatches
                         var model = Campaign.Current.Models.GetAbilityModel();
                         if (model != null)
                         {
-                            resultDamage = (int)(resultDamage * model.GetPerkEffectsOnAbilityDamage(hero.CharacterObject, victim, abilityTemplate));
+                            damageCategories[damageType] = (int)(b.InflictedDamage * model.GetPerkEffectsOnAbilityDamage(hero.CharacterObject, victim, abilityTemplate));
                             var skill = model.GetRelevantSkillForAbility(abilityTemplate);
-                            var amount = model.GetSkillXpForAbilityDamage(abilityTemplate, resultDamage);
+                            var amount = model.GetSkillXpForAbilityDamage(abilityTemplate, (int) damageCategories[damageType]);
                             hero.AddSkillXp(skill, amount);
+
+                            if (hero.HasAnyCareer())
+                            {
+                                if (amount > 0)
+                                {
+                                    if (hero.HasCareerChoice("DarkVisionPassive3"))
+                                    {
+                                        hero.AddSkillXp(DefaultSkills.Roguery, amount);
+                                    }
+                                }
+
+                                if (hero.HasCareerChoice("EverlingsSecretPassive4"))
+                                {
+                                    for (int i = (int) DamageType.Magical; i < (int) DamageType.All; i++)
+                                    {
+                                        if(i == damageType) continue;
+                                        damageAmplifications[damageType] += additionalDamagePercentages[i];
+                                        damageAmplifications[damageType] += damageAmplifications[i];
+                                    }
+                                }
+                            }
+
+                            if (hero.PartyBelongedTo == MobileParty.MainParty)
+                            {
+                                if(MobileParty.MainParty.LeaderHero.HasAnyCareer())
+                                {
+                                    if(Hero.MainHero.HasCareerChoice("AncientScrollsPassive4"))
+                                    {
+                                        damageAmplifications[damageType] += 0.2f;
+                                    }
+                                }
+                            }
+                            
+                            if (attacker.HasAttribute("Arcane_Dmg"))
+                            {
+                                damageAmplifications[damageType] += 0.3f;
+                            }
                         }
                     }
                 }
                 
+                damageAmplifications[damageType] += additionalDamagePercentages[damageType];
+                damageAmplifications[damageType] -= resistancePercentages[damageType];
+                damageCategories[damageType] *= (1 + damageAmplifications[damageType]);
+                resultDamage = (int)damageCategories[damageType];
+                
                 resultDamage = (int)(resultDamage * wardSaveFactor);
+                if (victim.Team != attacker.Team && resultDamage < 0) resultDamage = 0;
                 b.InflictedDamage = resultDamage;
                 b.BaseMagnitude = resultDamage;
-                if (attacker == Agent.Main || victim == Agent.Main)
-                    TORDamageDisplay.DisplaySpellDamageResult((DamageType) damageType, resultDamage, damageAmplifications[damageType],wardSaveFactor);                
+                if ((attacker == Agent.Main || victim == Agent.Main) && resultDamage>0)
+                    TORDamageDisplay.DisplaySpellDamageResult((DamageType) damageType, resultDamage, damageAmplifications[damageType],wardSaveFactor);
                 return true;
             }
 
-           
+            if (attackTypeMask == AttackTypeMask.Ranged && attacker.IsMainAgent && Campaign.Current!=null && Hero.MainHero.HasCareer(TORCareers.Waywatcher))
+            {
+                if (Hero.MainHero.HasCareerChoice("HailOfArrowsPassive4"))
+                {
+                    CareerPerkMissionBehavior careerPerkBehavior = Mission.Current.GetMissionBehavior<CareerPerkMissionBehavior>();
+                    if (careerPerkBehavior != null)
+                    {
+                        damageProportions[(int)DamageType.Magical] += 0.01f*careerPerkBehavior.CareerMissionVariables[0];
+                    }  
+                }
+            }
 
             //calculating non-spell damage
             for (int i = 0; i < damageCategories.Length - 1; i++)
@@ -187,13 +227,17 @@ namespace TOR_Core.HarmonyPatches
             }
             
             resultDamage = (int)(resultDamage * wardSaveFactor); 
-            var originalDamage = b.InflictedDamage;
             b.InflictedDamage = resultDamage;
-            //b.BaseMagnitude = resultDamage;       this shouldn't be the case
 
             if (victim.GetAttributes().Contains("Unstoppable")||(victim.IsDamageShruggedOff(b.InflictedDamage)))
             {
                 b.BlowFlag |= BlowFlags.ShrugOff;
+            } else if (Campaign.Current!=null && victim.IsMainAgent && attackTypeMask == AttackTypeMask.Ranged && Hero.MainHero.HasCareer(TORCareers.Waywatcher))
+            {
+                if (Hero.MainHero.HasCareerChoice("PathfinderPassive4"))
+                {
+                    b.BlowFlag |= BlowFlags.ShrugOff;
+                }
             }
             
 
@@ -210,14 +254,11 @@ namespace TOR_Core.HarmonyPatches
                     }
                     
                     TORDamageDisplay.DisplayDamageResult(resultDamage, damageCategories, resultBonus,wardSaveFactor, isVictim);
-
                 }
             }
             
             return true;
         }
-        
-        
 
         public static AttackTypeMask DetermineMask(Blow blow)
         {
@@ -226,7 +267,17 @@ namespace TOR_Core.HarmonyPatches
             {
                 return AttackTypeMask.Ranged;
             } 
-                
+            
+            return AttackTypeMask.Melee;
+        }
+        
+        public static AttackTypeMask DetermineMask(KillingBlow blow)
+        {
+            if (TORSpellBlowHelper.IsSpellBlow(blow)) return AttackTypeMask.Spell;
+            if (blow.IsMissile)
+            {
+                return AttackTypeMask.Ranged;
+            } 
             
             return AttackTypeMask.Melee;
         }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.ObjectSystem;
-using TaleWorlds.SaveSystem;
 using TOR_Core.CampaignMechanics.Religion;
 using TOR_Core.Extensions;
 
@@ -19,11 +15,8 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
     {
         private string _religionId;
         public Clan OwnerClan { get; set; }
-
         public ReligionObject Religion { get; protected set; }
         public bool IsActive { get; set; }
-
-        public static object GetIsActive(object o) => ((TORBaseSettlementComponent)o).IsActive;
 
         public override void OnInit()
         {
@@ -62,10 +55,11 @@ namespace TOR_Core.CampaignMechanics.TORCustomSettlement
 
     public abstract class BaseRaiderSpawnerComponent : TORBaseSettlementComponent
     {
+        public virtual int BattlePartySize => 250;
         public int RaidingPartyCount => MobileParty.All.Where(x => x.IsRaidingParty() && x.HomeSettlement == Settlement).Count();
         public abstract string BattleSceneName { get; }
         public bool IsBattleUnderway { get; set; }
-        public abstract string RewardItemId { get; }
-        public abstract void SpawnNewParty();
+        public abstract List<string> RewardItemIds { get; }
+        public abstract void SpawnNewParty(out MobileParty party, Settlement initialTarget);
     }
 }

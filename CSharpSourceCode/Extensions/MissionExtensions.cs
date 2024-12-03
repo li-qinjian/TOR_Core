@@ -9,14 +9,6 @@ namespace TOR_Core.Extensions
 {
     public static class MissionExtensions
     {
-        
-        public static bool IsPlayerInSpellCasterMode(this Mission mission)
-        {
-            var abilityManagerMissionLogic = mission.GetMissionBehavior<AbilityManagerMissionLogic>();
-            return abilityManagerMissionLogic.CurrentState == AbilityModeState.Casting ||
-                   abilityManagerMissionLogic.CurrentState == AbilityModeState.Casting;
-        }
-        
         public static void AddMissionLogicAtIndexOf(this Mission mission, MissionLogic missionCombatantsLogic, MissionLogic torMissionCombatantsLogic)
         {
            
@@ -42,7 +34,7 @@ namespace TOR_Core.Extensions
 
         public static bool IsArenaMission(this Mission mission)
         {
-            return mission.GetMissionBehavior<ArenaPracticeFightMissionController>() != null || Mission.Current.CombatType == Mission.MissionCombatType.ArenaCombat;
+            return mission.GetMissionBehavior<ArenaPracticeFightMissionController>() != null || mission.CombatType == Mission.MissionCombatType.ArenaCombat || mission.Scene.GetName().ToLowerInvariant().Contains("arena");
         }
 
         public static int GetArtillerySlotsLeftForTeam(this Mission mission, Team team)

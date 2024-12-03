@@ -1,4 +1,4 @@
-﻿namespace TOR_Core.AbilitySystem
+namespace TOR_Core.AbilitySystem
 {
     public enum AbilityType
     {
@@ -23,6 +23,7 @@
         Bombardment,
         Blast,
         ArtilleryPlacement,
+        TimeWarpEffect,
         CareerAbilityEffect
     }
 
@@ -48,7 +49,9 @@
     {
         EveryTick,
         OnCollision,
-        TickOnce
+        TickOnce,
+        OnStop,
+        None
     }
 
     //This is for triggeredeffects.

@@ -5,16 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
+using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.TwoDimension;
 using TOR_Core.AbilitySystem;
 using TOR_Core.AbilitySystem.Spells;
+using TOR_Core.CampaignMechanics;
 using TOR_Core.CampaignMechanics.BountyMaster;
+using TOR_Core.CampaignMechanics.CustomResources;
 using TOR_Core.CampaignMechanics.Religion;
+using TOR_Core.CampaignMechanics.ServeAsAHireling;
 using TOR_Core.CampaignMechanics.SpellTrainers;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
 using TOR_Core.Extensions.ExtendedInfoSystem;
+using TOR_Core.Models;
 using TOR_Core.Utilities;
 using FaceGen = TaleWorlds.Core.FaceGen;
 
@@ -22,21 +29,49 @@ namespace TOR_Core.Extensions
 {
     public static class HeroExtensions
     {
+
+        public static bool IsEnlisted(this Hero hero)
+        {
+            var hirelingCampaignBehavior = Campaign.Current.GetCampaignBehavior<ServeAsAHirelingCampaignBehavior>();
+            if (hirelingCampaignBehavior != null)
+            {
+                return hirelingCampaignBehavior.IsEnlisted();
+            }
+            return false;
+        }
+
+        public static Hero GetEnlistingHero(this Hero hero)
+        {
+            var hirelingCampaignBehavior = Campaign.Current.GetCampaignBehavior<ServeAsAHirelingCampaignBehavior>();
+            if (hirelingCampaignBehavior != null)
+            {
+                return hirelingCampaignBehavior.EnlistingLord;
+            }
+            return null;
+        }
+
         public static bool CanRaiseDead(this Hero hero)
         {
-            return hero.IsHumanPlayerCharacter && hero.IsNecromancer();
+            if (!(hero.Culture.StringId == TORConstants.Cultures.SYLVANIA || hero.Culture.StringId == TORConstants.Cultures.MOUSILLON))
+                return false;
+            return hero.PartyBelongedTo != null && hero.PartyBelongedTo.GetMemberHeroes().Any(x => x.IsNecromancer());
         }
 
         /// <summary>
-        /// Returns raise dead chance, where, for example, 0.1 is a 10% chance.
+        /// Calculates the Raise dead chance based on the Spellcraft Skillvalue and applies Career Perks.
+        /// 0.005 would allow with 200 spell craft an 80% chance of raising dead.
         /// </summary>
         /// <param name="hero"></param>
         /// <returns></returns>
         public static float GetRaiseDeadChance(this Hero hero)
         {
-            var explainedNumber = new ExplainedNumber();
-            var attributes = hero.GetAttributeValue(TORAttributes.Discipline); //was intelligence Intentional?
-           explainedNumber.Add(attributes * 0.07f);
+            if (!hero.IsNecromancer()) return 0f;
+            
+            var chance = new ExplainedNumber();
+            var skillValue = hero.GetSkillValue(TORSkills.SpellCraft);
+
+            var chanceValue = Mathf.Clamp(skillValue * 0.005f, 0.05f, 0.7f);
+           chance.Add(chanceValue);
 
             if (hero.HasAnyCareer())
             {
@@ -44,24 +79,125 @@ namespace TOR_Core.Extensions
 
                 if (choices.Contains("MasterOfDeadPassive3"))
                 {
-                    var choice = TORCareerChoices.GetChoice("MasterOfDeadPassive2");
+                    var choice = TORCareerChoices.GetChoice("MasterOfDeadPassive3");
                     if(choice!=null)
-                        explainedNumber.AddFactor(choice.GetPassiveValue());
+                        chance.AddFactor(choice.GetPassiveValue());
                 }
             }
 
-            return explainedNumber.ResultNumber;
+            return chance.ResultNumber;
+        }
+        
+        /// <summary>
+        /// Calculates the Raise dead chance based on the Spellcraft Skillvalue and applies Career Perks.
+        /// 0.005 would allow with 200 spell craft an 80% chance of raising dead.
+        /// </summary>
+        /// <param name="hero"></param>
+        /// <returns></returns>
+        public static float GetTreeSpiritChance(this Hero hero)
+        {
+            if (!hero.IsSpellCaster()) return 0f;
+            
+            var chance = new ExplainedNumber();
+            var skillValue = hero.GetSkillValue(TORSkills.SpellCraft);
+
+            var chanceValue = Mathf.Clamp(skillValue * 0.005f, 0.05f, 0.7f);
+            chance.Add(chanceValue);
+
+            if (hero.HasAnyCareer())
+            {
+                var choices = hero.GetAllCareerChoices();
+
+                if (choices.Contains("MasterOfDeadPassive3"))
+                {
+                    var choice = TORCareerChoices.GetChoice("MasterOfDeadPassive3");
+                    if(choice!=null)
+                        chance.AddFactor(choice.GetPassiveValue());
+                }
+            }
+
+            return chance.ResultNumber;
+        }
+        
+
+        public static void AddCustomResource(this Hero hero, string id, float amount)
+        {
+            var info = hero.GetExtendedInfo();
+            info?.AddCustomResource(id, amount);
+        }
+
+        public static float GetCustomResourceValue(this Hero hero, string id)
+        {
+            var info = hero.GetExtendedInfo();
+            
+            if (info != null)
+            {
+                return info.GetCustomResourceValue(id);
+            }
+            else return 0;
+        }
+
+        public static CustomResource GetCultureSpecificCustomResource(this Hero hero)
+        {
+            if (hero == null)
+                return null;
+            
+            return CustomResourceManager.GetResourceObject(x => x.FirstOrDefault(y => y.Cultures.Contains(hero.Culture.StringId)));
+        }
+
+        public static float GetCalculatedCustomResourceUpkeep(this Hero hero, string CustomResourceId)
+        {
+            var model = Campaign.Current.Models.GetCustomResourceModel();
+
+            if (model != null)
+            {
+                return model.GetCalculatedCustomResourceUpkeep(hero, CustomResourceId).ResultNumber;
+            }
+
+            return 0;
+        }
+        
+        public static float GetCultureSpecificCustomResourceChange(this Hero hero)
+        {
+            var model = Campaign.Current.Models.GetCustomResourceModel();
+
+            if (model != null)
+            {
+                return model.GetCultureSpecificCustomResourceChange(hero).ResultNumber;
+            }
+
+            return 0;
+        }
+
+        public static float GetCultureSpecificCustomResourceValue(this Hero hero)
+        {
+            if (hero.GetCultureSpecificCustomResource() != null)
+            {
+                return hero.GetCustomResourceValue(hero.GetCultureSpecificCustomResource().StringId);
+            }
+            else return 0;
+        }
+
+        public static void AddCultureSpecificCustomResource(this Hero hero, float amount)
+        {
+            if(hero.GetCultureSpecificCustomResource() != null) hero.AddCustomResource(hero.GetCultureSpecificCustomResource().StringId, amount);
+        }
+
+        public static Dictionary<CustomResource, float> GetCustomResources(this Hero hero)
+        {
+            var info = hero.GetExtendedInfo();
+            if (info != null)
+            {
+                return info.GetCustomResources();
+            }
+            else return null;
         }
 
         public static float AddWindsOfMagic(this Hero hero, float amount)
         {
             float result = 0;
             var info = hero.GetExtendedInfo();
-            if(info != null)
-            {
-                result= Mathf.Clamp(info.CurrentWindsOfMagic+amount, 0, info.MaxWindsOfMagic);
-                hero.GetExtendedInfo().CurrentWindsOfMagic = result;
-            }
+            info?.AddCustomResource("WindsOfMagic", amount);
             
             return result;
         }
@@ -93,7 +229,7 @@ namespace TOR_Core.Extensions
         public static int GetPlaceableArtilleryCount(this Hero hero)
         {
             int count = 0;
-            if (hero.CanPlaceArtillery())
+            if (hero.CanPlaceArtillery()|| hero.HasAttribute("EngineerCompanion")&& Hero.MainHero.CanPlaceArtillery())
             {
                 var engineering = hero.GetSkillValue(DefaultSkills.Engineering);
                 count = (int)Math.Truncate((decimal)engineering / 50);
@@ -110,7 +246,7 @@ namespace TOR_Core.Extensions
         public static void AddAbility(this Hero hero, string ability)
         {
             var info = hero.GetExtendedInfo();
-            if (info != null && !info.AllAbilites.Contains(ability))
+            if (info != null && !info.AllAbilities.Contains(ability))
             {
                 info.AcquiredAbilities.Add(ability);
             }
@@ -146,9 +282,26 @@ namespace TOR_Core.Extensions
         {
             if (hero.GetExtendedInfo() != null)
             {
-                return hero.GetExtendedInfo().AllAbilites.Contains(ability);
+                return hero.GetExtendedInfo().AllAbilities.Contains(ability);
             }
             else return false;
+        }
+
+        public static ChivalryLevel GetChivalryLevel(this Hero hero)
+        {
+            var customResource = GetCustomResourceValue(hero, "Chivalry");
+            return ChivalryHelper.GetChivalryLevelForResource(customResource);
+        }
+        
+        public static ForestHarmonyLevel GetForestHarmonyLevel(this Hero hero)
+        {
+            var customResource = GetCustomResourceValue(hero, "ForestHarmony");
+            return ForestHarmonyHelper.GetForestHarmonyLevelForResource(customResource);
+        }
+        
+        public static bool HasChivalryLevel(this Hero hero, ChivalryLevel level)
+        {
+            return ChivalryHelper.HasChivalryLevel(hero, level);
         }
 
         public static void SetSpellCastingLevel(this Hero hero, SpellCastingLevel level)
@@ -161,10 +314,7 @@ namespace TOR_Core.Extensions
 
         public static void AddKnownLore(this Hero hero, string loreID)
         {
-            if (hero.GetExtendedInfo() != null)
-            {
-                hero.GetExtendedInfo().AddKnownLore(loreID);
-            }
+            hero.GetExtendedInfo()?.AddKnownLore(loreID);
         }
 
         public static bool HasKnownLore(this Hero hero, string loreID)
@@ -174,6 +324,16 @@ namespace TOR_Core.Extensions
                 return hero.GetExtendedInfo().HasKnownLore(loreID);
             }
             else return false;
+        }
+        
+        public static int GetKnownLoreCount(this Hero hero)
+        {
+            if (hero.GetExtendedInfo() != null)
+            {
+                return hero.GetExtendedInfo().GetKnownLoreCount();
+            }
+
+            return 0;
         }
 
         public static bool IsSpellCaster(this Hero hero)
@@ -188,7 +348,12 @@ namespace TOR_Core.Extensions
 
         public static bool IsNecromancer(this Hero hero)
         {
-            return hero.HasAttribute("Necromancer");
+            return hero.HasAttribute("Necromancer")|| hero.HasKnownLore("Necromancy");
+        }
+        
+        public static bool IsSpellSinger(this Hero hero)
+        {
+            return hero.Culture.StringId == TORConstants.Cultures.ASRAI && hero.HasAttribute("SpellCaster");
         }
 
         public static bool IsUndead(this Hero hero)
@@ -196,14 +361,26 @@ namespace TOR_Core.Extensions
             return hero.HasAttribute("Undead");
         }
 
-        public static bool IsVampire(this Hero hero)
+        public static bool IsTreeSpirit(this Hero hero)
         {
-            return hero.CharacterObject.Race == FaceGen.GetRaceOrDefault("vampire");
+            return hero.HasAttribute("TreeSpirit");
         }
 
-        public static bool IsCultist(this Hero hero)
+        public static bool IsChaos(this Hero hero)
         {
-            return hero.CharacterObject.Race == FaceGen.GetRaceOrDefault("chaos_ud_cultist");
+            if (hero.CharacterObject.IsCultist()) return true;
+            if (hero.CharacterObject.IsBeastman()) return true;
+            return false;
+        }
+
+        public static bool IsVampire(this Hero hero)
+        {
+            return hero.CharacterObject.Race == FaceGen.GetRaceOrDefault("vampire") || hero.CharacterObject.Race == FaceGen.GetRaceOrDefault("necrarch");
+        }
+
+        public static bool IsPriest(this Hero hero)
+        {
+            return hero.HasAttribute("Priest");
         }
         
         public static bool IsAICompanion(this Hero hero)
@@ -237,6 +414,13 @@ namespace TOR_Core.Extensions
                 return hero.Occupation == Occupation.Special&& hero.Name.Contains("Master Engineer");
             return false;
         }
+        
+        public static bool IsPrestigeNoble(this Hero hero)
+        {
+            if (hero != null)
+                return hero.Occupation == Occupation.Special && hero.HasAttribute("PrestigeNoble");
+            return false;
+        }
 
         public static bool HasCareerChoice(this Hero hero, string choiceID)
         {
@@ -265,7 +449,7 @@ namespace TOR_Core.Extensions
                 var info = hero.GetExtendedInfo();
                 if (info != null && !info.CareerChoices.Contains(choice.StringId))
                 {
-                    int maxChoices = hero.Level + 1;
+                    int maxChoices = Math.Min(hero.Level+1, TORConfig.MaximumNumberOfCareerPerkPoints + 1);
                     if(info.CareerChoices.Count < maxChoices)
                     {
                         info.CareerChoices.Add(choice.StringId);
@@ -279,7 +463,7 @@ namespace TOR_Core.Extensions
         public static List<string> GetAllCareerChoices(this Hero hero)
         {
             if (!hero.HasAnyCareer())
-                return new List<string>();
+                return [];
 
             return hero.GetExtendedInfo().CareerChoices;
         }
@@ -308,7 +492,13 @@ namespace TOR_Core.Extensions
             return result;
         }
 
-        public static bool HasAnyCareer(this Hero hero) => Game.Current.GameType is Campaign&& hero.GetCareer() != null;
+
+        public static bool IsBretonnianKnight(this Hero hero)       //Potentially a cleaner way to check that
+        {
+            return !hero.IsSpellCaster() && hero.Culture.StringId == TORConstants.Cultures.BRETONNIA;
+        }
+
+        public static bool HasAnyCareer(this Hero hero) => Game.Current.GameType is Campaign && hero.GetCareer() != null;
 
         public static CareerObject GetCareer(this Hero hero)
         {
@@ -344,22 +534,30 @@ namespace TOR_Core.Extensions
             }
         }
 
+        public static bool HasUnlockedCareerChoiceTier(this Hero hero, int tier)
+        {
+            var tierText = "CareerTier";
+            if(hero.HasAnyCareer()&& hero.HasAttribute(tierText + tier))return true;
+            
+            return false;
+        }
+
         public static bool HasAnyReligion(this Hero hero) => hero.GetDominantReligion() != null;
 
-        public static ReligionObject GetDominantReligion(this Hero hero) => hero.GetExtendedInfo() != null ? hero.GetExtendedInfo().DominantReligion : null;
+        public static ReligionObject GetDominantReligion(this Hero hero) => hero.GetExtendedInfo()?.DominantReligion;
 
         public static DevotionLevel GetDevotionLevelForReligion(this Hero hero, ReligionObject religion)
         {
             var info = hero.GetExtendedInfo();
-            if (info == null || !info.ReligionDevotionLevels.ContainsKey(religion.StringId)) return DevotionLevel.None;
-            else
+            int value = 0;
+            if ((bool)(info?.ReligionDevotionLevels?.TryGetValue(religion.StringId, out value)))
             {
-                var value = info.ReligionDevotionLevels[religion.StringId];
                 if (value <= 0) return DevotionLevel.None;
                 else if (value < TORConstants.DEVOTED_TRESHOLD) return DevotionLevel.Follower;
                 else if (value < TORConstants.FANATIC_TRESHOLD) return DevotionLevel.Devoted;
                 else return DevotionLevel.Fanatic;
             }
+            else return DevotionLevel.None;
         }
 
         public static void AddReligiousInfluence(this Hero hero, ReligionObject religion, int amount, bool shouldNotify = true)
@@ -368,7 +566,7 @@ namespace TOR_Core.Extensions
             if(info != null)
             {
                 var copy = info.ReligionDevotionLevels.ToDictionary(x => x.Key, x => x.Value);
-                Dictionary<string, DevotionLevel> originalDevotionLevels = new Dictionary<string, DevotionLevel>();
+                Dictionary<string, DevotionLevel> originalDevotionLevels = [];
                 foreach(var ro in ReligionObject.All)
                 {
                     if (copy.ContainsKey(ro.StringId))
@@ -419,7 +617,7 @@ namespace TOR_Core.Extensions
                     }
                 }
 
-                Dictionary<string, DevotionLevel> newDevotionLevels = new Dictionary<string, DevotionLevel>();
+                Dictionary<string, DevotionLevel> newDevotionLevels = [];
                 foreach (var ro in ReligionObject.All)
                 {
                     if (info.ReligionDevotionLevels.ContainsKey(ro.StringId))

@@ -17,17 +17,17 @@ namespace TOR_Core.HarmonyPatches
         [HarmonyTargetMethods]
         static IEnumerable<MethodBase> PatchInventoryMethods()
         {
-            foreach(var type in ViewModelExtensionManager.Instance.ExtensionTypes)
+            foreach(var type in ViewModelExtensionManager.Instance.ExtensionTypes.Values.Distinct())
             {
                 var attribute = type.GetCustomAttribute<ViewModelExtensionAttribute>();
-                yield return attribute.BaseType.GetMethod(attribute.RefreshMethodName);
+                yield return attribute.BaseType.GetMethod(attribute.RefreshMethodName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
             }
         }
 
         [HarmonyPostfix]
         static void Postfix(ViewModel __instance)
         {
-            if (__instance.HasExtension()) __instance.GetExtension().RefreshValues();
+            if (__instance.HasExtensionInstance()) __instance.GetExtensionInstance().RefreshValues();
         }
     }
 }

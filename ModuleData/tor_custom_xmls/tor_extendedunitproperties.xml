@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ArrayOfCharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_villager">
     <Abilities />
@@ -68,6 +68,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="3" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_halberdier">
     <Abilities />
@@ -79,6 +80,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="7" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_greatsword">
     <Abilities />
@@ -90,6 +92,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="7" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pikeman">
     <Abilities />
@@ -108,6 +111,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_scout">
     <Abilities />
@@ -144,6 +148,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_crossbowman">
     <Abilities />
@@ -171,6 +176,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_marksman_crossbowman">
     <Abilities />
@@ -180,6 +186,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_marksman_handgunner">
     <Abilities />
@@ -189,6 +196,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_young_noble_squire">
     <Abilities />
@@ -216,6 +224,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_pistolier">
     <Abilities />
@@ -234,6 +243,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_reiksguard_preceptor">
     <Abilities />
@@ -243,6 +253,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_innercircle_knight">
     <Abilities />
@@ -252,6 +263,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="20" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_demigryph_knight">
     <Abilities />
@@ -261,6 +273,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_valiant_outrider">
     <Abilities />
@@ -270,6 +283,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="14" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_valiant_outrider_grenade">
     <Abilities />
@@ -279,6 +293,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="14" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_reiksguard_preceptor_innercircle">
     <Abilities />
@@ -288,6 +303,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_demigryph_innercircle">
     <Abilities />
@@ -297,6 +313,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_novice_engineer">
     <Abilities />
@@ -319,6 +336,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_apprentice_engineer">
     <Abilities />
@@ -330,6 +348,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_iron_company_guard">
     <Abilities />
@@ -339,6 +358,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_experienced_artillery_crew">
     <Abilities />
@@ -350,6 +370,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_associate_engineer">
     <Abilities />
@@ -361,6 +382,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_iron_company_troop">
     <Abilities />
@@ -370,6 +392,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_veteran_artillery_crew">
     <Abilities />
@@ -381,6 +404,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="18" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_master_engineer">
     <Abilities />
@@ -392,6 +416,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="18" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_ironsider">
     <Abilities />
@@ -401,6 +426,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="20" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_caravan_captain">
     <Abilities />
@@ -450,6 +476,71 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_wolfkin">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_wolfbrother">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_warrior_ulric">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.10" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_teutogen_guard">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="20" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_empire_whitewolf_knight">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_br_villager">
     <Abilities />
@@ -512,6 +603,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_br_manatarms_militia">
     <Abilities />
@@ -611,6 +703,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_br_quest_knight">
     <Abilities />
@@ -620,17 +713,22 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="1" UpgradeCost="100" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_br_grail_knight">
     <Abilities />
     <Attributes />
     <Resistances>
-      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.20" />
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.35" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Holy" Percent="0.40" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="6" UpgradeCost="400" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_br_caravan_guard">
     <Abilities />
@@ -797,17 +895,22 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="100" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_m_knight_of_the_black_grail">
     <Abilities />
     <Attributes />
     <Resistances>
-      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.20" />
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.35" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.40" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="6" UpgradeCost="400" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_m_caravan_guard">
     <Abilities />
@@ -837,6 +940,627 @@
     </DamageProportions>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_m_caravan_captain">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_servant">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_militia">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_glade_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_eternal_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_deepwood_scout">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_glade_rider">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_eternal_warden">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_master_scout">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_waywatcher">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_glade_knight">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_waywatcher_sentinel">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_wardancer">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_shadowdancer">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_bladesinger">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_wildwood_ranger">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_wildwood_warden">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_wild_rider">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_great_stag_knight">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_dryad">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+      <string>Unstoppable</string>
+      <string>TreeSpirit</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="ForestHarmony" UpkeepCost="3" UpgradeCost="0" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_treeman">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+      <string>Unstoppable</string>
+      <string>HasAnimationTriggeredEffects</string>
+      <string>TreeSpirit</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="ForestHarmony" UpkeepCost="50" UpgradeCost="0" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_ancient_treeman">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+      <string>Unstoppable</string>
+      <string>HasAnimationTriggeredEffects</string>
+      <string>TreeSpirit</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="ForestHarmony" UpkeepCost="75" UpgradeCost="200" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_caravan_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_caravan_ranged">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_caravan_elite_ranged">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_caravan_captain">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_forestborn">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_militia">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_kithband_aspirant">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_kithband_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_mounted_kithband_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_armoured_kithband_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_veteran_kithband_warrior_sword">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_veteran_kithband_warrior_spear">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_kithband_sentinel">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_ranger">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_mounted_ranger">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_cityborn_militia">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_cityborn_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="CouncilFavor" UpkeepCost="0" UpgradeCost="10" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_cityborn_council_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="CouncilFavor" UpkeepCost="0" UpgradeCost="25" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_cityborn_council_sentinel">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="CouncilFavor" UpkeepCost="0" UpgradeCost="25" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_queens_guard_sword">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="CouncilFavor" UpkeepCost="0" UpgradeCost="50" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_queens_guard_halberd">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="CouncilFavor" UpkeepCost="0" UpgradeCost="50" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_envoy_guard">
+    <Abilities />
+    <Attributes>
+      <string>Piercing</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="CouncilFavor" UpkeepCost="0" UpgradeCost="50" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_caravan_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_caravan_ranged">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_caravan_elite_ranged">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_caravan_captain">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_thug">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_expert_thug">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_master_thug">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_he_seaelf_militia">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_he_seaelf_archer">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_he_seaelf_hawkeye">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_he_seaelf_spearman">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_he_seaelf_sentinel">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_he_white_lion_chrace">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.25" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_de_conscript">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_de_bleaksword">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_de_dreadspear">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_de_darkshard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_de_darkrider">
     <Abilities />
     <Attributes />
     <Resistances />
@@ -973,6 +1697,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="1" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_warrior">
     <Abilities />
@@ -987,6 +1712,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="3" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_crypt_warrior">
     <Abilities />
@@ -1000,6 +1726,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guard_warrior">
     <Abilities />
@@ -1009,10 +1736,13 @@
     <Resistances>
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guard_seneschal">
     <Abilities />
@@ -1022,10 +1752,13 @@
     <Resistances>
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="25" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_spearman">
     <Abilities />
@@ -1040,6 +1773,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="1" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_skeleton_guard">
     <Abilities />
@@ -1054,6 +1788,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="3" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_crypt_guard">
     <Abilities />
@@ -1067,6 +1802,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guard_spearman">
     <Abilities />
@@ -1076,10 +1812,13 @@
     <Resistances>
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_grave_guardian">
     <Abilities />
@@ -1089,10 +1828,13 @@
     <Resistances>
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="25" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_black_knight">
     <Abilities />
@@ -1102,10 +1844,13 @@
     <Resistances>
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="35" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hell_knight">
     <Abilities />
@@ -1113,12 +1858,16 @@
       <string>Undead</string>
     </Attributes>
     <Resistances>
-      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.05" />
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.10" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="45" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_spirit_host">
     <Abilities />
@@ -1129,10 +1878,14 @@
       <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.40" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.80" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_cairn_wraith">
     <Abilities />
@@ -1143,10 +1896,14 @@
       <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.40" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.80" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="3" UpgradeCost="35" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_crypt_wraith">
     <Abilities />
@@ -1157,10 +1914,14 @@
       <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.40" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.80" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hex_wraith">
     <Abilities />
@@ -1171,10 +1932,14 @@
       <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.40" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.80" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_hell_wraith">
     <Abilities />
@@ -1185,10 +1950,14 @@
       <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.75" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Magical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.40" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.80" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="6" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_con_carstein_noble">
     <Abilities />
@@ -1202,6 +1971,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_von_carstein_knight">
     <Abilities />
@@ -1215,6 +1985,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="4" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_templar">
     <Abilities />
@@ -1222,12 +1993,13 @@
       <string>Unbreakable</string>
     </Attributes>
     <Resistances>
-      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
+      <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="0.10" />
     </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_drakenhof_kastelan">
     <Abilities />
@@ -1235,12 +2007,16 @@
       <string>Unbreakable</string>
     </Attributes>
     <Resistances>
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.20" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="100" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_initiate">
     <Abilities />
@@ -1255,6 +2031,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_knight">
     <Abilities />
@@ -1265,10 +2042,13 @@
       <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.20" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.10" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="4" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_templar">
     <Abilities />
@@ -1276,13 +2056,16 @@
       <string>Unbreakable</string>
     </Attributes>
     <Resistances>
-      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.20" />
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.30" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.20" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="75" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_bd_blooddragon_kastelan">
     <Abilities />
@@ -1290,13 +2073,16 @@
       <string>Unbreakable</string>
     </Attributes>
     <Resistances>
-      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.20" />
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.30" />
       <ResistanceTuple ResistedDamageType="Fire" ReductionPercent="-0.10" />
     </Resistances>
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.35" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="8" UpgradeCost="100" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lahmian_sister">
     <Abilities />
@@ -1311,6 +2097,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="1" UpgradeCost="0" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lahmian_noblewoman">
     <Abilities />
@@ -1325,6 +2112,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="4" UpgradeCost="150" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lahmian_countess">
     <Abilities />
@@ -1339,6 +2127,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="5" UpgradeCost="200" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_caravan_captain">
     <Abilities />
@@ -1367,45 +2156,135 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_chaos_nurgle_warrior">
+  <CharacterExtendedInfo id="tor_chaos_enslaved_villager">
     <Abilities />
-    <Attributes>
-      <string>Unbreakable</string>
-    </Attributes>
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_chaos_nurgle_warrior_002">
+  <CharacterExtendedInfo id="tor_chaos_norscan_tribesman">
     <Abilities />
-    <Attributes>
-      <string>Unbreakable</string>
-    </Attributes>
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_chaos_nurgle_warrior_003">
+  <CharacterExtendedInfo id="tor_chaos_norscan_raider">
     <Abilities />
-    <Attributes>
-      <string>Unbreakable</string>
-    </Attributes>
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_chaos_chosen">
+  <CharacterExtendedInfo id="tor_chaos_norscan_marauder">
     <Abilities />
-    <Attributes>
-      <string>Unbreakable</string>
-      <string>Unstoppable</string>
-    </Attributes>
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_norscan_champion">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_norscan_whaler">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_norscan_reaver">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_norscan_horseman">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_norscan_horsemaster">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_aspiring_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_pit_fighter">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_pugulist">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_undivided_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_gladiator">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_slaanesh_warrior">
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -1414,9 +2293,35 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_chaos_khorne_warrior">
     <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_nurgle_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_tzeench_warrior">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_undivided_knight">
+    <Abilities />
     <Attributes>
       <string>Unbreakable</string>
-      <string>Unstoppable</string>
     </Attributes>
     <Resistances />
     <DamageAmplifiers />
@@ -1424,12 +2329,67 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_chaos_chaos_knight">
+  <CharacterExtendedInfo id="tor_chaos_caravan_ranged">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_caravan_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_caravan_horseman">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_caravan_captain">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_cultist_of_chaos">
     <Abilities />
     <Attributes>
-      <string>Unbreakable</string>
-      <string>Unstoppable</string>
+      <string>Expendable</string>
     </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_darksoul_of_chaos">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_acolyte_of_chaos">
+    <Abilities />
+    <Attributes />
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -1474,6 +2434,48 @@
     <Attributes />
     <Resistances />
     <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_gor">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_gor_foerender">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_gor_manripper">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_beast_minotaur">
+    <Abilities />
+    <Attributes>
+      <string>Minotaur</string>
+      <string>Unbreakable</string>
+      <string>Unstoppable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="1.00" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
@@ -1530,6 +2532,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="3" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_cursed_company_03">
     <Abilities />
@@ -1542,6 +2545,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_leopard_01">
     <Abilities />
@@ -1740,6 +2744,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_kragsburg_retainer">
     <Abilities />
@@ -1749,6 +2754,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_kragsburg_sergeant">
     <Abilities />
@@ -1758,6 +2764,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_kragsburg_house_guard">
     <Abilities />
@@ -1767,6 +2774,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_kragsburg_personal_guard">
     <Abilities />
@@ -1778,6 +2786,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="20" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_stir_river_scout">
     <Abilities />
@@ -1796,6 +2805,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="5" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_stir_river_patrol_guardsman">
     <Abilities />
@@ -1805,6 +2815,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_stir_river_patrol_nimrod">
     <Abilities />
@@ -1814,6 +2825,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="20" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_blazing_sun_initiate">
     <Abilities />
@@ -1829,55 +2841,75 @@
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <Resistances />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.10" />
+    </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.90" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.10" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_blazing_sun_preceptor">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <Resistances />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.15" />
+    </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.90" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.10" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_blazing_sun_demigryph_knight">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <Resistances />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.15" />
+    </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.90" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.10" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_blazing_sun_innercircle">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <Resistances />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.25" />
+    </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.90" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.10" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_blazing_sun_demigryph_innercircle">
     <Abilities />
     <Attributes>
       <string>Unbreakable</string>
     </Attributes>
-    <Resistances />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Magical" ReductionPercent="0.25" />
+    </Resistances>
     <DamageAmplifiers />
     <DamageProportions>
-      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+      <DamageProportionTuple DamageType="Physical" Percent="0.90" />
+      <DamageProportionTuple DamageType="Fire" Percent="0.10" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="60" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_grundel_defender_troop">
     <Abilities />
@@ -1896,6 +2928,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_grundel_defender_sergeant">
     <Abilities />
@@ -1907,6 +2940,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_grundel_defender_defender">
     <Abilities />
@@ -1918,6 +2952,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="20" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_deathjack_longbowman">
     <Abilities />
@@ -1936,6 +2971,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_deathjack_toxophilite">
     <Abilities />
@@ -1945,6 +2981,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_ward_of_taal">
     <Abilities />
@@ -2026,6 +3063,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_griffon_preceptor_knight">
     <Abilities />
@@ -2035,6 +3073,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_griffon_innercircle_knight">
     <Abilities />
@@ -2044,6 +3083,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="50" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_griffon_demi_knight">
     <Abilities />
@@ -2053,6 +3093,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_griffon_demi_preceptor_knight">
     <Abilities />
@@ -2062,6 +3103,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="60" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_son_of_altdorf">
     <Abilities />
@@ -2080,8 +3122,128 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_altdorf_company_sergeant">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_hochland_scout">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_hochland_longrifle">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_hergig_jaegerkorps">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="35" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_ostland_shield">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_ostland_blackguard">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="35" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_hochland_drakwald_patrol">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_gundermans_surefire">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="10" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_marienburg_sailor">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_marienburg_private_militia">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_klumpfs_buccaneer">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_nordland_mariner">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_nordland_seahawk">
     <Abilities />
     <Attributes />
     <Resistances />
@@ -2108,10 +3270,13 @@
       <string>Undead</string>
     </Attributes>
     <Resistances />
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="15" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_sternieste_sternsmen">
     <Abilities />
@@ -2119,10 +3284,13 @@
       <string>Undead</string>
     </Attributes>
     <Resistances />
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="25" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_sternieste_black_knight">
     <Abilities />
@@ -2130,10 +3298,13 @@
       <string>Undead</string>
     </Attributes>
     <Resistances />
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="35" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_sternieste_reaver">
     <Abilities />
@@ -2141,10 +3312,13 @@
       <string>Undead</string>
     </Attributes>
     <Resistances />
-    <DamageAmplifiers />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.40" />
+    </DamageAmplifiers>
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="45" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_konigstein_skeleton">
     <Abilities />
@@ -2168,6 +3342,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_konigstein_spearman">
     <Abilities />
@@ -2179,6 +3354,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="10" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_peasant_squire">
     <Abilities />
@@ -2197,6 +3373,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="20" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_peasant_knight">
     <Abilities />
@@ -2206,6 +3383,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="40" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_maisontaal_cultist">
     <Abilities />
@@ -2252,10 +3430,217 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="25" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ror_bergerac_bowman">
     <Abilities />
     <Attributes />
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.25" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="40" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_anguille_sailor">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_corduin_mariner">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="0" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_corduin_knightly_mariner">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="0" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_carcasonne_mountain_guard">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_kharmourts_blades">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers>
+      <AmplifierTuple AmplifiedDamageType="Physical" DamageAmplifier="0.10" />
+    </DamageAmplifiers>
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="25" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_br_mounted_bowman">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_warden_montfort">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="10" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_bastonne_squire">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_bastonne_beastslayer">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="0" UpgradeCost="10" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_lyonesse_knight_errant">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_lionhearted_knight">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="Physical" ReductionPercent="0.15" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.80" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.20" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Chivalry" UpkeepCost="1" UpgradeCost="150" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_ror_loec_trickster">
+    <Abilities />
+    <Attributes />
+    <Resistances>
+      <ResistanceTuple ResistedDamageType="All" ReductionPercent="0.35" />
+    </Resistances>
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wh_retinue">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.75" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.25" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wh_retinue_hunter">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.75" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.35" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="15" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wh_retinue_headhunter">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="0.75" />
+      <DamageProportionTuple DamageType="Magical" Percent="0.50" />
+    </DamageProportions>
+    <ResourceCost ResourceType="Prestige" UpkeepCost="0" UpgradeCost="30" />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_harbinger_champion">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>NecromancerChampion</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_harbinger_champion_two_handed">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>NecromancerChampion</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_harbinger_champion_plate">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>NecromancerChampion</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_harbinger_champion_plate_two_handed">
+    <Abilities />
+    <Attributes>
+      <string>Undead</string>
+      <string>NecromancerChampion</string>
+    </Attributes>
     <Resistances />
     <DamageAmplifiers />
     <DamageProportions>
@@ -2396,6 +3781,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="1" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_roaming_undead_warrior">
     <Abilities />
@@ -2407,6 +3793,7 @@
     <DamageProportions>
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
+    <ResourceCost ResourceType="DarkEnergy" UpkeepCost="0" UpgradeCost="2" />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_outlaw">
     <Abilities />
@@ -2486,6 +3873,47 @@
       <DamageProportionTuple DamageType="Physical" Percent="1.00" />
     </DamageProportions>
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bandit_norscan_raider">
+    <Abilities />
+    <Attributes>
+      <string>Expendable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bandit_norscan_whaler">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bandit_norscan_marauder">
+    <Abilities />
+    <Attributes />
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_bandit_norscan_champion">
+    <Abilities />
+    <Attributes>
+      <string>Unbreakable</string>
+      <string>Unstoppable</string>
+    </Attributes>
+    <Resistances />
+    <DamageAmplifiers />
+    <DamageProportions>
+      <DamageProportionTuple DamageType="Physical" Percent="1.00" />
+    </DamageProportions>
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ti_vittorio">
     <Abilities />
     <Attributes>
@@ -2511,13 +3939,13 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_emp_lord_averland_golden_1">
     <Abilities>
-      <string>LightningBolt</string>
-      <string>WindBlast</string>
-      <string>ChainLightning</string>
-      <string>HarmonicConvergence</string>
-      <string>Blizzard</string>
-      <string>CometOfCasandora</string>
-      <string>Thunderbolt</string>
+      <string>QuicksilverSwords</string>
+      <string>GleamingArrow</string>
+      <string>MeteroicIronclad</string>
+      <string>PlagueOfRust</string>
+      <string>GehennasGoldenGlobe</string>
+      <string>FinalTransmutation</string>
+      <string>GehennasGoldenHounds</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -3008,15 +4436,587 @@
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_reikland_forth_1">
+  <CharacterExtendedInfo id="tor_emp_lord_reikland_fourth_1">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_reikland_forth_2">
+  <CharacterExtendedInfo id="tor_emp_lord_reikland_fourth_2">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_emp_lord_reikland_forth_3">
+  <CharacterExtendedInfo id="tor_emp_lord_reikland_fourth_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_7">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_first_8">
+    <Abilities>
+      <string>c</string>
+    </Abilities>
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_second_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_second_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_middenland_third_7">
+    <Abilities>
+      <string>AmberSpear</string>
+      <string>TanglingThorn</string>
+      <string>PannsImpenetrablePelt</string>
+      <string>HailStorm</string>
+      <string>FlockOfDoom</string>
+      <string>TheBeastUnleashed</string>
+      <string>CurseOfAnraheir</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_7">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_8">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_9">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_first_10">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_second_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_second_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_second_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_third_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostermark_third_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_factionleader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_first_2">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_first_6">
+    <Abilities>
+      <string>ShemGaze</string>
+      <string>StoneAssault</string>
+      <string>HealingLight</string>
+      <string>PhaProtection</string>
+      <string>DeathlyShards</string>
+      <string>RadiancePillar</string>
+      <string>RadiantGaze</string>
+      <string>NetOfAmyntok</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_second_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_second_5">
+    <Abilities />
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_hochland_third_5">
+    <Abilities>
+      <string>ShemGaze</string>
+      <string>StoneAssault</string>
+      <string>HealingLight</string>
+      <string>PhaProtection</string>
+      <string>DeathlyShards</string>
+      <string>RadiancePillar</string>
+      <string>RadiantGaze</string>
+      <string>NetOfAmyntok</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_second_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_second_4">
+    <Abilities>
+      <string>ShemGaze</string>
+      <string>StoneAssault</string>
+      <string>HealingLight</string>
+      <string>PhaProtection</string>
+      <string>DeathlyShards</string>
+      <string>RadiancePillar</string>
+      <string>RadiantGaze</string>
+      <string>NetOfAmyntok</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_second_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_second_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_third_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_third_5">
+    <Abilities>
+      <string>HealingHand</string>
+      <string>CometOfSigmar</string>
+      <string>ArmourOfRighteousness</string>
+      <string>Vanquish</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_nordland_third_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_first_5">
+    <Abilities />
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_second_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_third_4">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_third_5">
+    <Abilities>
+      <string>HealingHand</string>
+      <string>CometOfSigmar</string>
+      <string>ArmourOfRighteousness</string>
+      <string>Vanquish</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_fourth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_fourth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_ostland_fourth_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_first_2">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_first_7">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_second_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_second_2">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_third_1">
+    <Abilities>
+      <string>QuicksilverSwords</string>
+      <string>GleamingArrow</string>
+      <string>MeteroicIronclad</string>
+      <string>PlagueOfRust</string>
+      <string>GehennasGoldenGlobe</string>
+      <string>FinalTransmutation</string>
+      <string>GehennasGoldenHounds</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_third_3">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_third_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_fourth_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_fourth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_emp_lord_wasteland_fourth_3">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
@@ -3243,15 +5243,15 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord_sylvania_second_5">
     <Abilities>
-      <string>NagashGaze</string>
-      <string>SummonSkeleton</string>
-      <string>Shadowblood</string>
-      <string>Morkharn</string>
-      <string>WitheringWave</string>
-      <string>Kandorak</string>
-      <string>ScreamingSkull</string>
-      <string>WindOfDeath</string>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulRain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
       <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -3373,6 +5373,134 @@
       <string>BloodDragon</string>
       <string>Necromancer</string>
     </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_blooddragons_first_5">
+    <Abilities />
+    <Attributes>
+      <string>BloodDragon</string>
+      <string>Necromancer</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_blooddragons_first_6">
+    <Abilities />
+    <Attributes>
+      <string>BloodDragon</string>
+      <string>Necromancer</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_first_factionleader">
+    <Abilities>
+      <string>SummonSkeleton</string>
+      <string>Morkharn</string>
+      <string>VanHelsDanseMacabre</string>
+      <string>WindOfDeath</string>
+      <string>CascadingFireCloak</string>
+      <string>ChainLightning</string>
+      <string>DeathSpasm</string>
+      <string>SoulRain</string>
+      <string>SoulStealer</string>
+      <string>PlagueOfRust</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>Necrarch</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_first_2">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulRain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_first_3">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulRain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_first_4">
+    <Abilities>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>WitheringWave</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_first_5">
+    <Abilities>
+      <string>Chillwind</string>
+      <string>DoomBolt</string>
+      <string>SoulRain</string>
+      <string>PowerOfDarkness</string>
+      <string>BlackHorror</string>
+      <string>SoulStealer</string>
+      <string>GraveCall</string>
+      <string>Morkharn</string>
+      <string>WindOfDeath</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_second_1">
+    <Abilities>
+      <string>SummonSkeleton</string>
+      <string>Morkharn</string>
+      <string>VanHelsDanseMacabre</string>
+      <string>WindOfDeath</string>
+      <string>CascadingFireCloak</string>
+      <string>ChainLightning</string>
+      <string>DeathSpasm</string>
+      <string>SoulRain</string>
+      <string>SoulStealer</string>
+      <string>PlagueOfRust</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>Necrarch</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_vc_lord_necrarch_second_3">
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_br_lord_parravon_factionleader">
     <Abilities />
@@ -3698,6 +5826,203 @@
       <string>AICompanion</string>
     </Attributes>
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_5">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_7">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_8">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_first_9">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_second_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_third_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_couronne_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_second_1">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_anguille_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_lyonesse_first_7">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_artois_first_7">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_gisoreux_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>CanPlaceArtillery</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_gisoreux_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_gisoreux_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_gisoreux_first_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_gisoreux_first_5">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_lord_gisoreux_first_6">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_m_lord_mousillon_factionleader">
     <Abilities />
     <Attributes>
@@ -3723,8 +6048,20 @@
     </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_m_lord_mousillon_first_2">
-    <Abilities />
+    <Abilities>
+      <string>NagashGaze</string>
+      <string>SummonSkeleton</string>
+      <string>Shadowblood</string>
+      <string>Morkharn</string>
+      <string>CurseOfYears</string>
+      <string>Kandorak</string>
+      <string>ScreamingSkull</string>
+      <string>WindOfDeath</string>
+      <string>GraveCall</string>
+    </Abilities>
     <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
       <string>Necromancer</string>
     </Attributes>
   </CharacterExtendedInfo>
@@ -3788,24 +6125,327 @@
       <string>Undead</string>
     </Attributes>
   </CharacterExtendedInfo>
-  <CharacterExtendedInfo id="tor_chaos_lord_factionleader">
+  <CharacterExtendedInfo id="tor_m_lord_mousillon_second_1">
+    <Abilities />
+    <Attributes>
+      <string>Necromancer</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_m_lord_mousillon_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_m_lord_mousillon_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_m_lord_mousillon_second_4">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_factionleader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_second_1">
     <Abilities>
-      <string>Fireball</string>
-      <string>CinderBlast</string>
-      <string>BoltOfAqshy</string>
-      <string>Sear</string>
-      <string>FlamingSwords</string>
-      <string>BurningHead</string>
-      <string>FlameStorm</string>
+      <string>AmberSpear</string>
+      <string>Regrowth</string>
+      <string>Apotheosis</string>
+      <string>SoulQuench</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>ShieldOfSaphery</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_second_2">
+    <Abilities>
+      <string>AmberSpear</string>
+      <string>Regrowth</string>
+      <string>Apotheosis</string>
+      <string>SoulQuench</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>ShieldOfSaphery</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_third_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_fourth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_fourth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_fifth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_fifth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_sixth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_sixth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_seventh_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_seventh_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_eighth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_eighth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_ninth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_ninth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_tenth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_tenth_2">
+    <Abilities>
+      <string>AmberSpear</string>
+      <string>Regrowth</string>
+      <string>Apotheosis</string>
+      <string>SoulQuench</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>Tempest</string>
+      <string>DwellersBelow</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_eleventh_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_eleventh_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_twelfth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_twelfth_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_thirteenth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_we_lord_athel_loren_thirteenth_2">
+    <Abilities />
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_factionleader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_first_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_first_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_second_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_second_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_second_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_third_1">
+    <Abilities>
+      <string>LightningBolt</string>
+      <string>ChainLightning</string>
+      <string>Regrowth</string>
+      <string>Apotheosis</string>
+      <string>SoulQuench</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>ShieldOfSaphery</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_third_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_third_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_third_4">
+    <Abilities>
+      <string>Fireball</string>
+      <string>Regrowth</string>
+      <string>Apotheosis</string>
+      <string>SoulQuench</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>ShieldOfSaphery</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_fourth_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_fourth_2">
+    <Abilities>
+      <string>AmberSpear</string>
+      <string>Regrowth</string>
+      <string>Apotheosis</string>
+      <string>SoulQuench</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>ShieldOfSaphery</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eo_lord_laurelorn_fourth_3">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>Everchosen</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_brasskeep_factionleader">
+    <Abilities />
+    <Attributes>
+      <string>Brasskeep</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_brasskeep_first_2">
+    <Abilities />
+    <Attributes>
+      <string>Brasskeep</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_brasskeep_first_3">
+    <Abilities />
+    <Attributes>
+      <string>Brasskeep</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_brasskeep_first_4">
+    <Abilities />
+    <Attributes>
+      <string>Brasskeep</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_brasskeep_first_5">
+    <Abilities />
+    <Attributes>
+      <string>Brasskeep</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_chaos_lord_brasskeep_first_6">
+    <Abilities />
+    <Attributes>
+      <string>Brasskeep</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_de_lord_factionleader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_ungor_chief_factionleader">
     <Abilities />
     <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_bergerac_leader">
+    <Abilities />
+    <Attributes>
+      <string>Bergerac</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_bergerac_2">
+    <Abilities />
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_bergerac_3">
+    <Abilities />
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_wainfleet_leader">
+    <Abilities />
+    <Attributes>
+      <string>PeasantKnight</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_troubadour_leader">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_troubadour_2">
+    <Abilities />
+    <Attributes>
+      <string>AICompanion</string>
+    </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_dog_clan_hero_braganza">
     <Abilities />
@@ -3862,13 +6502,13 @@
   <CharacterExtendedInfo id="tor_lw_lord">
     <Abilities>
       <string>ShemGaze</string>
-      <string>StoneAssault</string>
+      <string>BironasTimewarp</string>
       <string>HealingLight</string>
       <string>PhaProtection</string>
       <string>DeathlyShards</string>
       <string>RadiancePillar</string>
       <string>RadiantGaze</string>
-	  <string>NetOfAmyntok</string>
+      <string>NetOfAmyntok</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -3884,6 +6524,22 @@
       <string>Blizzard</string>
       <string>CometOfCasandora</string>
       <string>Thunderbolt</string>
+      <string>CurseOfMidnightWind</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_mw_lord">
+    <Abilities>
+      <string>QuicksilverSwords</string>
+      <string>GleamingArrow</string>
+      <string>MeteroicIronclad</string>
+      <string>PlagueOfRust</string>
+      <string>GehennasGoldenGlobe</string>
+      <string>FinalTransmutation</string>
+      <string>GehennasGoldenHounds</string>
     </Abilities>
     <Attributes>
       <string>AbilityUser</string>
@@ -3919,6 +6575,25 @@
       <string>AbilityUser</string>
       <string>SpellCaster</string>
     </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_hm_lord">
+    <Abilities>
+      <string>ShieldOfSaphery</string>
+      <string>Tempest</string>
+      <string>CurseOfArrowAttraction</string>
+      <string>CourageOfAenarion</string>
+      <string>SoulQuench</string>
+      <string>FieryConvocation</string>
+      <string>Apotheosis</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_glade_lord">
+    <Abilities />
+    <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_vc_lord">
     <Abilities>
@@ -4000,15 +6675,52 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_5">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>EngineerCompanion</string>
+    </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_6">
-    <Abilities />
-    <Attributes />
+    <Abilities>
+      <string>BlessingOfShallya</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+    </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_empire_7">
     <Abilities />
     <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_empire_8">
+    <Abilities>
+      <string>GleamingArrow</string>
+      <string>QuicksilverSwords</string>
+      <string>Dart</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_empire_9">
+    <Abilities>
+      <string>TheGreenEye</string>
+      <string>EnchantWeapon</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_empire_10">
+    <Abilities>
+      <string>AmberSpear</string>
+      <string>AuraOfResistance</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_bretonnia_0">
     <Abilities />
@@ -4026,7 +6738,19 @@
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_mousillon_0">
     <Abilities />
-    <Attributes />
+    <Attributes>
+      <string>IllFated</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_mousillon_1">
+    <Abilities>
+      <string>FoetidCloud</string>
+      <string>SummonSkeleton</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_wanderer_vampire_0">
     <Abilities>
@@ -4066,6 +6790,39 @@
       <string>Unbreakable</string>
     </Attributes>
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_woodelf_0">
+    <Abilities>
+      <string>AmberSpear</string>
+      <string>Regrowth</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_woodelf_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_woodelf_2">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_eonir_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_eonir_1">
+    <Abilities>
+      <string>Regrowth</string>
+      <string>BoltOfAqshy</string>
+      <string>Apotheosis</string>
+    </Abilities>
+    <Attributes>
+      <string>AbilityUser</string>
+      <string>SpellCaster</string>
+    </Attributes>
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_empire_deserter_lord_0">
     <Abilities />
     <Attributes />
@@ -4087,6 +6844,22 @@
     <Attributes />
   </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_m_rogue_lord_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_bergerac_lord">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_peasantknight_lord">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_troubadour_questing_knight_1">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_br_troubadour_questing_knight_2">
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
@@ -4258,6 +7031,10 @@
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_wanderer_chaos_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_engineerquesthero">
     <Abilities />
     <Attributes />
@@ -4270,6 +7047,12 @@
     <Abilities />
     <Attributes />
   </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_prestige_noble_empire">
+    <Abilities />
+    <Attributes>
+      <string>PrestigeNoble</string>
+    </Attributes>
+  </CharacterExtendedInfo>
   <CharacterExtendedInfo id="tor_spelltrainer_empire_0">
     <Abilities />
     <Attributes />
@@ -4281,5 +7064,33 @@
   <CharacterExtendedInfo id="tor_spelltrainer_bretonnia_0">
     <Abilities />
     <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_spelltrainer_woodelves_0">
+    <Abilities />
+    <Attributes />
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eonir_druchii_envoy_0">
+    <Abilities />
+    <Attributes>
+      <string>DruchiiEnvoy</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eonir_asur_envoy_0">
+    <Abilities />
+    <Attributes>
+      <string>AsurEnvoy</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eonir_empire_envoy_0">
+    <Abilities />
+    <Attributes>
+      <string>EmpireEnvoy</string>
+    </Attributes>
+  </CharacterExtendedInfo>
+  <CharacterExtendedInfo id="tor_eonir_spellsinger_envoy_0">
+    <Abilities />
+    <Attributes>
+      <string>SpellsingerEnvoy</string>
+    </Attributes>
   </CharacterExtendedInfo>
 </ArrayOfCharacterExtendedInfo>

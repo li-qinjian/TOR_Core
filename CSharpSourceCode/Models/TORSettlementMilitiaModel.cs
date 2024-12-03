@@ -5,6 +5,7 @@ using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Localization;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Models
 {
@@ -14,10 +15,6 @@ namespace TOR_Core.Models
 
         public override ExplainedNumber CalculateMilitiaChange(Settlement settlement, bool includeDescriptions = false)
         {
-            if (settlement.IsBloodKeep())
-            {
-                int i = 0;
-            }
             var result = base.CalculateMilitiaChange(settlement, includeDescriptions);
             if (settlement.IsCastle)
             {
@@ -30,12 +27,21 @@ namespace TOR_Core.Models
                     //result.Add(10f,new TextObject("Blood Keep bonus"));
                     return result;
                 }
+
+                if (settlement.StringId == "castle_BK2")
+                {
+                    if (settlement.Militia < 2000)
+                    {
+                        result.LimitMin(10);
+                    }
+                }
+                
                 switch (settlement.OwnerClan.Culture.StringId)
                 {
-                    case "khuzait":
+                    case TORConstants.Cultures.SYLVANIA:
                         result.Add(2f, new TextObject("Bonus"));
                         break;
-                    case "empire":
+                    case TORConstants.Cultures.EMPIRE:
                         result.Add(1f, new TextObject("Bonus"));
                         break;
                     default:
@@ -47,10 +53,10 @@ namespace TOR_Core.Models
             {
                 switch (settlement.OwnerClan.Culture.StringId)
                 {
-                    case "khuzait":
+                    case TORConstants.Cultures.SYLVANIA:
                         result.Add(4f, new TextObject("Bonus"));
                         break;
-                    case "empire":
+                    case TORConstants.Cultures.EMPIRE:
                         result.Add(3f, new TextObject("Bonus"));
                         break;
                     default:

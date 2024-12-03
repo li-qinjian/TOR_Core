@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
@@ -16,28 +16,25 @@ namespace TOR_Core.AbilitySystem.Scripts
         public override void Initialize(Ability ability)
         {
             base.Initialize(ability);
-            _maxDeviation = _ability.Template.MaxRandomDeviation;
+            _maxDeviation = Ability.Template.MaxRandomDeviation;
             var children = GameEntity.GetChildren().ToList();
             _vortexPrefab = children[0];
         }
 
-        protected override void UpdatePosition(MatrixFrame frame, float dt)
+        protected override void OnAfterTick(float dt)
         {
-            var newFrame = GetNextFrame(frame, dt);
-            GameEntity.SetGlobalFrame(newFrame);
-
-            if (_ability.Template.ShouldRotateVisuals)
+            if (Ability.Template.ShouldRotateVisuals)
             {
                 var vortexFrame = _vortexPrefab.GetFrame();
-                vortexFrame.rotation.RotateAboutUp(_ability.Template.VisualsRotationVelocity);
+                vortexFrame.rotation.RotateAboutUp(Ability.Template.VisualsRotationVelocity);
                 _vortexPrefab.SetFrame(ref vortexFrame);
+                vortexFrame.origin = this.GameEntity.GlobalPosition;
             }
-
-            if (GameEntity.GetBodyShape() != null) GameEntity.GetBodyShape().ManualInvalidate();
         }
 
-        protected override MatrixFrame GetNextFrame(MatrixFrame oldFrame, float dt)
+        protected override MatrixFrame GetNextGlobalFrame(MatrixFrame oldFrame, float dt)
         {
+            var frame = new MatrixFrame(oldFrame.rotation, oldFrame.origin);
             if (_counter >= 1)
             {
                 _counter = 0;
@@ -47,11 +44,17 @@ namespace TOR_Core.AbilitySystem.Scripts
             {
                 _counter += dt;
             }
-            oldFrame.rotation.RotateAboutUp(_currentDeviation);
-            var distance = _ability.Template.BaseMovementSpeed * dt;
-            oldFrame.Advance(distance);
-            var heightAtPosition = Mission.Current.Scene.GetGroundHeightAtPosition(oldFrame.origin);
-            oldFrame.origin.z = heightAtPosition + _ability.Template.Radius / 2;
+            frame.rotation.RotateAboutUp(_currentDeviation);
+            var distance = Ability.Template.BaseMovementSpeed * dt;
+            frame.Advance(distance);
+            float heightAtPosition;
+            using (new TWSharedMutexReadLock(Scene.PhysicsAndRayCastLock))
+            {
+                heightAtPosition = Mission.Current.Scene.GetGroundHeightAtPositionMT(frame.origin);
+            }
+            frame.origin.z = heightAtPosition + Ability.Template.Offset;
+
+            oldFrame.origin = frame.origin;
             return oldFrame;
         }
     }

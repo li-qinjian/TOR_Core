@@ -14,25 +14,20 @@ using TaleWorlds.MountAndBlade;
 
 namespace TOR_Core.Missions
 {
-	public class QuestFightMissionController : MissionLogic
+	public class QuestFightMissionController(PartyTemplateObject enemyPartyTemplate, int enemyCount, Action<bool> onMissionEnd = null, bool forceUsableMachineActivation = false) : MissionLogic
 	{
 		private TORMissionAgentHandler _missionAgentSpawnLogic;
 		private MissionConversationLogic _missionConversationLogic;
-		private readonly PartyTemplateObject _enemyPartyTemplate;
-		private readonly int _enemyCount;
-		private Action<bool> _onMissionEnd;
-		private bool _conversationFired;
+		private readonly PartyTemplateObject _enemyPartyTemplate = enemyPartyTemplate;
+		private readonly int _enemyCount = enemyCount;
+		private readonly Action<bool> _onMissionEnd = onMissionEnd;
+        private readonly bool _forceUsableMachineActivation = forceUsableMachineActivation;
+        private bool _conversationFired;
 		private bool _battleStarted;
-		public bool PlayerCanLeave { get; set; } = false;
+        
+        public bool PlayerCanLeave { get; set; } = false;
 
-		public QuestFightMissionController(PartyTemplateObject enemyPartyTemplate, int enemyCount, Action<bool> onMissionEnd = null)
-		{
-			_enemyPartyTemplate = enemyPartyTemplate;
-			_enemyCount = enemyCount;
-			_onMissionEnd = onMissionEnd;
-		}
-
-		public override void OnBehaviorInitialize()
+        public override void OnBehaviorInitialize()
 		{
 			base.OnBehaviorInitialize();
 			_missionAgentSpawnLogic = Mission.GetMissionBehavior<TORMissionAgentHandler>();
@@ -52,6 +47,16 @@ namespace TOR_Core.Missions
 				if (agent != Agent.Main && agent.IsHuman)
 				{
 					agent.SetWatchState(Agent.WatchState.Patrolling);
+				}
+			}
+			if(_forceUsableMachineActivation)
+			{
+				foreach(var missionObject in Mission.Current.MissionObjects)
+				{
+					if(missionObject is UsableMachine machine)
+					{
+						machine.Activate();
+					}
 				}
 			}
 		}
@@ -81,6 +86,7 @@ namespace TOR_Core.Missions
 
 		private void StartBattle()
         {
+			_battleStarted = true;
 			Mission.SetMissionMode(MissionMode.Battle, false);
 			foreach (var agent in Mission.Agents)
 			{
@@ -93,23 +99,26 @@ namespace TOR_Core.Missions
 
 		protected bool CanAgentSeeAgent(Agent agent, Agent targetAgent)
 		{
+			bool result = false;
 			if ((agent.Position - targetAgent.Position).Length < 10f)
 			{
 				Vec3 eyeGlobalPosition = targetAgent.GetEyeGlobalPosition();
 				Vec3 eyeGlobalPosition2 = agent.GetEyeGlobalPosition();
 				if (MathF.Abs(Vec3.AngleBetweenTwoVectors(targetAgent.Position - agent.Position, agent.LookDirection)) < 1.5f)
 				{
-					float num;
-					return !Mission.Current.Scene.RayCastForClosestEntityOrTerrain(eyeGlobalPosition2, eyeGlobalPosition, out num, 0.01f, BodyFlags.CommonFocusRayCastExcludeFlags);
-				}
+                    using (new TWSharedMutexReadLock(Scene.PhysicsAndRayCastLock))
+					{
+                        result = !Mission.Current.Scene.RayCastForClosestEntityOrTerrainMT(eyeGlobalPosition2, eyeGlobalPosition, out _, 0.01f, BodyFlags.CommonFocusRayCastExcludeFlags);
+                    }
+                }
 			}
-			return false;
+			return result;
 		}
 
 		public override InquiryData OnEndMissionRequest(out bool canLeave)
 		{
 			canLeave = (Mission.MissionResult != null && Mission.MissionResult.BattleResolved == true && Mission.MissionResult.PlayerVictory) || PlayerCanLeave;
-            if (!canLeave) MBInformationManager.AddQuickInformation(new TextObject("You may not leave until finishing the quest scenario."));
+            if (!canLeave) MBInformationManager.AddQuickInformation(new TextObject("{=tor_quest_fight_hint_not_leaving_str}You may not leave until finishing the quest scenario."));
 			return null;
 		}
 
@@ -124,19 +133,19 @@ namespace TOR_Core.Missions
             if(Agent.Main == null || !Agent.Main.IsActive())
             {
 				missionResult = MissionResult.CreateDefeated(Mission);
-				if (_onMissionEnd != null) _onMissionEnd(missionResult.PlayerVictory);
-				return true;
+                _onMissionEnd?.Invoke(missionResult.PlayerVictory);
+                return true;
             }
 			if (Mission.GetMemberCountOfSide(BattleSideEnum.Attacker) == 0)
 			{
 				missionResult = (Mission.PlayerTeam.Side == BattleSideEnum.Attacker) ? MissionResult.CreateDefeated(Mission) : MissionResult.CreateSuccessful(Mission, false);
-				if (_onMissionEnd != null) _onMissionEnd(missionResult.PlayerVictory);
-				return true;
+                _onMissionEnd?.Invoke(missionResult.PlayerVictory);
+                return true;
 			}
 			if (Mission.GetMemberCountOfSide(BattleSideEnum.Defender) == 0)
 			{
 				missionResult = (Mission.PlayerTeam.Side == BattleSideEnum.Attacker) ? MissionResult.CreateSuccessful(Mission, false) : MissionResult.CreateDefeated(Mission);
-				if (_onMissionEnd != null) _onMissionEnd(missionResult.PlayerVictory);
+				_onMissionEnd?.Invoke(missionResult.PlayerVictory);
 				return true;
 			}
 			return false;

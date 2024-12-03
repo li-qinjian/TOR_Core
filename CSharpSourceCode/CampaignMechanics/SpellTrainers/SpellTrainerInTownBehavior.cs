@@ -1,13 +1,10 @@
-﻿using Helpers;
+using Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.AgentOrigins;
-using TaleWorlds.CampaignSystem.CharacterDevelopment;
+using TaleWorlds.CampaignSystem.Conversation;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Inventory;
 using TaleWorlds.CampaignSystem.Party;
@@ -16,15 +13,15 @@ using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.CampaignSystem.Settlements.Locations;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.LinQuick;
 using TaleWorlds.Localization;
-using TaleWorlds.MountAndBlade.View;
 using TaleWorlds.ObjectSystem;
 using TOR_Core.AbilitySystem.SpellBook;
 using TOR_Core.AbilitySystem.Spells;
+using TOR_Core.CampaignMechanics.CustomResources;
 using TOR_Core.CampaignMechanics.SkillBooks;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
-using TOR_Core.CharacterDevelopment.CareerSystem.Choices;
 using TOR_Core.Extensions;
 using TOR_Core.Quests;
 using TOR_Core.Utilities;
@@ -36,6 +33,7 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
         private readonly string _empireTrainerId = "tor_spelltrainer_empire_0";
         private readonly string _vampireTrainerId = "tor_spelltrainer_vc_0";
         private readonly string _prophetessTrainerId = "tor_spelltrainer_bretonnia_0";
+        private readonly string _woodelfTrainerId = "tor_spelltrainer_woodelves_0";
         private string _testResult = "";
         private Dictionary<string, string> _settlementToTrainerMap = new Dictionary<string, string>();
         private readonly float _testSuccessChance = 1f;
@@ -115,9 +113,10 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
         private void CreateTrainer(Settlement settlement)
         {
             CharacterObject template = null;
-            if (settlement.Culture.StringId == "vlandia"&& settlement.StringId == "town_BA1") template = MBObjectManager.Instance.GetObject<CharacterObject>(_prophetessTrainerId);
-            if (settlement.Culture.StringId == "khuzait"||settlement.Culture.StringId == "mousillon") template = MBObjectManager.Instance.GetObject<CharacterObject>(_vampireTrainerId);
-            if(settlement.Culture.StringId == "empire") template = MBObjectManager.Instance.GetObject<CharacterObject>(_empireTrainerId);
+            if (settlement.Culture.StringId == TORConstants.Cultures.BRETONNIA&& settlement.StringId == "town_BA1") template = MBObjectManager.Instance.GetObject<CharacterObject>(_prophetessTrainerId);
+            if (settlement.Culture.StringId == TORConstants.Cultures.SYLVANIA || settlement.Culture.StringId == TORConstants.Cultures.MOUSILLON) template = MBObjectManager.Instance.GetObject<CharacterObject>(_vampireTrainerId);
+            if(settlement.Culture.StringId == TORConstants.Cultures.EMPIRE) template = MBObjectManager.Instance.GetObject<CharacterObject>(_empireTrainerId);
+            if(settlement.Culture.StringId == TORConstants.Cultures.ASRAI) template = MBObjectManager.Instance.GetObject<CharacterObject>(_woodelfTrainerId);
 
 
             if (template != null)
@@ -130,7 +129,7 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
                 hero.CharacterObject.HiddenInEncylopedia = true;
                 hero.Culture = settlement.Culture;
                 
-                if (hero.Culture.StringId == "vlandia")
+                if (hero.Culture.StringId == TORConstants.Cultures.BRETONNIA)
                 {
                    hero.UpdatePlayerGender(true);
                    hero.SetName(template.Name, template.Name);
@@ -176,32 +175,199 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
             return _settlementToTrainerMap.ContainsValue(hero.StringId);
         }
 
+        private void ProphetesseDialogs(CampaignGameStarter obj)
+        {
+            obj.AddDialogLine("trainer_prophetesse_start", "start", "choices_prophetesse", "{=tor_spelltrainer_prophetesse_start_str}Welcome, child of Bretonnia. The Lady has guided you to my presence. Speak, and let your intentions unfold.", isMorgianaLeFay, null, 200, null);
+            obj.AddDialogLine("trainer_prophetesse_start", "hub_prophetesse", "choices_prophetesse", "{=tor_spelltrainer_prophetesse_choices_str}Is there more you seek? Speak your desires.", isMorgianaLeFay, null, 200, null);
+            obj.AddPlayerLine("trainer_prophetesse_learnspells", "choices_prophetesse", "openbook_prophetesse", "{=tor_spelltrainer_prophetesse_open_book_str}Revered Fay Enchantress, share with me some of your magic teachings.", () => MobileParty.MainParty.HasSpellCasterMember()&&damselCondition(), null, 200, null);
+            obj.AddPlayerLine("trainer_prophetesse_scrollShop", "choices_prophetesse", "hub_prophetesse", "{=tor_spelltrainer_prophetesse_scrolls_str}Gracious Enchantress, I ask you for the tomes and scrolls that hold the keys to the Lady's wisdom.", null, OpenScrollShop, 200, null);
+            obj.AddPlayerLine("trainer_prophetesse_scrollShop", "choices_prophetesse", "hub_prophetesse", "{=tor_spelltrainer_prophetesse_damselsecond_lore_str}My Fay Enchantress, I feel that {DAMSELNAME} has reached  a new level of magical potential, is there anything you can teach her?", ()=> MobileParty.MainParty.HasSpellCasterMember()&&damselCondition()&&damselSecondLoreCondition(), damselSecondLoreConsequence, 200, null);
+            obj.AddPlayerLine("trainer_prophetesse_playergoodbye", "choices_prophetesse", "saygoodbye", "{=tor_spelltrainer_prophetesse_player_goodbye_str}Until we meet again, my Fay Enchantress.", null, null, 200, null);
+            obj.AddDialogLine("trainer_prophetesse_goodbye", "saygoodbye", "close_window", "{=tor_spelltrainer_prophetesse_goodbye_str}Go forth, and may the Lady's grace illuminate your path.", isMorgianaLeFay, null, 200, null);
+            obj.AddDialogLine("trainer_prophetesse_afterlearnspells", "openbook_prophetesse", "hub_prophetesse", "{=tor_spelltrainer_prophetesse_close_book_str}You have grasped this weave with prowess. Carry this knowledge, and may it serve you well, as a beacon of the Lady's blessings.", null, openbookconsequence, 200, null);
+            
+        }
+
+        private void SpellsingerDialogs(CampaignGameStarter obj)
+        { 
+            obj.AddDialogLine("trainer_spellsinger_start", "start", "choices_spellsinger", "{=tor_spelltrainer_prophetesse_start_str}I welcome you child of Athel Loren.", isSpellsingerTrainer, null, 200, null);
+            obj.AddDialogLine("trainer_spellsinger_start", "hub_spellsinger", "choices_spellsinger", "{=tor_spelltrainer_prophetesse_choices_str}Is there more you seek? Speak your desires.", isSpellsingerTrainer, null, 200, null);
+            obj.AddPlayerLine("trainer_spellsinger_learnspells", "choices_spellsinger", "openbook_spellsinger", "{=tor_spelltrainer_prophetesse_open_book_str}I seek further knowledge of Athel Loren's Magic.", () => MobileParty.MainParty.HasSpellCasterMember()&&spellsingerCondition(), null, 200, null);
+            obj.AddPlayerLine("trainer_spellsinger_spellweaver", "choices_spellsinger", "spellweaver_choice_dialog", "{=tor_spelltrainer_prophetesse_open_book_str}I want to become a spellweaver.", () => MobileParty.MainParty.HasSpellCasterMember()&& spellsingerCondition() && SpellweaverCondition() , null, 200, null);
+            obj.AddPlayerLine("trainer_spellsinger_learnlore", "choices_spellsinger", "spellweaver_choice_lores", "{=tor_spelltrainer_prophetesse_open_book_str}Teach me one of Ariels many pathways.", () => MobileParty.MainParty.HasSpellCasterMember()&&spellsingerCondition() && SpellsingerAdditonalLoreCondition(), null, 200, null);
+
+            obj.AddDialogLine("trainer_spellsinger_weaver", "spellweaver_choice_dialog", "spellweaver_choice_player", "{=tor_spelltrainer_prophetesse_goodbye_str}A spellsinger, can pick either the pathway of the Darkweaver or the one of the Highweaver. Choose wisely", isSpellsingerTrainer, null, 200, null);
+            obj.AddPlayerLine("spellweaver_choice_player", "spellweaver_choice_player", "choices_spellsinger", "{=tor_spelltrainer_prophetesse_open_book_str}Let me choose.", () => MobileParty.MainParty.HasSpellCasterMember()&&spellsingerCondition(), spellweaverPrompt, 200, null);
+            
+            obj.AddDialogLine("trainer_spellsinger_lores", "spellweaver_choice_lores", "spellweaver_choice_lores_player", "{=tor_spelltrainer_prophetesse_goodbye_str}You can learn additional aspects of the magic of the forest. Choose wisely (not more than 2 additional lores, 6 in total)", isSpellsingerTrainer, null, 200, null);
+            obj.AddPlayerLine("spellweaver_choice_lores_player", "spellweaver_choice_lores_player", "choices_spellsinger", "{=tor_spelltrainer_prophetesse_open_book_str}Let me choose.", () => MobileParty.MainParty.HasSpellCasterMember()&&spellsingerCondition(), additionalLoresPrompt, 200, null);
+
+            
+            
+            obj.AddDialogLine("trainer_spellsinger_weaver", "spellweaver_choice_dialog", "close_window", "{=tor_spelltrainer_prophetesse_goodbye_str}May Ariel guide you on all your paths through her garden.", isSpellsingerTrainer, null, 200, null);
+
+            
+            obj.AddPlayerLine("trainer_spellsinger_scrollShop", "choices_spellsinger", "hub_spellsinger", "{=tor_spelltrainer_prophetesse_damselsecond_lore_str} I feel that {SPELLSINGERNAME} has reached  a new level of magical potential, it is time for a new Spellweaver", ()=> MobileParty.MainParty.HasSpellCasterMember()&&spellsingerCondition()&&damselSecondLoreCondition(), damselSecondLoreConsequence, 200, null);
+            obj.AddPlayerLine("trainer_spellsinger_playergoodbye", "choices_spellsinger", "saygoodbye", "{=tor_spelltrainer_prophetesse_player_goodbye_str}Ariel with you. ", null, null, 200, null);
+            obj.AddDialogLine("trainer_spellsinger_goodbye", "saygoodbye", "close_window", "{=tor_spelltrainer_prophetesse_goodbye_str}May Ariel guide you on all your paths through her garden.", isSpellsingerTrainer, null, 200, null);
+            obj.AddDialogLine("trainer_spellsinger_afterlearnspells", "openbook_spellsinger", "hub_spellsinger", "{=tor_spelltrainer_prophetesse_close_book_str}A new Facette of Ariels infinte knowledge.", null, openbookconsequence, 200, null);
+
+            bool SpellsingerAdditonalLoreCondition()
+            {
+                if (!Hero.MainHero.HasUnlockedCareerChoiceTier(3))
+                    return false;
+                
+                if (!Hero.MainHero.HasKnownLore("HighMagic") && !Hero.MainHero.HasKnownLore("DarkMagic"))
+                {
+                    return false;
+                }
+                var count = Hero.MainHero.GetKnownLoreCount();
+
+                if (count >= 6)
+                {
+                    return false;
+                }
+            
+                return true;
+            }
+
+            void additionalLoresPrompt()
+            {
+                List<InquiryElement> list = new List<InquiryElement>();
+                var lores = LoreObject.GetAll();
+
+                var additionalLores = lores.WhereQ(x => !x.DisabledForCultures.Contains(TORConstants.Cultures.ASRAI)).ToList();
+        
+
+                var model = Campaign.Current.Models.GetAbilityModel();
+                foreach (var item in additionalLores)
+                {
+                    
+                    if(Hero.MainHero.HasKnownLore(item.ID))
+                        continue;
+            
+                    list.Add(new InquiryElement(item, item.Name, null));
+                }
+                var inquirydata = new MultiSelectionInquiryData(new TextObject("{=tor_magic_lore_prompt_label_str}Choose Lore").ToString(), new TextObject("{=tor_magic_lore_prompt_description_str}Choose a lore to specialize in.").ToString(), list, true, 1, 1, "Confirm", "Cancel", OnChooseLore, OnCancelLore);
+                MBInformationManager.ShowMultiSelectionInquiry(inquirydata, true);
+            }
+            
+            bool SpellweaverCondition()
+            {
+                if (Hero.MainHero.HasKnownLore("HighMagic") || Hero.MainHero.HasKnownLore("DarkMagic"))
+                {
+                    return false;
+                }
+
+                if (Hero.MainHero.HasUnlockedCareerChoiceTier(2))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            void spellweaverPrompt()
+            {
+                List<InquiryElement> list = new List<InquiryElement>();
+                var lores = LoreObject.GetAll();
+
+                var weaverLores = lores.Where(x => x.ID == "HighMagic" || x.ID == "DarkMagic").ToListQ();
+            
+
+                var model = Campaign.Current.Models.GetAbilityModel();
+                foreach (var item in weaverLores)
+                {
+                
+                    list.Add(new InquiryElement(item, item.Name, null));
+                }
+                var inquirydata = new MultiSelectionInquiryData(new TextObject("{=tor_magic_lore_prompt_label_str}Choose Lore").ToString(), new TextObject("{=tor_magic_lore_prompt_description_str}Choose a lore to specialize in.").ToString(), list, true, 1, 1, "Confirm", "Cancel", OnChooseLore, OnCancelLore);
+                MBInformationManager.ShowMultiSelectionInquiry(inquirydata, true);
+            }
+            
+        }
+
         private void AddDialogs(CampaignGameStarter obj)
         {
-            obj.AddDialogLine("trainer_prophetesse_start", "start", "choices_prophetesse", "Welcome, child of Bretonnia. The Lady has guided you to my presence. Speak, and let your intentions unfold.", isMorgianaLeFay, null, 200, null);
-            obj.AddDialogLine("trainer_prophetesse_start", "hub_prophetesse", "choices_prophetesse", "Is there more you seek? Speak your desires.", isMorgianaLeFay, null, 200, null);
-            obj.AddPlayerLine("trainer_prophetesse_learnspells", "choices_prophetesse", "openbook_prophetesse", "Revered Fay Enchantress, share with me some of your magic teachings.", () => MobileParty.MainParty.HasSpellCasterMember()&&damselCondition(), null, 200, null);
-            obj.AddPlayerLine("trainer_prophetesse_scrollShop", "choices_prophetesse", "hub_prophetesse", "Gracious Enchantress, I ask you for the tomes and scrolls that hold the keys to the Lady's wisdom.", null, OpenScrollShop, 200, null);
-            obj.AddPlayerLine("trainer_prophetesse_playergoodbye", "choices_prophetesse", "saygoodbye", "Until we meet again, my Fay Enchantress.", null, null, 200, null);
-            obj.AddDialogLine("trainer_prophetesse_goodbye", "saygoodbye", "close_window", "Go forth, and may the Lady's grace illuminate your path.", isMorgianaLeFay, null, 200, null);
-            obj.AddDialogLine("trainer_prophetesse_afterlearnspells", "openbook_prophetesse", "hub_prophetesse", "You have grasped this weave with prowess. Carry this knowledge, and may it serve you well, as a beacon of the Lady's blessings.", null, openbookconsequence, 200, null);
+            ProphetesseDialogs(obj);
+            SpellsingerDialogs(obj);
+
             
-            
-            obj.AddDialogLine("trainer_start", "start", "choices", "Do I know you? What do you need, be quick I am a busy.", spelltrainerstartcondition, null, 200, null);
+            obj.AddDialogLine("trainer_start", "start", "choices", "{=tor_spelltrainer_start_str}Do I know you? What do you need, be quick I am a busy.", spelltrainerstartcondition, null, 200, null);
             obj.AddPlayerLine("trainer_test", "choices", "magictest", "{TEST_QUESTION}", magictestcondition, null, 200, null);
             obj.AddDialogLine("trainer_testoutcome", "magictest", "testoutcome", "{TEST_PROMPT}", filltextfortestprompt, determinetestoutcome, 200, null);
             obj.AddDialogLine("trainer_testresult", "testoutcome", "start", "{TEST_RESULT}", testresultcondition, null, 200, null);
             
-            obj.AddPlayerLine("trainer_learnspells", "choices", "openbook", "I have come seeking further knowledge.", () => MobileParty.MainParty.HasSpellCasterMember(), null, 200, null);
-            obj.AddPlayerLine("trainer_scrollShop", "choices", "start", "Do you sell any scrolls?", null, OpenScrollShop, 200, null);
+            obj.AddPlayerLine("trainer_learnspells", "choices", "openbook", "{=tor_spelltrainer_open_book_str}I have come seeking further knowledge.", () => MobileParty.MainParty.HasSpellCasterMember(), null, 200, null);
+            obj.AddPlayerLine("trainer_scrollShop", "choices", "start", "{=tor_spelltrainer_scrolls_str}Do you sell any scrolls?", null, OpenScrollShop, 200, null);
             
-            obj.AddDialogLine("trainer_afterlearnspells", "openbook", "start", "Hmm, come then. I will teach you what I can.", null, openbookconsequence, 200, null);
+            obj.AddDialogLine("trainer_afterlearnspells", "openbook", "start", "{=tor_spelltrainer_close_book_str}Hmm, come then. I will teach you what I can.", null, openbookconsequence, 200, null);
             obj.AddPlayerLine("trainer_specialize", "choices", "specializelore", "{SPECALIZE_QUESTION}", specializelorecondition, null, 200, null);
             obj.AddDialogLine("trainer_chooselore", "specializelore", "start", "{SPECIALIZE_PROMPT}.", fillchooseloretext, chooseloreconsequence, 200, null);
-            obj.AddPlayerLine("trainer_playergoodbye", "choices", "saygoodbye", "Farewell Magister.", null, null, 200, null);
+
+            obj.AddPlayerLine("trainer_vampire_learn_magic", "choices", "specializelore_question", "{=tor_spelltrainer_magictest_vc_vampire_player_specialize_lore_str}I can feel my dark power continuing to grow. Provide me access to more forbidden magic, mortal", VampireCasterReachedNewRankCondition,
+                null, 200, null);
             
+            obj.AddDialogLine("trainer_vampire_learn_magic2", "specializelore_question", "accept_dark_energy_price", "{=tor_spelltrainer_magictest_vc_vampire_player_specialize_lore_str}Even if you have the everliving-gift, the access to forbidden knowledge is restricted by my master. Provide us a gift and I am not speaking of gold, " +
+                                                                                                           "I need you to pay with the essence of Life. Then my masters can give you access... (1500{DARKENERGYICON}) ", null,
+                null, 200, null);
+            obj.AddPlayerLine("agree_dark_energy_price", "accept_dark_energy_price", "specializelore", "Take my gift. Now give me what I demand! (Pay 2000{DARKENERGYICON})", HasEnoughDarkEnergy,
+                chooseloreconsequence, 200, null);
+            obj.AddPlayerLine("decline_dark_energy_price", "accept_dark_energy_price", "trainer_vampire_learn_magic3", "I can't provide you this gift",
+                null, null, 200);
             
-            obj.AddDialogLine("trainer_goodbye", "saygoodbye", "close_window", "Hmm, yes. Farewell.", null, null, 200, null);
+            obj.AddDialogLine("trainer_vampire_learn_magic3", "trainer_vampire_learn_magic3", "choices", "A shame. What else can I help you with? ", null,null, 200, null);
+            
+            obj.AddPlayerLine("trainer_playergoodbye", "choices", "saygoodbye", "{=tor_spelltrainer_player_goodbye_str}Farewell Magister.", null, null, 200, null);
+            obj.AddDialogLine("trainer_goodbye", "saygoodbye", "close_window", "{=tor_spelltrainer_goodbye_str}Hmm, yes. Farewell.", null, null, 200, null);
+        }
+
+        private bool HasEnoughDarkEnergy()
+        {
+            return Hero.MainHero.GetCustomResourceValue("DarkEnergy") >= 1500;
+        }
+
+        private bool VampireCasterReachedNewRankCondition()
+        {
+            if(! Hero.MainHero.HasCareer(TORCareers.Necrarch) && !Hero.MainHero.HasCareer(TORCareers.MinorVampire)) return false;
+            MBTextManager.SetTextVariable("DARKENERGYICON", CustomResourceManager.GetResourceObject("DarkEnergy").GetCustomResourceIconAsText());
+            
+            if (Hero.MainHero.GetCareer()==TORCareers.Necrarch&& Hero.MainHero.HasUnlockedCareerChoiceTier(3))
+            {
+                return Hero.MainHero.GetExtendedInfo().KnownLores.Count < 5;
+            }
+            
+            if (Hero.MainHero.HasUnlockedCareerChoiceTier(2))
+            {
+                if (Hero.MainHero.GetCareer()==TORCareers.Necrarch)
+                {
+                    if (Hero.MainHero.GetExtendedInfo().KnownLores.Count < 4)
+                    {
+                        return true;
+                    }
+                }
+                else if (Hero.MainHero.GetExtendedInfo().KnownLores.Count < 3)
+                {
+                    return true;
+                }
+            }
+            
+            if (Hero.MainHero.GetCareer()==TORCareers.Necrarch&& Hero.MainHero.HasUnlockedCareerChoiceTier(1))
+            {
+                if (Hero.MainHero.GetCareer()==TORCareers.Necrarch)
+                {
+                    if (Hero.MainHero.GetExtendedInfo().KnownLores.Count < 3)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                return false;
+            }
+            
+
+            return false;
         }
 
         private bool isMorgianaLeFay()
@@ -215,10 +381,52 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
 
             return false;
         }
+        
+        private bool isSpellsingerTrainer()
+        {
+            if(!spelltrainerstartcondition()) return false;
+            
+            var partner = CharacterObject.OneToOneConversationCharacter;
+            if (partner.HeroObject!=null&& partner.HeroObject.Template.StringId == _woodelfTrainerId)
+            {
+                return true;
+            }
 
+            return false;
+        }
+
+        
+        private bool damselSecondLoreCondition()
+        {
+            var damselCompanion = Hero.MainHero.PartyBelongedTo.GetMemberHeroes().Where(x => x != Hero.MainHero&& x.Culture.StringId == TORConstants.Cultures.BRETONNIA && x.IsSpellCaster()).FirstOrDefault();
+            if (damselCompanion == null) return false;
+            
+            if (Hero.MainHero.HasCareer(TORCareers.GrailDamsel) && !damselCompanion.HasKnownLore("LoreOfBeasts"))
+            {
+                GameTexts.SetVariable("DAMSELNAME", damselCompanion.Name);
+                return Hero.MainHero.HasAttribute("SecondLoreForDamselCompanions");
+            }
+            return false;
+        }
+        
+        private void damselSecondLoreConsequence()
+        {
+            TextObject text = new TextObject("{DAMSELNAME}");
+
+            var hero= Hero.MainHero.PartyBelongedTo.GetMemberHeroes().Where(x => x.Name.ToString() == text.ToString() && x.IsSpellCaster()).FirstOrDefault();
+            if(hero==null)return;
+            hero.AddKnownLore("LoreOfBeasts");
+        }
+        
         private bool damselCondition()
         {
-            if (Hero.MainHero.HasCareer(TORCareers.GrailDamsel)||(Hero.MainHero.PartyBelongedTo!=null&& Hero.MainHero.PartyBelongedTo.GetMemberHeroes().Any(x => x.Culture.StringId == "vlandia"&& x.IsSpellCaster()))) return true;
+            if (Hero.MainHero.HasCareer(TORCareers.GrailDamsel)||(Hero.MainHero.PartyBelongedTo!=null&& Hero.MainHero.PartyBelongedTo.GetMemberHeroes().Any(x => x.Culture.StringId == TORConstants.Cultures.BRETONNIA && x.IsSpellCaster()))) return true;
+            return false;
+        }
+        
+        private bool spellsingerCondition()
+        {
+            if (Hero.MainHero.HasCareer(TORCareers.Spellsinger)||(Hero.MainHero.PartyBelongedTo!=null&& Hero.MainHero.PartyBelongedTo.GetMemberHeroes().Any(x => x.Culture.StringId == TORConstants.Cultures.ASRAI && x.IsSpellCaster()))) return true;
             return false;
         }
 
@@ -232,29 +440,29 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
         private bool magictestcondition()
         {
             if (isMorgianaLeFay()) return false;
-            if (!CareerHelper.PlayerOwnsMagicCareer()) return false;
+            if (!CareerHelper.IsMagicCapableCareer(Hero.MainHero.GetCareer())) return false;
             
             var flag = false;
             flag = !Hero.MainHero.IsVampire() && !Hero.MainHero.IsSpellCaster() && !Hero.MainHero.HasAttribute("Priest") && _testResult == "";
             if (flag)
             {
-                string text = "";
+                TextObject text;
                 var culture = Hero.OneToOneConversationHero.Culture.StringId;
                 switch (culture)
                 {
                     case "empire":
                         {
-                            text = "I have come seeking knowledge, I wish to learn the arcane arts. Can you help me?";
+                            text = new TextObject ("{=tor_spelltrainer_magictest_empire_str}I have come seeking knowledge, I wish to learn the arcane arts. Can you help me?");
                             break;
                         }
-                    case "khuzait":
+                    case TORConstants.Cultures.SYLVANIA:
                     case "mousillon":
                         {
-                            text = "I need the power to escape death, to rule over this world as something more. Can you teach me the ways of your power?";
+                            text = new TextObject("{=tor_spelltrainer_magictest_vc_str}I need the power to escape death, to rule over this world as something more. Can you teach me the ways of your power?");
                             break;
                         }
                     default:
-                        text = "You shouldn't see this.";
+                        text = new TextObject("You shouldn't see this.");
                         break;
                 }
                 MBTextManager.SetTextVariable("TEST_QUESTION", text);
@@ -265,23 +473,23 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
 
         private bool filltextfortestprompt()
         {
-            string text = "";
+            TextObject text;
             var culture = Hero.OneToOneConversationHero.Culture.StringId;
             switch (culture)
             {
-                case "empire":
+                case TORConstants.Cultures.EMPIRE:
                     {
-                        text = "Hmm. To understand the Winds of magic you must have the aethyric senses. Let me perform an experiment on you to determine your potential...";
+                        text = new TextObject("{=tor_spelltrainer_magictest_begin_empire_str}Hmm. To understand the Winds of magic you must have the aethyric senses. Let me perform an experiment on you to determine your potential...");
                         break;
                     }
-                case "khuzait":
-                case "mousillon":
+                case TORConstants.Cultures.SYLVANIA:
+                case TORConstants.Cultures.MOUSILLON:
                     {
-                        text = "I can sense the you might have some grasp on the Winds of magic. Let me subject you to an examination to see your potential...";
+                        text = new TextObject("{=tor_spelltrainer_magictest_begin_vc_str}I can sense the you might have some grasp on the Winds of magic. Let me subject you to an examination to see your potential...");
                         break;
                     }
                 default:
-                    text = "You shouldn't see this.";
+                    text = new TextObject("You shouldn't see this.");
                     break;
             }
             MBTextManager.SetTextVariable("TEST_PROMPT", text);
@@ -297,10 +505,10 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
 
         private bool testresultcondition()
         {
-            var result = "Error.";
-            if (_testResult == "success")
+            var result = new TextObject("Error.");
+            if (_testResult == "success")       //why is this not a simple boolean?
             {
-                result = "Hmm...interesting. It would seem you do have an aptitude, perhaps even potential.";
+                result = new TextObject("{=tor_spelltrainer_magictest_result_success_str}Hmm...interesting. It would seem you do have an aptitude, perhaps even potential.");
                 Hero.MainHero.AddAttribute("AbilityUser");
                 Hero.MainHero.AddAttribute("SpellCaster");
                 Hero.MainHero.AddKnownLore("MinorMagic");
@@ -310,7 +518,7 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
             }
             else if (_testResult == "failure")
             {
-                result = "Pah, it is beyond you. Begone before you waste more of my time.";
+                result = new TextObject("{=tor_spelltrainer_magictest_result_failure_str}Pah, it is beyond you. Begone before you waste more of my time.");
             }
             MBTextManager.SetTextVariable("TEST_RESULT", result);
             return true;
@@ -347,26 +555,26 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
             else if (Hero.MainHero.IsVampire() && possibleLores.Count > 0 && info.SpellCastingLevel == SpellCastingLevel.Master) flag = true;
             if (flag)
             {
-                string text = "";
+                TextObject text = new TextObject ();
                 var culture = Hero.OneToOneConversationHero.Culture.StringId;
                 switch (culture)
                 {
                     case "empire":
                         {
-                            text = "I am ready to join the colleges and become a true wizard of the Empire.";
+                            text = new TextObject("{=tor_spelltrainer_magictest_empire_player_specialize_lore_str}I am ready to join the colleges and become a true wizard of the Empire.");
                             break;
                         }
-                    case "khuzait":
+                    case TORConstants.Cultures.SYLVANIA:
                         {
-                            text = "My Lord, I beseech you to teach me your dark magic. I have learned all that I can on my own and would be a most loyal apprentice to you.";
+                            text = new TextObject("{=tor_spelltrainer_magictest_vc_player_specialize_lore_str}My Lord, I beseech you to teach me your dark magic. I have learned all that I can on my own and would be a most loyal apprentice to you.");
                             if (Hero.MainHero.IsVampire())
                             {
-                                text = "I can feel my dark power continuing to grow, teach me more lest I find myself a new 'tutor'. Hurry on to find your Grimoire, lest I grow thirsty in your absence...";
+                                text = new TextObject("{=tor_spelltrainer_magictest_vc_vampire_player_specialize_lore_str}I can feel my dark power continuing to grow, teach me more lest I find myself a new 'tutor'. Hurry on to find your Grimoire, lest I grow thirsty in your absence...");
                             }
                             break;
                         }
                     default:
-                        text = "You shouldn't see this.";
+                        text = new TextObject("You shouldn't see this.");
                         break;
                 }
                 MBTextManager.SetTextVariable("SPECALIZE_QUESTION", text);
@@ -382,13 +590,13 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
             {
                 case "empire":
                     {
-                        text = "You have proven yourself and have a strong aptitude for the wind of magic, which college will you be joining? You can only dedicate yourself to one, choose wisely.";
+                        text = "{=tor_spelltrainer_magictest_empire_specialize_lore_str}You have proven yourself and have a strong aptitude for the wind of magic, which college will you be joining? You can only dedicate yourself to one, choose wisely.";
                         break;
                     }
-                case "khuzait":
+                case TORConstants.Cultures.SYLVANIA:
                     {
-                        text = "You have potential Dark One, serve me and I will teach you all that I know in time. Come let me consult my grimoire.";
-                        if (Hero.MainHero.IsVampire()) text = "Yes sire! Right away my good and merciful lord.";
+                        text = "{=tor_spelltrainer_magictest_vc_specialize_lore_str}You have potential Dark One, serve me and I will teach you all that I know in time. Come let me consult my grimoire.";
+                        if (Hero.MainHero.IsVampire()) text = "{=tor_spelltrainer_magictest_vc_vampire_specialize_lore_str}Yes sire! Right away my good and merciful lord.";
                         break;
                     }
                 default:
@@ -403,11 +611,18 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
         {
             List<InquiryElement> list = new List<InquiryElement>();
             var lores = LoreObject.GetAll();
+
+            var model = Campaign.Current.Models.GetAbilityModel();
             foreach (var item in lores)
             {
-                if (item.ID != "MinorMagic" && !item.DisabledForCultures.Contains(CharacterObject.OneToOneConversationCharacter.Culture.StringId) && !Hero.MainHero.GetExtendedInfo().HasKnownLore(item.ID)) list.Add(new InquiryElement(item, item.Name, null));
+                
+                if (item.ID == "MinorMagic"  || Hero.MainHero.GetExtendedInfo().HasKnownLore(item.ID)) continue;
+
+                if(!model.IsValidLoreForCharacter(Hero.MainHero, item)) continue;
+                
+                list.Add(new InquiryElement(item, item.Name, null));
             }
-            var inquirydata = new MultiSelectionInquiryData("Choose Lore", "Choose a lore to specialize in.", list, true, 1, 1, "Confirm", "Cancel", OnChooseLore, OnCancelLore);
+            var inquirydata = new MultiSelectionInquiryData(new TextObject("{=tor_magic_lore_prompt_label_str}Choose Lore").ToString(), new TextObject("{=tor_magic_lore_prompt_description_str}Choose a lore to specialize in.").ToString(), list, true, 1, 1, "Confirm", "Cancel", OnChooseLore, OnCancelLore);
             MBInformationManager.ShowMultiSelectionInquiry(inquirydata, true);
         }
 
@@ -418,9 +633,15 @@ namespace TOR_Core.CampaignMechanics.SpellTrainers
             if (choice != null)
             {
                 Hero.MainHero.AddKnownLore(choice.ID);
+                var choiceText = new TextObject (choice.Name);
                 if (info.SpellCastingLevel < SpellCastingLevel.Entry) Hero.MainHero.SetSpellCastingLevel(SpellCastingLevel.Entry);
-                MBInformationManager.AddQuickInformation(new TextObject("Successfully learned lore: " + choice.Name));
+                MBInformationManager.AddQuickInformation(new TextObject("{=tor_magic_lore_prompt_notification_str}Successfully learned lore: " + choiceText));
                 TORQuestHelper.GetCurrentActiveIfExists<SpecializeLoreQuest>()?.CompleteQuestWithSuccess();
+
+                if (Hero.MainHero.IsVampire())
+                { 
+                    Hero.MainHero.AddCustomResource("DarkEnergy",-2000);
+                }
             }
             InformationManager.HideInquiry();
         }

@@ -1,15 +1,20 @@
-﻿using Helpers;
+using System.Linq;
+using Helpers;
+using SandBox;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
+using TaleWorlds.CampaignSystem.ComponentInterfaces;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Party.PartyComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.LinQuick;
 using TaleWorlds.Localization;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
 using TOR_Core.Extensions;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Models
 {
@@ -21,14 +26,17 @@ namespace TOR_Core.Models
             if (mobileParty == MobileParty.MainParty)
                 AddCareerPassivesForPartySpeed(mobileParty, ref result);
 
-            if (mobileParty != null && mobileParty != MobileParty.MainParty && mobileParty.IsLordParty && mobileParty.LeaderHero != null && mobileParty.LeaderHero.IsVampire())
+            if (mobileParty != null && mobileParty != MobileParty.MainParty && mobileParty.IsLordParty && mobileParty.LeaderHero != null)
             {
-
-                result.AddFactor(0.5f, new TextObject("Vampire bonus"));
-                if (Campaign.Current.IsNight)
+                if (mobileParty.LeaderHero.IsVampire())
                 {
-                    result.Add(0.25f, new TextObject("Vampire nighttime bonus"));
+                    result.AddFactor(0.5f, new TextObject("Vampire bonus"));
+                    if (Campaign.Current.IsNight)
+                    {
+                        result.Add(0.25f, new TextObject("Vampire nighttime bonus"));
+                    }
                 }
+                
             }
 
             if (mobileParty.Party != null && mobileParty == MobileParty.MainParty)
@@ -49,33 +57,53 @@ namespace TOR_Core.Models
                         result.AddFactor(-0.2f, new TextObject("Suffering from sun light"));
                     }
                 }
+                
+                if (mobileParty.HasBlessing("cult_of_taal"))
+                {
+
+                    if (faceTerrainType == TerrainType.Forest)
+                    {
+                        result.AddFactor(0.1f, GameTexts.FindText("tor_religion_blessing_name", "cult_of_taal"));
+                    }
+                }
 
                 if (MobileParty.MainParty.LeaderHero == Hero.MainHero)
                 {
-                    var choices = Hero.MainHero.GetAllCareerChoices();
-
-                    if (faceTerrainType == TerrainType.Forest && choices.Contains("SurvivalistPassive3"))
+                    if (Hero.MainHero.GetCustomResourceValue("DarkEnergy")==0 && Hero.MainHero.GetCalculatedCustomResourceUpkeep("DarkEnergy") <=-100)
                     {
-                        var choice = TORCareerChoices.GetChoice("SurvivalistPassive3");
-                        if (choice != null)
-                        {
-                            result.AddFactor(choice.GetPassiveValue(), new TextObject(choice.BelongsToGroup.ToString()));
-                        }
-
+                        result.AddFactor(-0.9f,new TextObject("Burden of Dark Energy Costs is too high!") );
                     }
 
+                    var positionEvent = Campaign.Current.Models.MapWeatherModel.GetWeatherEventInPosition(mobileParty.Position2D);
 
+                    if (positionEvent == MapWeatherModel.WeatherEvent.Snowy || positionEvent == MapWeatherModel.WeatherEvent.Blizzard)
+                    {
+                    
+                            CareerChoiceObject choice = null;
+                            if (Hero.MainHero.HasCareerChoice("FrostsBitePassive3"))
+                            {
+                                choice = TORCareerChoices.GetChoice("FrostBitePassive3");
+                            }
+                            else if(Hero.MainHero.HasCareerChoice("PathfinderPassive3"))
+                            { 
+                                choice = TORCareerChoices.GetChoice("PathfinderPassive3");
+                            }
+
+                            if (choice == null) return result;
+                            var snowText = new TextObject("{=vLjgcdgB}Snow");
+                            
+                            var snowEffect = result.GetLines().FirstOrDefaultQ(item => snowText.Value.Contains(item.name));
+                            if (snowEffect.name !=null)
+                            {
+                                result.Add(-snowEffect.number, choice.BelongsToGroup.Name);
+                            }
+                    }
+                   
+                   
                 }
             }
 
-            if (mobileParty.HasBlessing("cult_of_taal"))
-            {
-                TerrainType faceTerrainType = Campaign.Current.MapSceneWrapper.GetFaceTerrainType(mobileParty.CurrentNavigationFace);
-                if (faceTerrainType == TerrainType.Forest)
-                {
-                    result.AddFactor(0.2f, GameTexts.FindText("tor_religion_blessing_name", "cult_of_taal"));
-                }
-            }
+            
 
             return result;
         }
@@ -85,7 +113,7 @@ namespace TOR_Core.Models
             if (party.LeaderHero == null) return;
             if (party.LeaderHero.HasAnyCareer())
             {
-                CareerHelper.ApplyBasicCareerPassives(party.LeaderHero, ref explainedNumber, PassiveEffectType.PartyMovementSpeed);
+                CareerHelper.ApplyBasicCareerPassives(party.LeaderHero, ref explainedNumber, PassiveEffectType.PartyMovementSpeed, false);
             }
         }
     }

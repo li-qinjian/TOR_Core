@@ -15,9 +15,9 @@ namespace TOR_Core.HarmonyPatches
     public static class CustomBattlePatches
     {
         //Fill available characters
-        [HarmonyPostfix]
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(CustomBattleData), "Characters", MethodType.Getter)]
-        public static void Postfix2(ref IEnumerable<BasicCharacterObject> __result)
+        public static bool GetCustomBattleCommanders(ref IEnumerable<BasicCharacterObject> __result)
         {
             var list = new List<BasicCharacterObject>();
             try
@@ -28,15 +28,21 @@ namespace TOR_Core.HarmonyPatches
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_bw_lord"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_lw_lord"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_cw_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_mw_lord"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_necromancer_lord"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_prophetess_lw"));
                 list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_prophetess_bw"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_glade_lord"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_hm_lord"));
             }
             catch (Exception e)
             {
                 TORCommon.Log(e.Message, NLog.LogLevel.Error);
+                return true;
             }
             if (list.Count > 1) __result = list;
+            else return true;
+            return false;
         }
 
         //Fill available cultures
@@ -47,9 +53,10 @@ namespace TOR_Core.HarmonyPatches
             var list = new List<BasicCultureObject>();
             try
             {
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>("empire"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>("khuzait"));
-                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>("vlandia"));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>(TORConstants.Cultures.EMPIRE));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>(TORConstants.Cultures.SYLVANIA));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>(TORConstants.Cultures.BRETONNIA));
+                list.Add(Game.Current.ObjectManager.GetObject<BasicCultureObject>(TORConstants.Cultures.ASRAI));
             }
             catch (Exception e)
             {
@@ -62,26 +69,19 @@ namespace TOR_Core.HarmonyPatches
         [HarmonyPatch(typeof(CustomBattleHelper), "GetDefaultTroopOfFormationForFaction")]
         public static void Postfix(ref BasicCharacterObject __result, BasicCultureObject culture)
         {
-            switch (culture.GetCultureCode())
+            __result = culture.GetCultureCode() switch
             {
-                case CultureCode.Empire:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_empire_recruit");
-                    break;
-                case CultureCode.Khuzait:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_vc_skeleton_recruit");
-                    break;
-                case CultureCode.Vlandia:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_br_peasant_levy");
-                    break;
-                default:
-                    __result = Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_empire_recruit");
-                    break;
-            }
+                CultureCode.Empire => Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_empire_recruit"),
+                CultureCode.Khuzait => Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_vc_skeleton_recruit"),
+                CultureCode.Vlandia => Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_br_peasant_levy"),
+                CultureCode.Battania => Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_we_eternal_guard"),
+                _ => Game.Current.ObjectManager.GetObject<BasicCharacterObject>("tor_empire_recruit"),
+            };
         }
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(ArmyCompositionItemVM), "IsValidUnitItem")]
-        public static bool Prefix(ref ArmyCompositionItemVM __instance, BasicCharacterObject o, ref bool __result, BasicCultureObject ____culture, ArmyCompositionItemVM.CompositionType ____type)
+        public static bool Prefix(BasicCharacterObject o, ref bool __result, BasicCultureObject ____culture, ArmyCompositionItemVM.CompositionType ____type)
         {
             if (o != null && o.StringId.StartsWith("tor_") && o.Culture.StringId == ____culture.StringId && o.DefaultFormationClass == GetFormationFor(____type))
             {
@@ -93,19 +93,14 @@ namespace TOR_Core.HarmonyPatches
 
         private static FormationClass GetFormationFor(ArmyCompositionItemVM.CompositionType type)
         {
-            switch (type)
+            return type switch
             {
-                case ArmyCompositionItemVM.CompositionType.MeleeInfantry:
-                    return FormationClass.Infantry;
-                case ArmyCompositionItemVM.CompositionType.RangedInfantry:
-                    return FormationClass.Ranged;
-                case ArmyCompositionItemVM.CompositionType.MeleeCavalry:
-                    return FormationClass.Cavalry;
-                case ArmyCompositionItemVM.CompositionType.RangedCavalry:
-                    return FormationClass.HorseArcher;
-                default:
-                    return FormationClass.Infantry;
-            }
+                ArmyCompositionItemVM.CompositionType.MeleeInfantry => FormationClass.Infantry,
+                ArmyCompositionItemVM.CompositionType.RangedInfantry => FormationClass.Ranged,
+                ArmyCompositionItemVM.CompositionType.MeleeCavalry => FormationClass.Cavalry,
+                ArmyCompositionItemVM.CompositionType.RangedCavalry => FormationClass.HorseArcher,
+                _ => FormationClass.Infantry,
+            };
         }
     }
 }

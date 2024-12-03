@@ -1,4 +1,4 @@
-﻿using Helpers;
+using Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,52 +12,107 @@ using TOR_Core.AbilitySystem.Spells;
 using TOR_Core.CampaignMechanics.Religion;
 using TOR_Core.CharacterDevelopment;
 using TOR_Core.CharacterDevelopment.CareerSystem;
+using TOR_Core.CampaignMechanics.CustomResources;
+using TOR_Core.Models;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Extensions.ExtendedInfoSystem
 {
-    public class HeroExtendedInfo
+    public class HeroExtendedInfo(CharacterObject character)
     {
-        [SaveableField(0)] public List<string> AcquiredAbilities = new List<string>();
-        [SaveableField(1)] public List<string> AcquiredAttributes = new List<string>();
-        [SaveableField(2)] public float CurrentWindsOfMagic = 0;
-        [SaveableField(3)] public Dictionary<string, int> ReligionDevotionLevels = new Dictionary<string, int>();
+        [SaveableField(0)] public List<string> AcquiredAbilities = [];
+        [SaveableField(1)] public List<string> AcquiredAttributes = [];
+        [SaveableField(2)] public Dictionary<string, float> CustomResources = [];
+        [SaveableField(3)] public Dictionary<string, int> ReligionDevotionLevels = [];
         [SaveableField(4)] public SpellCastingLevel SpellCastingLevel = SpellCastingLevel.None;
-        [SaveableField(5)] private CharacterObject _baseCharacter;
-        [SaveableField(6)] private List<string> _knownLores = new List<string>();
-        [SaveableField(7)] private List<string> _selectedAbilities = new List<string>();
+        [SaveableField(5)] private CharacterObject _baseCharacter = character;
+        [SaveableField(6)] private List<string> _knownLores = [];
+        [SaveableField(7)] private List<string> _selectedAbilities = [];
         [SaveableField(8)] public string CareerID = string.Empty;
-        [SaveableField(9)] public List<string> CareerChoices = new List<string>();
+        [SaveableField(9)] public List<string> CareerChoices = [];
 
         public CharacterObject BaseCharacter => _baseCharacter;
+
+        public void AddCustomResource(string id, float amount)
+        {
+            if (!CustomResourceManager.DoesResourceObjectExist(id)) return;
+            if (CustomResources.ContainsKey(id))
+            {
+                CustomResources[id] = Math.Max(0, CustomResources[id] + amount);
+                if(id == "WindsOfMagic")
+                {
+                    CustomResources[id] = Math.Min(MaxWindsOfMagic, CustomResources[id]);
+                }
+                else CustomResources[id] = Math.Min(TORConfig.MaximumCustomResourceValue, CustomResources[id]);
+            }
+            else
+            {
+                CustomResources.Add(id, amount);
+                if (id == "WindsOfMagic")
+                {
+                    CustomResources[id] = Math.Min(MaxWindsOfMagic, CustomResources[id]);
+                }
+                else CustomResources[id] = Math.Min(TORConfig.MaximumCustomResourceValue, CustomResources[id]);
+            }
+        }
+
+        public void SetCustomResourceValue(string id, float amount)
+        {
+            if (!CustomResourceManager.DoesResourceObjectExist(id)) return;
+            if (CustomResources.ContainsKey(id))
+            {
+                CustomResources[id] = Math.Max(0, amount);
+                if (id == "WindsOfMagic")
+                {
+                    CustomResources[id] = Math.Min(MaxWindsOfMagic, CustomResources[id]);
+                }
+                else CustomResources[id] = Math.Min(TORConfig.MaximumCustomResourceValue, CustomResources[id]);
+            }
+            else
+            {
+                CustomResources.Add(id, amount);
+                if (id == "WindsOfMagic")
+                {
+                    CustomResources[id] = Math.Min(MaxWindsOfMagic, CustomResources[id]);
+                }
+                else CustomResources[id] = Math.Min(TORConfig.MaximumCustomResourceValue, CustomResources[id]);
+            }
+        }
+
+        public float GetCustomResourceValue(string id)
+        {
+            if (CustomResources.ContainsKey(id))
+            {
+                return CustomResources[id];
+            }
+            else return 0;
+        }
+
+        public Dictionary<CustomResource, float> GetCustomResources()
+        {
+            return CustomResources.ToDictionary(x => CustomResourceManager.GetResourceObject(x.Key), x => x.Value);
+        }
 
         public float MaxWindsOfMagic
         {
             get
             {
-                if (!(Game.Current.GameType is Campaign)) return 50;
-                else
-                {
-                    if (BaseCharacter.HeroObject != null && BaseCharacter.HeroObject != Hero.MainHero && BaseCharacter.HeroObject.Occupation == Occupation.Lord && BaseCharacter.HeroObject.IsSpellCaster()) return 100f;
-                    ExplainedNumber explainedNumber = new ExplainedNumber(10f, false, null);
-                    SkillHelper.AddSkillBonusForCharacter(TORSkills.SpellCraft, TORSkillEffects.MaxWinds, BaseCharacter, ref explainedNumber);
-                    if(Hero.MainHero.HasAnyCareer() && BaseCharacter.HeroObject == Hero.MainHero)
-                        CareerHelper.ApplyBasicCareerPassives(Hero.MainHero,ref  explainedNumber, PassiveEffectType.WindsOfMagic,false);
-                    return explainedNumber.ResultNumber;
-                }
+                if (Game.Current.GameType is not Campaign) return 50;
+                TORAbilityModel  model = Campaign.Current.Models.GetAbilityModel();
+                return model.GetMaximumWindsOfMagic(this.BaseCharacter);
             }
         }
+
         public float WindsOfMagicRechargeRate
         {
             get
             {
-                if (!(Game.Current.GameType is Campaign)) return 0.2f;
+                if (Game.Current.GameType is not Campaign) return 0.2f;
                 else
                 {
-                    if (BaseCharacter.HeroObject != null && BaseCharacter.HeroObject != Hero.MainHero && BaseCharacter.HeroObject.Occupation == Occupation.Lord && BaseCharacter.HeroObject.IsSpellCaster()) return 2f;
-                    ExplainedNumber explainedNumber = new ExplainedNumber(1f, false, null);
-                    SkillHelper.AddSkillBonusForCharacter(TORSkills.SpellCraft, TORSkillEffects.WindsRechargeRate, BaseCharacter, ref explainedNumber);
-                    
-                    return explainedNumber.ResultNumber;
+                    if (Game.Current.GameType is not Campaign) return 50;
+                    TORAbilityModel  model = Campaign.Current.Models.GetAbilityModel();
+                    return model.GetWindsRechargeRate(this.BaseCharacter);
                 }
             }
         }
@@ -66,7 +121,7 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
         {
             get
             {
-                List<LoreObject> list = new List<LoreObject>();
+                List<LoreObject> list = [];
                 EnsureKnownLores();
                 foreach (var item in _knownLores)
                 {
@@ -76,7 +131,7 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
             }
         }
 
-        public List<string> AllAbilites
+        public List<string> AllAbilities
         {
             get
             {
@@ -118,25 +173,8 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
             get
             {
                 if (_selectedAbilities.Count > 0) return _selectedAbilities;
-                else return AllAbilites;
+                else return AllAbilities;
             }
-        }
-
-        public List<string> GetAllPrayers()
-        {
-            var list = new List<string>();
-            foreach (var ability in AllAbilites)
-            {
-                if(list.Contains(ability)) continue;    //shouldn't happen, yet better save then sorry
-                
-                var t  = AbilityFactory.GetTemplate(ability);
-                if (t!=null&&t.AbilityType == AbilityType.Prayer)
-                {
-                    list.Add(ability);
-                }
-            }
-
-            return list;
         }
 
         public ReligionObject DominantReligion
@@ -162,17 +200,12 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
         public void ToggleSelectedAbility(string abilityId)
         {
             if (IsAbilitySelected(abilityId)) RemoveSelectedAbility(abilityId);
-            else if(AllAbilites.Contains(abilityId)) AddSelectedAbility(abilityId);
+            else if(AllAbilities.Contains(abilityId)) AddSelectedAbility(abilityId);
         }
 
         public bool IsAbilitySelected(string abilityId)
         {
             return _selectedAbilities.Contains(abilityId);
-        }
-
-        public HeroExtendedInfo(CharacterObject character)
-        {
-            _baseCharacter = character;
         }
 
         public void AddKnownLore(string loreId)
@@ -189,7 +222,7 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
         }
         public void RemoveAllPrayers()
         {
-            var prayers = AllAbilites.Where(x => AbilityFactory.GetTemplate(x).AbilityType == AbilityType.Prayer);
+            var prayers = AllAbilities.Where(x => AbilityFactory.GetTemplate(x).AbilityType == AbilityType.Prayer);
 
 
             foreach (var prayer in prayers)
@@ -202,7 +235,7 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
         {
             if (LoreObject.GetLore(loreId) != null && _knownLores.Contains(loreId))
             {
-                foreach (var abilityID in AllAbilites)
+                foreach (var abilityID in AllAbilities)
                 {
                     var ability = AbilityFactory.GetTemplate(abilityID);
                     if (ability.BelongsToLoreID!=loreId)continue;
@@ -231,11 +264,16 @@ namespace TOR_Core.Extensions.ExtendedInfoSystem
         {
             return _knownLores.Contains(loreId);
         }
+        
+        public int GetKnownLoreCount()
+        {
+            return _knownLores.Count;
+        }
 
         private void EnsureKnownLores()
         {
-            List<AbilityTemplate> list = new List<AbilityTemplate>();
-            foreach(var abilityId in AllAbilites)
+            List<AbilityTemplate> list = [];
+            foreach(var abilityId in AllAbilities)
             {
                 var ability = AbilityFactory.GetTemplate(abilityId);
                 if (ability != null && ability.IsSpell) list.Add(ability);

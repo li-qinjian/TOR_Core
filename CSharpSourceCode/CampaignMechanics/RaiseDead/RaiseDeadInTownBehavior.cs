@@ -27,7 +27,6 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
         public override void RegisterEvents()
         {
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, Initialize);
-            CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, SettlementEntered);
             CampaignEvents.HourlyTickPartyEvent.AddNonSerializedListener(this, HourlyPartyTick);
             CampaignEvents.OnPlayerBattleEndEvent.AddNonSerializedListener(this, OnBattleEnded);
         }
@@ -49,7 +48,10 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
                 _isMissionStarted = false;
                 if (_currentSettlement != null)
                 {
-                    TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    if (Hero.MainHero.IsPrisoner && _currentWatchParty.PrisonRoster.Contains(CharacterObject.PlayerCharacter))
+                    {
+                        TransferPrisonerAction.Apply(CharacterObject.PlayerCharacter, _currentWatchParty.Party, _currentSettlement.Party);
+                    }
                     DestroyPartyAction.ApplyForDisbanding(_currentWatchParty, _currentSettlement);
                 }
                 _currentWatchParty = null;
@@ -75,22 +77,9 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
         {
             foreach (var hero in Hero.AllAliveHeroes)
             {
-                if (hero.Culture.StringId == "khuzait" && !hero.IsNecromancer() && (hero.IsLord || hero.IsWanderer) && hero != Hero.MainHero)
+                if (hero.Culture.StringId == TORConstants.Cultures.SYLVANIA && !hero.IsNecromancer() && (hero.IsLord || hero.IsWanderer) && hero != Hero.MainHero)
                 {
                     hero.AddAttribute("Necromancer");
-                }
-            }
-        }
-
-        private void SettlementEntered(MobileParty party, Settlement settlement, Hero hero)
-        {
-            if (party == null || settlement == null || hero == null || !hero.IsNecromancer() || hero.CharacterObject.IsPlayerCharacter || settlement.IsHideout) return;
-            if (party.MemberRoster.TotalManCount < party.Party.PartySizeLimit)
-            {
-                if (_skeleton != null)
-                {
-                    var number = settlement.IsVillage ? 5 : 20;
-                    party.MemberRoster.AddToCounts(_skeleton, Math.Min(number, party.Party.PartySizeLimit - party.MemberRoster.TotalManCount));
                 }
             }
         }
@@ -98,7 +87,7 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
         private void Initialize(CampaignGameStarter obj)
         {
             obj.AddGameMenuOption("town", "graveyard", "Go to the graveyard",
-                graveyardaccesscondition,
+                 graveyardaccesscondition,
                 delegate (MenuCallbackArgs args)
                 {
                     GameMenu.SwitchToMenu("graveyard");
@@ -109,13 +98,13 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
                 delegate (MenuCallbackArgs args)
                 {
                     args.MenuTitle = new TextObject("Graveyard");
-                    var intro = new TextObject("You have arrived at {SETTLEMENT_NAME}'s Graveyard. Graves, tombstones and family crypts litter the peaceful hillside.");
+                    var intro = new TextObject("{=tor_settlement_graveyard_introduction}You have arrived at {SETTLEMENT_NAME}'s Graveyard. Graves, tombstones and family crypts litter the peaceful hillside.");
                     MBTextManager.SetTextVariable("SETTLEMENT_NAME", Settlement.CurrentSettlement.Name);
                     MBTextManager.SetTextVariable("GRAVEYARD_INTRODUCTION", intro);
                 },
                 GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.None, null);
 
-            obj.AddGameMenuOption("graveyard", "raise_dead_attempt", "Raise dead from the corpses in the ground (wait 8 hours).",
+            obj.AddGameMenuOption("graveyard", "raise_dead_attempt", new TextObject ("{=tor_settlement_graveyard_raise_dead_action}Raise dead from the corpses in the ground (wait 8 hours).").ToString(),
                 raisedeadattemptcondition,
                 delegate (MenuCallbackArgs args)
                 {
@@ -134,7 +123,7 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
                     GameMenu.SwitchToMenu("town");
                 }, true, -1, false);
 
-            obj.AddWaitGameMenu("raising_dead", "The commonfolk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!",
+            obj.AddWaitGameMenu("raising_dead", "{=tor_settlement_graveyard_raise_dead_begin_text}The common folk's graves are ripe for the taking! You spend time to raise corpses from the ground. Morr is going to be furious tonight!",
                 delegate (MenuCallbackArgs args)
                 {
                     _startWaitTime = CampaignTime.Now;
@@ -162,13 +151,13 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
                 delegate (MenuCallbackArgs args)
                 {
                     args.MenuTitle = new TextObject("Caught in the act");
-                    var text = new TextObject("The local nightwatch is onto you. Face the consequences of your vile actions.");
+                    var text = new TextObject("{=tor_settlement_graveyard_raise_dead_interrupt}The local nightwatch is onto you. Face the consequences of your vile actions.");
                     MBTextManager.SetTextVariable("GRAVEYARD_INTERRUPT", text);
                     CalculateAndApplyCrimeRatingChange();
                 },
                 GameOverlays.MenuOverlayType.SettlementWithBoth, GameMenu.MenuFlags.None, null);
 
-            obj.AddGameMenuOption("graveyard_interrupt", "interrupt_battle", "Defend yourself",
+            obj.AddGameMenuOption("graveyard_interrupt", "interrupt_battle", "{=tor_settlement_graveyard_raise_dead_interrupt_action}Defend yourself",
                 delegate (MenuCallbackArgs args)
                 {
                     if (!Hero.MainHero.IsWounded)
@@ -203,7 +192,7 @@ namespace TOR_Core.CampaignMechanics.RaiseDead
             bool shouldBeDisabled;
             TextObject disabledText;
             bool canPlayerDo = Campaign.Current.Models.SettlementAccessModel.CanMainHeroAccessLocation(Settlement.CurrentSettlement, "center", out shouldBeDisabled, out disabledText);
-            disabledText = new TextObject("The Graveyard's massive iron gates are closed shut.");
+            disabledText = new TextObject("{=tor_settlement_graveyard_closed}The Graveyard's massive iron gates are closed shut.");
             args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
             if (canPlayerDo)
             {

@@ -1,32 +1,35 @@
 ﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
+using TOR_Core.Utilities;
 
 namespace TOR_Core.Models
 {
     public class TORBanditDensityModel : DefaultBanditDensityModel
     {
+        // 21 days per season, 4 seasons
+        public const int DAYS_IN_YEAR = 84;
         public override int NumberOfMaximumLooterParties
         {
             get
             {
-                if (Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 10)
+                if (Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < TORConfig.YearsToEndEarlyCampaign * DAYS_IN_YEAR)
                 {
-                    return 200;
+                    return TORConfig.NumberOfMaximumLooterPartiesEarly;
                 }
-                else if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < 20)
+                else if(Campaign.Current.CampaignStartTime.ElapsedDaysUntilNow < TORConfig.YearsToEndMidCampaign * DAYS_IN_YEAR)
                 {
-                    return 400;
+                    return TORConfig.NumberOfMaximumLooterParties;
                 }
                 else
                 {
-                    return 600;
+                    return TORConfig.NumberOfMaximumLooterPartiesLate;
                 }
             }
         }
 
-        public override int NumberOfMaximumBanditPartiesAroundEachHideout => 24;
-        public override int NumberOfMaximumBanditPartiesInEachHideout => 3;
-        public override int NumberOfInitialHideoutsAtEachBanditFaction => 40;
-        public override int NumberOfMaximumHideoutsAtEachBanditFaction => 80;
+        public override int NumberOfMaximumBanditPartiesAroundEachHideout => TORConfig.NumberOfMaximumBanditPartiesAroundEachHideout;
+        public override int NumberOfMaximumBanditPartiesInEachHideout => TORConfig.NumberOfMaximumBanditPartiesInEachHideout;
+        public override int NumberOfInitialHideoutsAtEachBanditFaction => TORConfig.NumberOfInitialHideoutsAtEachBanditFaction;
+        public override int NumberOfMaximumHideoutsAtEachBanditFaction => TORConfig.NumberOfMaximumHideoutsAtEachBanditFaction;
     }
 }

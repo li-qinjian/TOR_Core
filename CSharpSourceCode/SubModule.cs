@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using HarmonyLib;
@@ -7,6 +8,7 @@ using NLog.Config;
 using NLog.Targets;
 using SandBox.Missions.MissionLogics;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Engine.GauntletUI;
@@ -15,13 +17,13 @@ using TaleWorlds.MountAndBlade.CustomBattle;
 using TaleWorlds.MountAndBlade.GauntletUI.Mission;
 using TaleWorlds.ObjectSystem;
 using TOR_Core.AbilitySystem;
-using TOR_Core.AbilitySystem.SpellBook;
 using TOR_Core.Battle.CrosshairMissionBehavior;
 using TOR_Core.BattleMechanics;
-using TOR_Core.BattleMechanics.AI.TeamBehavior;
+using TOR_Core.BattleMechanics.AI.TeamAI;
 using TOR_Core.BattleMechanics.Atmosphere;
 using TOR_Core.BattleMechanics.Banners;
 using TOR_Core.BattleMechanics.Dismemberment;
+using TOR_Core.BattleMechanics.DualWield;
 using TOR_Core.BattleMechanics.Firearms;
 using TOR_Core.BattleMechanics.Morale;
 using TOR_Core.BattleMechanics.StatusEffect;
@@ -30,15 +32,19 @@ using TOR_Core.CampaignMechanics;
 using TOR_Core.CampaignMechanics.AICompanions;
 using TOR_Core.CampaignMechanics.Assimilation;
 using TOR_Core.CampaignMechanics.BountyMaster;
+using TOR_Core.CampaignMechanics.Careers;
 using TOR_Core.CampaignMechanics.Chaos;
 using TOR_Core.CampaignMechanics.CustomDialogs;
 using TOR_Core.CampaignMechanics.CustomEncounterDialogs;
 using TOR_Core.CampaignMechanics.CustomEvents;
+using TOR_Core.CampaignMechanics.CustomResources;
 using TOR_Core.CampaignMechanics.Diplomacy;
+using TOR_Core.CampaignMechanics.Menagery;
 using TOR_Core.CampaignMechanics.RaidingParties;
 using TOR_Core.CampaignMechanics.RaiseDead;
 using TOR_Core.CampaignMechanics.RegimentsOfRenown;
 using TOR_Core.CampaignMechanics.Religion;
+using TOR_Core.CampaignMechanics.ServeAsAHireling;
 using TOR_Core.CampaignMechanics.SkillBooks;
 using TOR_Core.CampaignMechanics.SpellTrainers;
 using TOR_Core.CampaignMechanics.TORCustomSettlement;
@@ -84,7 +90,7 @@ namespace TOR_Core
             ConfigureLogging();
             UIConfig.DoNotUseGeneratedPrefabs = true;
 
-            TORAudio.Initialize();
+            TORConfig.ReadConfig();
             TORKeyInputManager.Initialize();
             StatusEffectManager.LoadStatusEffects();
             TriggeredEffectManager.LoadTemplates();
@@ -93,6 +99,8 @@ namespace TOR_Core
             CustomBannerManager.LoadXML();
             RORManager.LoadTemplates();
             InkStoryManager.Initialize();
+            AnimationTriggerManager.LoadAnimationTriggers();
+            CustomResourceManager.Initialize();
         }
 
         private Assembly ResolveDllPath(object sender, ResolveEventArgs args)
@@ -116,6 +124,7 @@ namespace TOR_Core
                 starter.AddBehavior(new TORSkillBookCampaignBehavior());
                 starter.AddBehavior(new TORCustomSettlementCampaignBehavior());
                 starter.AddBehavior(new RaidingPartyCampaignBehavior());
+                //starter.AddBehavior(new InvasionCampaignBehavior());
                 starter.AddBehavior(new CustomDialogCampaignBehavior());
                 starter.AddBehavior(new PostBattleCampaignBehavior());
                 starter.AddBehavior(new RaiseDeadInTownBehavior());
@@ -125,14 +134,14 @@ namespace TOR_Core
                 starter.AddBehavior(new TORWanderersCampaignBehavior());
                 starter.AddBehavior(new SpellTrainerInTownBehavior());
                 starter.AddBehavior(new MasterEngineerTownBehaviour());
+                starter.AddBehavior(new PrestigeNobleTownBehavior());
+                starter.AddBehavior(new EonirFavorEnvoyTownBehavior());
                 starter.AddBehavior(new TORPerkHandlerCampaignBehavior());
                 starter.AddBehavior(new TORAICompanionCampaignBehavior());
-                starter.AddBehavior(new BloodKissCampaignBehavior());
+                starter.AddBehavior(new CareerSwitchCampaignBehavior());
                 starter.AddBehavior(new TORPartyUpgraderCampaignBehavior());
                 starter.AddBehavior(new InkStoryCampaignBehavior());
                 starter.AddBehavior(new ReligionCampaignBehavior());
-                starter.AddBehavior(new TORKingdomDecisionProposalBehavior());
-
                 starter.AddBehavior(new BountyMasterCampaignBehavior());
                 starter.AddBehavior(new HuntCultistsQuestCampaignBehavior());
                 starter.AddBehavior(new TORCareerPerkCampaignBehavior());
@@ -141,6 +150,10 @@ namespace TOR_Core
                 starter.AddBehavior(new TORSpecialSettlementBehavior());
                 starter.AddBehavior(new CustomEventsCampaignBehavior());
                 starter.AddBehavior(new PlaguedVillageQuestCampaignBehavior());
+                starter.AddBehavior(new CareerDialogOptionsCampaignBehavior());
+                starter.AddBehavior(new TORFactionDiscontinuationCampaignBehavior());
+                starter.AddBehavior(new TORKingdomDecisionsCampaignBehavior());
+                starter.AddBehavior(new ServeAsAHirelingCampaignBehavior());
                 TORGameStarterHelper.AddVerifiedIssueBehaviors(starter);
 
             }
@@ -154,6 +167,8 @@ namespace TOR_Core
         {
             if (Game.Current.GameType is Campaign && gameStarterObject is CampaignGameStarter)
             {
+                gameStarterObject.Models.RemoveAllOfType(typeof(DefaultMapDistanceModel));
+                gameStarterObject.Models.RemoveAllOfType(typeof(DefaultAlleyModel));
                 gameStarterObject.AddModel(new TORBattleMoraleModel());
                 gameStarterObject.AddModel(new TOREncounterGameMenuModel());
                 gameStarterObject.AddModel(new TORAgentStatCalculateModel());
@@ -164,7 +179,7 @@ namespace TOR_Core
                 gameStarterObject.AddModel(new TORClanTierModel());
                 gameStarterObject.AddModel(new TORCombatXpModel());
                 gameStarterObject.AddModel(new TORDamageParticleModel());
-                gameStarterObject.AddModel(new TORMapWeatherModel());
+                //gameStarterObject.AddModel(new TORMapWeatherModel());
                 gameStarterObject.AddModel(new TORMarriageModel());
                 gameStarterObject.AddModel(new TORMobilePartyFoodConsumptionModel());
                 gameStarterObject.AddModel(new TORPartyHealingModel());
@@ -185,10 +200,12 @@ namespace TOR_Core
                 gameStarterObject.AddModel(new TORPersuasionModel());
                 gameStarterObject.AddModel(new TORVoiceOverModel());
                 gameStarterObject.AddModel(new TORFaithModel());
+                gameStarterObject.AddModel(new TORCustomResourceModel());
                 gameStarterObject.AddModel(new TORClanPoliticsModel());
                 gameStarterObject.AddModel(new TORMapVisibilityModel());
                 gameStarterObject.AddModel(new TORTournamentModel());
                 gameStarterObject.AddModel(new TORDiplomacyModel());
+                gameStarterObject.AddModel(new TORAlleyModel());
                 gameStarterObject.AddModel(new TORRaidModel());
                 gameStarterObject.AddModel(new TORBattleBannerBearersModel());
                 gameStarterObject.AddModel(new TORKingdomDecisionPermissionModel());
@@ -197,6 +214,9 @@ namespace TOR_Core
                 gameStarterObject.AddModel(new TORTroopSupplierModel());
                 gameStarterObject.AddModel(new TORSettlementFoodModel());
                 gameStarterObject.AddModel(new TOREquipmentSelectionModel());
+                gameStarterObject.AddModel(new TOREncounterModel());
+                gameStarterObject.AddModel(new TORSettlementDistanceModel());
+                gameStarterObject.AddModel(new TORVolunteerModel());
 
                 CampaignOptions.IsLifeDeathCycleDisabled = true;
             }
@@ -215,7 +235,7 @@ namespace TOR_Core
             if (missionCombatantsLogic == null)
                 return;
             
-            mission.AddMissionLogicAtIndexOf(missionCombatantsLogic, TorMissionCombatantsLogic.CreateFromInstanace(missionCombatantsLogic));
+            mission.AddMissionLogicAtIndexOf(missionCombatantsLogic, TORMissionCombatantsLogic.CreateFromInstance(missionCombatantsLogic));
         }
 
         public override void OnMissionBehaviorInitialize(Mission mission)
@@ -231,10 +251,13 @@ namespace TOR_Core
             mission.AddMissionBehavior(new WeaponEffectMissionLogic());
             mission.AddMissionBehavior(new CustomBannerMissionLogic());
             mission.AddMissionBehavior(new DismembermentMissionLogic());
-            mission.AddMissionBehavior(new UndeadMoraleMissionLogic());
+            mission.AddMissionBehavior(new MoraleMissionLogic());
             mission.AddMissionBehavior(new FirearmsMissionLogic());
             mission.AddMissionBehavior(new ForceAtmosphereMissionLogic());
-   
+            mission.AddMissionBehavior(new AnimationTriggerMissionLogic());
+            mission.AddMissionBehavior(new DualWieldMissionLogic());
+            mission.AddMissionBehavior(new BattleShoutsMissionLogic());
+
 
             if (Game.Current.GameType is Campaign)
             {
@@ -244,6 +267,11 @@ namespace TOR_Core
                     mission.RemoveMissionBehavior(mission.GetMissionBehavior<BattleAgentLogic>());
                     mission.AddMissionBehavior(new TORBattleAgentLogic());
                 }
+            }
+
+            if(Debugger.IsAttached)
+            {
+                mission.AddMissionBehavior(new TORAnimationLogger());
             }
         }
 
@@ -260,11 +288,16 @@ namespace TOR_Core
                 game.ObjectManager.RegisterType<CareerChoiceObject>("CareerChoice", "CareerChoices", 104U, true);
                 game.ObjectManager.RegisterType<CareerChoiceGroupObject>("CareerChoiceGroup", "CareerChoiceGroups", 105U, true);
                 game.ObjectManager.RegisterType<ReligionObject>("Religion", "Religions", 106U, true);
+                game.ObjectManager.RegisterType<SlaverCampComponent>("SlaverCamp", "Components", 107U, true);
+                game.ObjectManager.RegisterType<OakOfAgesComponent>("OakOfAges", "Components", 108U, true);
+                game.ObjectManager.RegisterType<WorldRootsComponent>("WorldRoots", "Components", 109U, true);
                 _ = new TORCareers();
                 _ = new TORCareerChoiceGroups();
                 _ = new TORCareerChoices();
                 _ = new TORCampaignEvents();
+                
                 MBObjectManager.Instance.LoadXML("Religions", false);
+                ReligionObject.FillAll();
             }
         }
 

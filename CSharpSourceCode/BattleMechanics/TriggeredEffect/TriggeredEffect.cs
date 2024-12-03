@@ -15,27 +15,27 @@ using System.Linq;
 
 namespace TOR_Core.BattleMechanics.TriggeredEffect
 {
-    public class TriggeredEffect : IDisposable
+    public class TriggeredEffect(TriggeredEffectTemplate template, bool isTemplateMutated = false) : IDisposable
     {
-        private TriggeredEffectTemplate _template;
+        private TriggeredEffectTemplate _template = template;
         private int _soundIndex;
         private SoundEvent _sound;
         private Timer _timer;
-        private object _sync = new object();
-        private bool _isTemplateMutated;
+        private readonly object _sync = new();
+        private readonly bool _isTemplateMutated = isTemplateMutated;
 
-        public TriggeredEffect(TriggeredEffectTemplate template, bool isTemplateMutated = false)
-        {
-            _template = template;
-            _isTemplateMutated = isTemplateMutated;
-        }
-        
+        public float EffectRadius => _template.Radius;
+        public string SummonedTroopId => _template.TroopIdToSummon;
+        public float ImbuedStatusEffectDuration => _template.ImbuedStatusEffectDuration;
+        public List<string> StatusEffects => _template.ImbuedStatusEffects;
         public void Trigger(Vec3 position, Vec3 normal, Agent triggererAgent, AbilityTemplate originAbilityTemplate = null, MBList<Agent> targets = null)
         {
-            if (_template == null) return;
-            _timer = new Timer(2000);
-            _timer.AutoReset = false;
-            _timer.Enabled = false;
+            if (_template == null || !triggererAgent.IsActive()) return;
+            _timer = new Timer(2000)
+            {
+                AutoReset = false,
+                Enabled = false
+            };
             _timer.Elapsed += (s, e) =>
             {
                 lock (_sync)
@@ -51,35 +51,36 @@ namespace TOR_Core.BattleMechanics.TriggeredEffect
 
             float damageMultiplier = 1f;
             float statusEffectDuration = _template.ImbuedStatusEffectDuration;
+            float radius = _template.Radius;
             if(Game.Current.GameType is Campaign && originAbilityTemplate != null)
             {
                 var model = Campaign.Current.Models.GetAbilityModel();
-                var character = triggererAgent.Character as CharacterObject;
-                if(model != null && character != null)
+                if (model != null && triggererAgent.Character is CharacterObject character)
                 {
                     damageMultiplier = model.GetSkillEffectivenessForAbilityDamage(character, originAbilityTemplate);
                     statusEffectDuration = model.CalculateStatusEffectDurationForAbility(character, originAbilityTemplate, statusEffectDuration);
+                    radius = model.CalculateRadiusForAbility(character, originAbilityTemplate, radius);
                 }
             }
             //Determine targets
             if (targets == null && triggererAgent != null)
             {
-                targets = new MBList<Agent>();
+                targets = [];
                 if(_template.TargetType == TargetType.Self)
                 {
                     targets.Add(triggererAgent);
                 }
                 else if (_template.TargetType == TargetType.Enemy)
                 {
-                    targets = Mission.Current.GetNearbyEnemyAgents(position.AsVec2, _template.Radius, triggererAgent.Team, targets);
+                    targets = Mission.Current.GetNearbyEnemyAgents(position.AsVec2, radius, triggererAgent.Team, targets);
                 }
                 else if (_template.TargetType == TargetType.Friendly)
                 {
-                    targets = Mission.Current.GetNearbyAllyAgents(position.AsVec2, _template.Radius, triggererAgent.Team, targets);
+                    targets = Mission.Current.GetNearbyAllyAgents(position.AsVec2, radius, triggererAgent.Team, targets);
                 }
                 else if (_template.TargetType == TargetType.All)
                 {
-                    targets = Mission.Current.GetNearbyAgents(position.AsVec2, _template.Radius, targets);
+                    targets = Mission.Current.GetNearbyAgents(position.AsVec2, radius, targets);
                 }
             }
             //Cause Damage
@@ -94,25 +95,25 @@ namespace TOR_Core.BattleMechanics.TriggeredEffect
             //Apply status effects
             if (_template.AssociatedStatusEffects != null && _template.AssociatedStatusEffects.Count > 0)
             {
-                var triggererCharacter = triggererAgent.Character as CharacterObject;
                 foreach (var effect in _template.AssociatedStatusEffects)
                 {
-                    if (triggererCharacter != null && triggererCharacter.GetPerkValue(TORPerks.SpellCraft.ArcaneLink) && effect.IsBuffEffect)
+                    if (triggererAgent.Character is CharacterObject triggererCharacter && triggererCharacter.GetPerkValue(TORPerks.SpellCraft.ArcaneLink) && effect.IsBuffEffect)
                     {
                         if (!targets.Contains(triggererAgent)) targets.Append(triggererAgent);
                     }
                     TORMissionHelper.ApplyStatusEffectToAgents(targets, effect.StringID, triggererAgent, statusEffectDuration, true, _isTemplateMutated);
                 }
             }
-
             if (_template.DoNotAlignParticleEffectPrefabOnImpact)
             {
-                var groundPos = new Vec3(position.x,position.y,position.z-5f);
-                float distance=0f;
-                Mission.Current.Scene.RayCastForClosestEntityOrTerrain(position,groundPos,out distance,0.01f,BodyFlags.CommonCollisionExcludeFlagsForAgent);
-                if (distance >= 0.0000001f)
+                var groundPos = new Vec3(position.x, position.y, position.z - 5f);
+                using (new TWSharedMutexReadLock(Scene.PhysicsAndRayCastLock))
                 {
-                    position = new Vec3(position.x,position.y,position.z-distance);
+                    Mission.Current.Scene.RayCastForClosestEntityOrTerrainMT(position, groundPos, out float distance, 0.01f, BodyFlags.CommonCollisionExcludeFlagsForAgent);
+                    if (distance >= 0.0000001f)
+                    {
+                        position = new Vec3(position.x, position.y, position.z - distance);
+                    }
                 }
                 normal = Vec3.Forward;
             }
@@ -143,10 +144,7 @@ namespace TOR_Core.BattleMechanics.TriggeredEffect
             {
                 _soundIndex = SoundEvent.GetEventIdFromString(_template.SoundEffectId);
                 _sound = SoundEvent.CreateEvent(_soundIndex, Mission.Current.Scene);
-                if (_sound != null)
-                {
-                    _sound.PlayInPosition(position);
-                }
+                _sound?.PlayInPosition(position);
             }
         }
 
@@ -187,7 +185,7 @@ namespace TOR_Core.BattleMechanics.TriggeredEffect
 
         private void CleanUp()
         {
-            if (_sound != null) _sound.Release();
+            _sound?.Release();
             _sound = null;
             _soundIndex = -1;
             _template = null;

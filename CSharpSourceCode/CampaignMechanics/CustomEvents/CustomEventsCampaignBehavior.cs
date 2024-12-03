@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
+using TaleWorlds.Localization;
 using TOR_Core.Extensions;
 using TOR_Core.Ink;
 using TOR_Core.Utilities;
@@ -29,6 +31,12 @@ namespace TOR_Core.CampaignMechanics.CustomEvents
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionStart);
             CampaignEvents.HourlyTickPartyEvent.AddNonSerializedListener(this, HourlyTick);
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, DailyTick);
+            TORCampaignEvents.Instance.ChaosUprisingStarted += OnChaosUprisingStarted;
+        }
+
+        private void OnChaosUprisingStarted(object sender, ChaosUprisingStartedEventArgs e)
+        {
+            MBInformationManager.AddQuickInformation(new TextObject($"Chaos corruption reaches a critical level in {e.Settlement.Name.ToString()} and rebellion breaks out."));
         }
 
         private void DailyTick()
@@ -48,7 +56,7 @@ namespace TOR_Core.CampaignMechanics.CustomEvents
             _events.Add(new CustomEvent("Minstrel", CustomEventFrequency.Common, 1000,
                 () => StandardMovingCheck() &&
                 !CampaignTime.Now.IsNightTime &&
-                TORCommon.FindNearestSettlement(MobileParty.MainParty, 100f, x => x.IsTown)?.Culture.StringId == "vlandia", () => InkStoryManager.OpenStory("Minstrel")));
+                TORCommon.FindNearestSettlement(MobileParty.MainParty, 100f, x => x.IsTown)?.Culture.StringId == TORConstants.Cultures.BRETONNIA, () => InkStoryManager.OpenStory("Minstrel")));
         }
 
         private bool StandardMovingCheck()
@@ -103,6 +111,11 @@ namespace TOR_Core.CampaignMechanics.CustomEvents
         public override void SyncData(IDataStore dataStore)
         {
             dataStore.SyncData("_triggerTimes", ref _triggerTimes);
+        }
+
+        ~CustomEventsCampaignBehavior()
+        {
+            TORCampaignEvents.Instance.ChaosUprisingStarted -= OnChaosUprisingStarted;
         }
     }
 }
