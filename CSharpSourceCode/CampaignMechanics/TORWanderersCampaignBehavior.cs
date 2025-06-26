@@ -23,7 +23,7 @@ namespace TOR_Core.CampaignMechanics
 
         public override void RegisterEvents()
         {
-            CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnAfterSettlementEntered);
+            //CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, OnAfterSettlementEntered);
             CampaignEvents.OnGameLoadFinishedEvent.AddNonSerializedListener(this, CheckPlayerCurrentSettlement);
             CampaignEvents.DailyTickHeroEvent.AddNonSerializedListener(this, AddDailySkillXpToCompanions);
             CampaignEvents.CanHeroDieEvent.AddNonSerializedListener(this, CanHeroDie);
