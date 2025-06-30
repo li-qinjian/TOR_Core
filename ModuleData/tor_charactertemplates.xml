@@ -35,7 +35,7 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="HuscarlFightingSkills" value="5" />
       <Trait id="Commander" value="3" />
       <Trait id="Surgeon" value="5" />
       <Trait id="Calculating" value="1" />
@@ -59,7 +59,7 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="5" />
+      <Trait id="HuscarlFightingSkills" value="5" />
       <Trait id="RogueSkills" value="3" />
       <Trait id="ScoutSkills" value="3" />
       <Trait id="Calculating" value="3" />
@@ -131,7 +131,7 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="HuscarlFightingSkills" value="1" />
       <Trait id="Manager" value="6" />
       <Trait id="EngineerSkills" value="7" />
       <Trait id="Blacksmith" value="4" />
@@ -145,12 +145,12 @@
       <EquipmentSet id="tor_engineer_companion_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_empire_6" default_group="infantry" name="{=str_tor_wanderer_empire_6}{FIRSTNAME} the Priestess of Shallya" occupation="Wanderer" culture="Culture.empire" voice="curt" age="31" is_female="true" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_empire_6" default_group="infantry" name="{=str_tor_wanderer_empire_6}{FIRSTNAME} the Priestess of Shallya" occupation="Wanderer" culture="Culture.empire" voice="curt" age="21" is_female="true" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.townswoman_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="ArcherFIghtingSkills" value="1" />
       <Trait id="Surgeon" value="8" />
       <Trait id="Calculating" value="1" />
       <Trait id="Mercy" value="5" />
@@ -162,14 +162,14 @@
       <EquipmentSet id="tor_priestess_of_shallya_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_empire_7" default_group="infantry" name="{=str_tor_wanderer_empire_7}{FIRSTNAME} the Huntsman" occupation="Wanderer" culture="Culture.empire" voice="curt" age="32" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_empire_7" default_group="infantry" name="{=str_tor_wanderer_empire_7}{FIRSTNAME} the Huntsman" occupation="Wanderer" culture="Culture.empire" voice="curt" age="22" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_empire" />
     </face>
     <Traits>
-      <Trait id="ArcherFIghtingSkills" value="8" />
+      <Trait id="ArcherFIghtingSkills" value="6" />
       <Trait id="ScoutSkills" value="6" />
-      <Trait id="RogueSkills" value="3" />
+      <Trait id="RogueSkills" value="1" />
       <Trait id="Valor" value="1" />
       <Trait id="Honor" value="1" />
       <Trait id="Generosity" value="-1" />
@@ -249,7 +249,7 @@
       <EquipmentSet id="tor_beast_wizard_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_bretonnia_0" default_group="infantry" name="{=str_tor_wanderer_bretonnia_0}{FIRSTNAME} the Bretonnian Knight" occupation="Wanderer" culture="Culture.vlandia" voice="curt" age="38" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_bretonnia_0" default_group="infantry" name="{=str_tor_wanderer_bretonnia_0}{FIRSTNAME} the Bretonnian Knight" occupation="Wanderer" culture="Culture.vlandia" voice="curt" age="32" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.fighter_vlandia" />
       <hair_tags>
@@ -260,7 +260,7 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="KnightFightingSkills" value="8" />
       <Trait id="Commander" value="5" />
       <Trait id="Calculating" value="5" />
       <Trait id="Mercy" value="1" />
@@ -271,14 +271,14 @@
       <EquipmentSet id="tor_bretonnian_knight_template" civilian="true" />
     </Equipments>
   </NPCCharacter>
-  <NPCCharacter id="tor_wanderer_bretonnia_1" default_group="infantry" name="{=str_tor_wanderer_bretonnia_1}{FIRSTNAME} the Damsel of the Lady" occupation="Wanderer" culture="Culture.vlandia" voice="curt" age="30" is_female="true" is_template="true" is_hero="false">
+  <NPCCharacter id="tor_wanderer_bretonnia_1" default_group="infantry" name="{=str_tor_wanderer_bretonnia_1}{FIRSTNAME} the Damsel of the Lady" occupation="Wanderer" culture="Culture.vlandia" voice="curt" age="20" is_female="true" is_template="true" is_hero="false">
     <face>
       <face_key_template value="BodyProperty.townswoman_empire" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="1" />
-      <Trait id="Manager" value="3" />
-      <Trait id="Surgeon" value="3" />
+      <Trait id="ArcherFIghtingSkills" value="1" />
+      <Trait id="Manager" value="5" />
+      <Trait id="Surgeon" value="1" />
       <Trait id="Calculating" value="3" />
       <Trait id="Mercy" value="1" />
       <Trait id="Valor" value="1" />
@@ -300,7 +300,7 @@
       </beard_tags>
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="KnightFightingSkills" value="8" />
       <Trait id="Commander" value="5" />
       <Trait id="Calculating" value="5" />
       <Trait id="Mercy" value="-1" />
@@ -428,7 +428,7 @@
       <face_key_template value="BodyProperty.female_wood_elf" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="ArcherFIghtingSkills" value="1" />
       <Trait id="Manager" value="3" />
       <Trait id="Surgeon" value="3" />
       <Trait id="Calculating" value="3" />
@@ -446,7 +446,7 @@
       <face_key_template value="BodyProperty.female_wood_elf" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="8" />
+      <Trait id="ArcherFIghtingSkills" value="8" />
       <Trait id="Commander" value="5" />
       <Trait id="Calculating" value="5" />
       <Trait id="Mercy" value="-1" />
@@ -463,13 +463,13 @@
       <face_key_template value="BodyProperty.male_wood_elf" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="3" />
+      <!-- <Trait id="BalancedFightingSkills" value="3" /> -->
       <Trait id="Commander" value="5" />
       <Trait id="Calculating" value="5" />
       <Trait id="Mercy" value="-1" />
       <Trait id="Valor" value="-1" />
       <Trait id="ScoutSkills" value="6" />
-      <Trait id="ArcherFIghtingSkills" value="3" />
+      <Trait id="ArcherFIghtingSkills" value="6" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_we_waywatcher_template" />
@@ -481,13 +481,13 @@
       <face_key_template value="BodyProperty.male_wood_elf" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="3" />
-      <Trait id="Commander" value="5" />
+      <!-- <Trait id="BalancedFightingSkills" value="3" /> -->
+      <Trait id="Commander" value="1" />
       <Trait id="Calculating" value="5" />
       <Trait id="Valor" value="-1" />
       <Trait id="RogueSkills" value="-1" />
       <Trait id="ScoutSkills" value="7" />
-      <Trait id="ArcherFIghtingSkills" value="3" />
+      <Trait id="ArcherFIghtingSkills" value="6" />
     </Traits>
     <Equipments>
       <EquipmentSet id="tor_eo_ghoststrider_template" />
@@ -499,7 +499,7 @@
       <face_key_template value="BodyProperty.male_wood_elf" />
     </face>
     <Traits>
-      <Trait id="BalancedFightingSkills" value="1" />
+      <Trait id="ArcherFIghtingSkills" value="1" />
       <Trait id="Manager" value="3" />
       <Trait id="Surgeon" value="3" />
       <Trait id="Calculating" value="3" />

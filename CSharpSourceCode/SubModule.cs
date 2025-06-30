@@ -172,7 +172,7 @@ namespace TOR_Core
                 gameStarterObject.AddModel(new TORBattleMoraleModel());
                 gameStarterObject.AddModel(new TOREncounterGameMenuModel());
                 gameStarterObject.AddModel(new TORAgentStatCalculateModel());
-                gameStarterObject.AddModel(new TORCompanionHiringPriceCalculationModel());
+                //gameStarterObject.AddModel(new TORCompanionHiringPriceCalculationModel());
                 gameStarterObject.AddModel(new TORBanditDensityModel());
                 gameStarterObject.AddModel(new TORCharacterStatsModel());
                 gameStarterObject.AddModel(new TORClanFinanceModel());
