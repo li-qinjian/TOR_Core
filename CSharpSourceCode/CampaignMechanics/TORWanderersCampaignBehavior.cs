@@ -111,6 +111,7 @@ namespace TOR_Core.CampaignMechanics
 
         private void ReplaceEnemyWanderersIfExist(Settlement settlement)
         {
+            bool bHasEnemyWanderer = false;
             for (int i = 0; i < settlement.HeroesWithoutParty.Count; i++)
             {
                 var wanderer = settlement.HeroesWithoutParty[i];
@@ -120,9 +121,14 @@ namespace TOR_Core.CampaignMechanics
                     {
                         LeaveSettlementAction.ApplyForCharacterOnly(wanderer);
                         wanderer.ChangeState(Hero.CharacterStates.NotSpawned);
+
+                        bHasEnemyWanderer = true;
                     }
                 }
             }
+
+            if (!bHasEnemyWanderer)
+                return;
 
             if (settlement.HeroesWithoutParty.Where(h => h.Occupation == Occupation.Wanderer).Count() == 0)
             {
