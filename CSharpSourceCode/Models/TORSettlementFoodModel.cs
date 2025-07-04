@@ -11,6 +11,38 @@ namespace TOR_Core.Models
 {
     public class TORSettlementFoodModel : DefaultSettlementFoodModel
     {
+        public override int FoodStocksUpperLimit
+        {
+            get
+            {
+                return 200; //Vanilla 100
+            }
+        }
+
+        public override int NumberOfProsperityToEatOneFood
+        {
+            get
+            {
+                return 20; //Vanilla 40
+            }
+        }
+
+        public override int NumberOfMenOnGarrisonToEatOneFood
+        {
+            get
+            {
+                return 40; //Vanilla 20
+            }
+        }
+
+        public override int CastleFoodStockUpperLimitBonus
+        {
+            get
+            {
+                return 300; //Vanilla 150
+            }
+        }
+
         public override ExplainedNumber CalculateTownFoodStocksChange(Town town, bool includeMarketStocks = true, bool includeDescriptions = false)
         {
             base.CalculateTownFoodStocksChange(town, includeMarketStocks, includeDescriptions);
