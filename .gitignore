@@ -341,3 +341,5 @@ Logs/
 
 #Bannerlord related
 EmAssetPackages/
+/bin/Win64_Shipping_wEditor/TOR_Core.dll
+/bin/Win64_Shipping_Client/TOR_Core.dll
