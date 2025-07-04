@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
+using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
+using TaleWorlds.CampaignSystem.ViewModelCollection.CharacterDeveloper;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade.GauntletUI.Widgets.Multiplayer;
 using TaleWorlds.ObjectSystem;
@@ -116,7 +119,7 @@ namespace TOR_Core.CampaignMechanics
                 var wanderer = settlement.HeroesWithoutParty[i];
                 if (wanderer != null && wanderer.Occupation == Occupation.Wanderer)
                 {
-                    if (wanderer.Template == null || wanderer.Culture != settlement.Culture)
+                    if (wanderer.Template == null || wanderer.CharacterObject.IsUndead() || wanderer.CharacterObject.IsVampire()/*wanderer.Culture != settlement.Culture*/)
                     {
                         LeaveSettlementAction.ApplyForCharacterOnly(wanderer);
                         wanderer.ChangeState(Hero.CharacterStates.NotSpawned);
@@ -124,11 +127,14 @@ namespace TOR_Core.CampaignMechanics
                 }
             }
 
+            if (settlement.Culture.StringId == TORConstants.Cultures.BRETONNIA || settlement.Culture.StringId == TORConstants.Cultures.EMPIRE)
+                return;
+
             if (settlement.HeroesWithoutParty.Where(h => h.Occupation == Occupation.Wanderer).Count() == 0)
             {
                 //create suitable wanderer
                 CharacterObject template = settlement.Culture.NotableAndWandererTemplates.Where(h => h.Occupation == Occupation.Wanderer).GetRandomElementInefficiently();
-                if (template != null)
+                if (template != null && bIsNatureHumanTemplate(template))
                 {
                     Hero newWanderer = HeroCreator.CreateSpecialHero(template, settlement, null, null, 26 + MBRandom.RandomInt(27));
                     AdjustEquipmentImp(newWanderer.BattleEquipment);
@@ -164,5 +170,25 @@ namespace TOR_Core.CampaignMechanics
                 }
             }
         }
+
+        private bool bIsNatureHumanTemplate(CharacterObject template)
+        {
+            if (template == null)
+                return false;
+
+            if  (template.IsUndead() || template.IsVampire() || template.IsElf())
+                return false;
+
+            int skillValue = template.GetSkillValue(TORSkills.SpellCraft);
+            if (skillValue >= 25)
+                return false;
+
+            skillValue = template.GetSkillValue(TORSkills.Faith);
+            if (skillValue >= 25)
+                return false;
+
+            return true;
+        }
+
     }
 }
