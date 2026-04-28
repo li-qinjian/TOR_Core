@@ -243,16 +243,26 @@ namespace TOR_Core.Items
         private void AddTooltipForGunpowderWeapons(SPItemVM item, ItemVM comparedItem)
         {
             var equipmentElement = item.ItemRosterElement.EquipmentElement;
-            if (!equipmentElement.Item.HasWeaponComponent) return;
-            var comparedEquipmentElement = comparedItem == null ? EquipmentElement.Invalid : comparedItem.ItemRosterElement.EquipmentElement;
+            if (!equipmentElement.Item.HasWeaponComponent)
+                return;
+
+            var weapon = equipmentElement.Item;
+            if (AlternativeUsageIndex < 0 || AlternativeUsageIndex >= weapon.WeaponComponent.Weapons.Count)
+                return;
+
             var weaponData = equipmentElement.Item.GetWeaponWithUsageIndex(AlternativeUsageIndex);
+            var weaponClass = weaponData.WeaponClass;
+            if (weaponClass != WeaponClass.Musket && weaponClass != WeaponClass.Pistol)
+                return;
 
             int comparedWeaponUsageIndex = -1;
+            var comparedEquipmentElement = comparedItem == null ? EquipmentElement.Invalid : comparedItem.ItemRosterElement.EquipmentElement;
             if (!comparedEquipmentElement.IsEmpty) ItemHelper.IsWeaponComparableWithUsage(comparedEquipmentElement.Item, weaponData.WeaponDescriptionId, out comparedWeaponUsageIndex);
-            var comparedWeaponData = comparedEquipmentElement.Item?.GetWeaponWithUsageIndex(comparedWeaponUsageIndex);
 
-            var weaponClass = weaponData.WeaponClass;
-            if (weaponClass != WeaponClass.Musket && weaponClass != WeaponClass.Pistol) return;
+            if (!comparedEquipmentElement.IsEmpty && comparedEquipmentElement.Item.HasWeaponComponent &&
+                (comparedWeaponUsageIndex < 0 || comparedWeaponUsageIndex >= comparedEquipmentElement.Item.WeaponComponent.Weapons.Count))
+                return;
+            var comparedWeaponData = comparedEquipmentElement.Item == null ? null : comparedEquipmentElement.Item.GetWeaponWithUsageIndex(comparedWeaponUsageIndex);
 
             AddIntProperty(speedText, equipmentElement.GetModifiedSwingSpeedForUsage(AlternativeUsageIndex), comparedEquipmentElement.IsEmpty ? null : new int?(comparedEquipmentElement.GetModifiedSwingSpeedForUsage(AlternativeUsageIndex)));
             AddThrustDamageProperty(damageText, equipmentElement, AlternativeUsageIndex, comparedEquipmentElement, AlternativeUsageIndex);

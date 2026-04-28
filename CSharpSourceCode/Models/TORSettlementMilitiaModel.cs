@@ -45,6 +45,9 @@ namespace TOR_Core.Models
 
                 switch (settlement.OwnerClan.Culture.StringId)
                 {
+                    case TORConstants.Cultures.EONIR:
+                        result.Add(3f, new TextObject("Bonus"));
+                        break;
                     case TORConstants.Cultures.SYLVANIA:
                         result.Add(2f, new TextObject("Bonus"));
                         break;
@@ -58,8 +61,19 @@ namespace TOR_Core.Models
             }
             else if (settlement.IsTown)
             {
+                if (settlement.StringId == "town_comp_LL1" && settlement.OwnerClan.Culture.StringId == TORConstants.Cultures.EONIR)
+                {
+                    if (settlement.Militia < 1000)
+                    {
+                        result.LimitMin(20);
+                    }
+                }
+
                 switch (settlement.OwnerClan.Culture.StringId)
                 {
+                    case TORConstants.Cultures.EONIR:
+                        result.Add(6f, new TextObject("Bonus"));
+                        break;
                     case TORConstants.Cultures.SYLVANIA:
                         result.Add(4f, new TextObject("Bonus"));
                         break;

@@ -152,7 +152,6 @@ namespace TOR_Core.CampaignMechanics.Companions
             
             if (settlement.IsUnderSiege) return;//Skip towns under siege : EnterSettlementAction unsafe
 
-
             var clanlessWanderers = settlement.HeroesWithoutParty.WhereQ(x => x.IsWanderer && x.CompanionOf == null).ToList();
 
             if (clanlessWanderers.AnyQ())
@@ -162,6 +161,24 @@ namespace TOR_Core.CampaignMechanics.Companions
                 {
                     DisableWanderer(wrongCultureWanderer);
                     clanless--;
+                }
+
+                if (clanless == 1)
+                {
+                    //Recreate the bookmarked wanderer.
+                    var wanderer = clanlessWanderers[0];
+                    if (wanderer != null /*&& wanderer.HasMet*/ && Campaign.Current.EncyclopediaManager.ViewDataTracker.IsEncyclopediaBookmarked(wanderer))
+                    {
+                        CharacterObject companionTemplate = wanderer.Template;
+                        DisableWanderer(wanderer);
+
+                        Hero newWanderer = HeroCreator.CreateSpecialHero(companionTemplate, settlement, null, null, Campaign.Current.Models.AgeModel.HeroComesOfAge + MBRandom.RandomInt(10));
+
+                        //adding the wanderer to the _aliveCompanions cache is handled by the HeroCreated event dispatched by the HeroCreator
+                        AdjustEquipment(newWanderer);
+                        newWanderer.ChangeState(Hero.CharacterStates.Active);
+                        EnterSettlementAction.ApplyForCharacterOnly(newWanderer, settlement);
+                    }
                 }
                 if (clanless > 0) return;//a wanderer of the correct culture is still left in the settlement and there's no need to spawn another 
             }
@@ -431,7 +448,7 @@ namespace TOR_Core.CampaignMechanics.Companions
         private void AdjustEquipment(Hero hero)
         {
             SwapStealthEquipment(hero, hero.StealthEquipment);
-            AddCompanionModifiers(hero.BattleEquipment);
+            //AddCompanionModifiers(hero.BattleEquipment);
             AddCompanionModifiers(hero.CivilianEquipment);
             AddCompanionModifiers(hero.StealthEquipment);
         }

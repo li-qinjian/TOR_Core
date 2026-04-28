@@ -75,6 +75,15 @@ namespace TOR_Core.Models
                     missileWeaponFlags |= WeaponFlags.CanPenetrateShield;
                 }
 
+                CharacterObject partyLeaderCharacter = AgentExtensions.GetPartyLeaderCharacter(attackerAgent);
+                if (partyLeaderCharacter != null)
+                {
+                    if (missileWeapon.CurrentUsageItem.WeaponClass == WeaponClass.Cartridge && partyLeaderCharacter.GetPerkValue(TORPerks.GunPowder.PiercingShots))
+                    {
+                        missileWeaponFlags |= WeaponFlags.CanPenetrateShield;
+                    }
+                }
+
                 // Check for ShieldPenetration trait - use missile weapon for thrown weapons, wielded weapon for bows/guns
                 ItemObject traitSourceItem = null;
                 switch (missileWeapon.CurrentUsageItem.WeaponClass)

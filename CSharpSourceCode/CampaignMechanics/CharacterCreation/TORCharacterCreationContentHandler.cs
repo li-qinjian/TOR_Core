@@ -1142,6 +1142,7 @@ namespace TOR_Core.CampaignMechanics.CharacterCreation
 
         private void SetHeroAge(float age)
         {
+            Hero.MainHero.HeroDeveloper.UnspentAttributePoints += 3;
             Hero.MainHero.SetBirthDay(CampaignTime.YearsFromNow(-age));
         }
 

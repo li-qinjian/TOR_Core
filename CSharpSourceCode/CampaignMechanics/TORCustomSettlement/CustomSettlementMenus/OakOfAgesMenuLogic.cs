@@ -31,7 +31,7 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
     private const int HealthUpgradeCost = 125;
     private const int GainUpgradeCost = 150;
 
-    private const int TravelCost = 100;
+    private const int TravelCost = 25;
     private const int RootUnlockCost = 200;
     private const int RootTravelCostReductionUpgradeCost = 500;
     private const int RootTravelBackUpgradeCost = 750;

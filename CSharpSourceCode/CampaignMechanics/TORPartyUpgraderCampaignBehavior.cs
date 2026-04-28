@@ -13,6 +13,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.LinQuick;
 using TaleWorlds.ObjectSystem;
+using TaleWorlds.Localization;
 
 namespace TOR_Core.CampaignMechanics
 {
@@ -331,6 +332,19 @@ namespace TOR_Core.CampaignMechanics
                 party.AddMember(upgradeArgs.UpgradeTarget, possibleUpgradeCount, 0);
 
                 ApplyEffects(party, upgradeArgs);
+
+                if (party.LeaderHero != null /*&& party.Owner.Clan == Clan.PlayerClan*/ && Campaign.Current.EncyclopediaManager.ViewDataTracker.IsEncyclopediaBookmarked(party.LeaderHero))
+                {
+                    TextObject troopUpgradeMsg = new("{=!}{PARTY_NAME}将{UPGRADE_COUNT}名{TROOP_NAME}升级为{TARGET_NAME}.");
+
+                    troopUpgradeMsg.SetTextVariable("PARTY_NAME", $" {party.LeaderHero.Name}");
+                    troopUpgradeMsg.SetTextVariable("UPGRADE_COUNT", possibleUpgradeCount);
+                    troopUpgradeMsg.SetTextVariable("TROOP_NAME", $" {upgradeArgs.UpgradeSource.GetName()}");
+                    troopUpgradeMsg.SetTextVariable("TARGET_NAME", $" {upgradeArgs.UpgradeTarget.GetName()}");
+
+                    InformationMessage notifyMsg = new($"{troopUpgradeMsg}", Colors.Cyan);
+                    InformationManager.DisplayMessage(notifyMsg);
+                }
             }
         }
 

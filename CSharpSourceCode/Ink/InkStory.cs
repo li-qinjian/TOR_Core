@@ -532,7 +532,8 @@ namespace TOR_Core.Ink
                          && x.StringId.StartsWith("tor_")
                          && !x.NotMerchandise
                          && !x.IsCraftedByPlayer
-                         && !ExtendedItemObjectManager.IsRuntimeDuplicatedItem(x));
+                         && !ExtendedItemObjectManager.IsRuntimeDuplicatedItem(x)
+                         && ExtendedItemObjectManager.CanCharacterUseItemBasedOnRace(x, Hero.MainHero.CharacterObject));
             var foods = MBObjectManager.Instance.GetObjectTypeList<ItemObject>().Where(x => x.HasFoodComponent);
             var selectedItems = items.TakeRandom(20);
             var selectedFoods = foods.TakeRandom(5);

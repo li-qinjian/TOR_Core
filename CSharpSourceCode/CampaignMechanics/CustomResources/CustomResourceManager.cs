@@ -173,6 +173,10 @@ namespace TOR_Core.CampaignMechanics.CustomResources
                     {
                         Hero.MainHero.AddCultureSpecificCustomResource(40);
                     }
+                    else if (winner.Culture.StringId == settlement.Culture.StringId)
+                    {
+                        Hero.MainHero.AddCultureSpecificCustomResource(20);
+                    }
                 }
                 if (winner.Culture.StringId == TORConstants.Cultures.DAWI)
                 {

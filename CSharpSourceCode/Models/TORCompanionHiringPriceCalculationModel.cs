@@ -13,19 +13,19 @@ namespace TOR_Core.Models
     {
         public override int GetCompanionHiringPrice(Hero companion)
         {
+            int price = base.GetCompanionHiringPrice(companion);
             if (companion.Template.IsTORTemplate() && companion.IsWanderer)
             {
                 if (companion.IsSpellCaster())
                 {
-                    return 20000;
+                    return Math.Max(20000, price);
                 }
-                else if (companion.BattleEquipment.GetHumanBodyArmorSum() > 40)
+                else if(companion.BattleEquipment.GetHumanBodyArmorSum() > 40) 
                 {
-                    return 15000;
+                    return Math.Max(30000, price);
                 }
-                return 10000;
             }
-            else return base.GetCompanionHiringPrice(companion);
+            return price;
         }
     }
 }

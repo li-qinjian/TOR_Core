@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.LinQuick;
 using TaleWorlds.Localization;
 using TaleWorlds.TwoDimension;
@@ -231,7 +232,20 @@ namespace TOR_Core.Extensions
 
         public static void AddCultureSpecificCustomResource(this Hero hero, float amount)
         {
-            if (hero.GetCultureSpecificCustomResource() != null) hero.AddCustomResource(hero.GetCultureSpecificCustomResource().StringId, amount);
+            if (hero.GetCultureSpecificCustomResource() != null)
+            {
+                hero.AddCustomResource(hero.GetCultureSpecificCustomResource().StringId, amount);
+
+                if (amount > 0)
+                {
+                    var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT}{RESOURCE_ICON}");
+                    gainedText.SetTextVariable("AMOUNT", amount);
+                    gainedText.SetTextVariable("RESOURCE_ICON", hero.GetCultureSpecificCustomResource().GetCustomResourceIconAsText());
+
+                    InformationMessage receiveMessage = new($"{gainedText}", Colors.Cyan);
+                    InformationManager.DisplayMessage(receiveMessage);
+                }
+            }
         }
 
         public static Dictionary<CustomResource, float> GetCustomResources(this Hero hero)

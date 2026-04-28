@@ -39,6 +39,9 @@ namespace TOR_Core.CampaignMechanics.Chaos
 
         private void DailyTick() //this could be put into a weekly tick probably if we aren't particularly picky about which day in the week it occurs on
         {
+            if (Hero.MainHero != null && Hero.MainHero.Level < 30)
+                return;
+
             if (CampaignTime.Now.ToDays > _lastUprisingTime + _minimumElapsedDaysBetweenUprisings && !_hasTriggered)
             {
                 var allEligibleKingdoms = Kingdom.All.WhereQ(x => (x.Culture.StringId == TORConstants.Cultures.EMPIRE || x.Culture.StringId == TORConstants.Cultures.BRETONNIA) && x.Fiefs.WhereQ(f => f.IsTown).AnyQ());
