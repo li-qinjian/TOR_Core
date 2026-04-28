@@ -201,7 +201,7 @@ namespace TOR_Core.CampaignSupport.TownBehaviours
             bool HasEnoughPrestige()
             {
                 var available = Hero.MainHero.GetCustomResourceValue("Prestige");
-                return available >= 500;
+                return available >= 250;
             }
 
             void UpgradeGunShopCondition(int level)
@@ -212,7 +212,7 @@ namespace TOR_Core.CampaignSupport.TownBehaviours
                 {
                     Hero.MainHero.AddAttribute(engineerupgrade);
                 }
-                Hero.MainHero.AddCustomResource("Prestige", -500);
+                Hero.MainHero.AddCustomResource("Prestige", -250);
             }
         }
 
