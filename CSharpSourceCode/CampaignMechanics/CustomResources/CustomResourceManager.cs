@@ -197,29 +197,15 @@ namespace TOR_Core.CampaignMechanics.CustomResources
                 {
                     if (settlement.Culture.StringId == TORConstants.Cultures.EMPIRE)
                     {
-                        Hero.MainHero.AddCultureSpecificCustomResource(20);
+                        Hero.MainHero.AddCultureSpecificCustomResource(40);
                     }
                     else if (settlement.Culture.StringId == TORConstants.Cultures.DAWI)
                     {
                         Hero.MainHero.AddCustomResource("OathGold", 20);
-
-                        var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT}{RESOURCE_ICON}");
-                        gainedText.SetTextVariable("AMOUNT", 20);
-                        gainedText.SetTextVariable("RESOURCE_ICON", "OathGold");
-
-                        InformationMessage receiveMessage = new($"{gainedText}", Colors.Cyan);
-                        InformationManager.DisplayMessage(receiveMessage);
                     }
                     else if (settlement.Culture.StringId == TORConstants.Cultures.BRETONNIA)
                     {
                         Hero.MainHero.AddCustomResource("Chivalry", 20);
-
-                        var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT}{RESOURCE_ICON}");
-                        gainedText.SetTextVariable("AMOUNT", 20);
-                        gainedText.SetTextVariable("RESOURCE_ICON", "Chivalry");
-
-                        InformationMessage receiveMessage = new($"{gainedText}", Colors.Cyan);
-                        InformationManager.DisplayMessage(receiveMessage);
                     }
                 }
             }
@@ -243,16 +229,16 @@ namespace TOR_Core.CampaignMechanics.CustomResources
                 }
                 else if (Hero.MainHero.Culture.StringId == TORConstants.Cultures.EMPIRE)
                 {
-                    explainedNumber.Add(25);
-
-                    Hero.MainHero.AddCustomResource("Chivalry", explainedNumber.ResultNumber);
-
-                    var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT}{RESOURCE_ICON}");
-                    gainedText.SetTextVariable("AMOUNT", explainedNumber.ResultNumber);
-                    gainedText.SetTextVariable("RESOURCE_ICON", "Chivalry");
-
-                    InformationMessage receiveMessage = new($"{gainedText}", Colors.Cyan);
-                    InformationManager.DisplayMessage(receiveMessage);
+                    if (prisoner.Culture.StringId == TORConstants.Cultures.BRETONNIA)
+                    {
+                        explainedNumber.Add(25);
+                        Hero.MainHero.AddCustomResource("Chivalry", explainedNumber.ResultNumber);
+                    }
+                    else if (prisoner.Culture.StringId == TORConstants.Cultures.DAWI)
+                    {
+                        explainedNumber.Add(25);
+                        Hero.MainHero.AddCustomResource("OathGold", explainedNumber.ResultNumber);
+                    }
                 }
             }
         }
