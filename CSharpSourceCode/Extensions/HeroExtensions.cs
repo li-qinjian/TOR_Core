@@ -176,6 +176,16 @@ namespace TOR_Core.Extensions
         {
             var info = hero.GetExtendedInfo();
             info?.AddCustomResource(id, amount);
+
+            if (amount > 0)
+            {
+                var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT} {RESOURCE_ICON}");
+                gainedText.SetTextVariable("AMOUNT", amount);
+                gainedText.SetTextVariable("RESOURCE_ICON", CustomResourceManager.GetResourceObject(id).GetCustomResourceIconAsText());
+
+                InformationMessage receiveMessage = new($"{gainedText}", Colors.Cyan);
+                InformationManager.DisplayMessage(receiveMessage);
+            }
         }
 
         public static float GetCustomResourceValue(this Hero hero, string id)
@@ -238,7 +248,7 @@ namespace TOR_Core.Extensions
 
                 if (amount > 0)
                 {
-                    var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT}{RESOURCE_ICON}");
+                    var gainedText = TORTextHelper.GetTextObject("tor_gained_resource_notification_text", "Gained {AMOUNT} {RESOURCE_ICON}");
                     gainedText.SetTextVariable("AMOUNT", amount);
                     gainedText.SetTextVariable("RESOURCE_ICON", hero.GetCultureSpecificCustomResource().GetCustomResourceIconAsText());
 

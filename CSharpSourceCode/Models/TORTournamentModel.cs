@@ -61,7 +61,7 @@ namespace TOR_Core.Models
             MBList<ItemObject> mBList2 = new MBList<ItemObject>();
             foreach (ItemObject item in Game.Current.ObjectManager.GetObjectTypeList<ItemObject>())
             {
-                if (!item.NotMerchandise && item.Tier < ItemObject.ItemTiers.Tier5 && (item.IsCraftedWeapon || item.IsMountable || item.ArmorComponent != null) && !item.IsCraftedByPlayer && item.IsTorItem())
+                if (item.Value > regularRewardMinValue && item.Value < regularRewardMaxValue && !item.NotMerchandise && item.Tier < ItemObject.ItemTiers.Tier5 && (item.IsCraftedWeapon || item.IsMountable || item.ArmorComponent != null) && !item.IsCraftedByPlayer && item.IsTorItem())
                 {
                     if (item.Culture == town.Culture)
                     {

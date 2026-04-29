@@ -31,7 +31,7 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
     private const int HealthUpgradeCost = 125;
     private const int GainUpgradeCost = 150;
 
-    private const int TravelCost = 25;
+    private const int TravelCost = 20;
     private const int RootUnlockCost = 200;
     private const int RootTravelCostReductionUpgradeCost = 500;
     private const int RootTravelBackUpgradeCost = 750;
@@ -39,7 +39,7 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
     private readonly Vec2 _ardenLocation = new(945.4077f, 1111.009f);
     private readonly Vec2 _laurelornLocation = new(1260.19f, 1288.84f);
     private readonly Vec2 _gryphenWoodLocation = new(1606.698f, 1133.905f);
-    private readonly Vec2 _athelLorenLocation = new(1238.435f, 778.6498f);
+    private readonly Vec2 _athelLorenLocation = new(1219.399f, 797.9292f);
     private readonly Vec2 _maisonTaalLocation = new(1228.051f, 973.7142f);
 
     private const int TreeSymbolChangeCost = 100;
@@ -750,15 +750,21 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
         MBTextManager.SetTextVariable("ROOTRETURNUPGRADE", RootTravelBackUpgradeCost);
         starter.AddGameMenu("worldroots_menu", "{LOCATION_DESCRIPTION}", WorldRootsMenuInit);
 
-        //duplicate string ids, these will need to be differentiated when implementing string fetching from GameTexts
-        starter.AddGameMenuOption("worldroots_menu", "worldroots_travel_maisontaal", "{tor_custom_settlement_menu_leave_str}Travel to Maisontaal",
-            args => TravelEonirCondition(args) && Hero.MainHero.CurrentSettlement.StringId == "worldroot_02", (MenuCallbackArgs args) => RootTravelConsequence(_maisonTaalLocation, true), false);
+        // Travel options between the 4 allowed locations
+        starter.AddGameMenuOption("worldroots_menu", "travel_eonir", "Travel to Maisontaal",
+            args => TravelEonirCondition(args) && CanTravelToLocation("maisontaal"), (MenuCallbackArgs args) => RootTravelConsequence(_maisonTaalLocation, true), true);
 
-        starter.AddGameMenuOption("worldroots_menu", "worldroots_travel_laurelorn", "{tor_custom_settlement_menu_leave_str}Travel to Laurelorn",
-            args => TravelEonirCondition(args) && Hero.MainHero.CurrentSettlement.StringId == "worldroot_04", (MenuCallbackArgs args) => RootTravelConsequence(_laurelornLocation, true), false);
+        starter.AddGameMenuOption("worldroots_menu", "travel_eonir", "Travel to Laurelorn",
+            args => TravelEonirCondition(args) && CanTravelToLocation("laurelorn"), (MenuCallbackArgs args) => RootTravelConsequence(_laurelornLocation, true), true);
 
-        starter.AddGameMenuOption("worldroots_menu", "worldroots_travel_athelloren", "{tor_custom_settlement_menu_leave_str}Travel back to Athel Loren...",
-            args => TravelBackCondition(args), (MenuCallbackArgs args) => RootTravelConsequence(_athelLorenLocation, true), false);
+        starter.AddGameMenuOption("worldroots_menu", "travel_eonir", "Travel to the Gryphenwood",
+            args => TravelEonirCondition(args) && CanTravelToLocation("gryphenwood"), (MenuCallbackArgs args) => RootTravelConsequence(_gryphenWoodLocation, true), true);
+
+        starter.AddGameMenuOption("worldroots_menu", "travel_eonir", "Travel to the forest of Arden",
+            args => TravelEonirCondition(args) && CanTravelToLocation("arden"), (MenuCallbackArgs args) => RootTravelConsequence(_ardenLocation, true), true);
+
+        starter.AddGameMenuOption("worldroots_menu", "travel_back", "Travel back to Athel Loren...",
+            args => TravelBackCondition(args), (MenuCallbackArgs args) => RootTravelConsequence(_athelLorenLocation, false), true);
 
         starter.AddGameMenuOption("worldroots_menu", "worldroots_return_paths",
             "Establish pathways back to the Oak of Ages. {ROOTRETURNUPGRADE}{FORESTHARMONY}",
@@ -777,6 +783,40 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
         }, true);
     }
 
+    private bool CanTravelToLocation(string targetLocation)
+    {
+        var currentSettlementId = Hero.MainHero.CurrentSettlement?.StringId;
+        
+        // Define which settlements correspond to which locations
+        var locationMap = new Dictionary<string, string[]>
+        {
+            ["arden"] = new[] { "worldroot_02", "worldroot_03", "worldroot_04" }, // Can travel to Arden from these roots
+            ["laurelorn"] = new[] { "worldroot_01", "worldroot_03", "worldroot_04" }, // Can travel to Laurelorn from these roots  
+            ["gryphenwood"] = new[] { "worldroot_01", "worldroot_02", "worldroot_04" }, // Can travel to Gryphenwood from these roots
+            ["maisontaal"] = new[] { "worldroot_01", "worldroot_02", "worldroot_03" }, // Can travel to Maisontaal from these roots
+        };
+        
+        // Map current settlements to their target locations (to prevent traveling to same location)
+        var currentLocationMap = new Dictionary<string, string>
+        {
+            ["worldroot_01"] = "arden", // If at Arden root, can't travel to Arden
+            ["worldroot_02"] = "laurelorn", // If at Laurelorn root, can't travel to Laurelorn
+            ["worldroot_03"] = "gryphenwood", // If at Gryphenwood root, can't travel to Gryphenwood
+            ["worldroot_04"] = "maisontaal", // If at Maisontaal root, can't travel to Maisontaal
+        };
+        
+        // Don't allow travel to the same location you're currently at
+        if (currentLocationMap.ContainsKey(currentSettlementId) && 
+            currentLocationMap[currentSettlementId] == targetLocation)
+        {
+            return false;
+        }
+        
+        // Check if current settlement allows travel to target location
+        return locationMap.ContainsKey(targetLocation) && 
+               locationMap[targetLocation].Contains(currentSettlementId);
+    }
+
     private bool TravelEonirCondition(MenuCallbackArgs args)
     {
         if (Hero.MainHero.Culture.StringId != TORConstants.Cultures.EONIR && Hero.MainHero.Culture.StringId != TORConstants.Cultures.BRETONNIA && Hero.MainHero.Culture.StringId != TORConstants.Cultures.EMPIRE)
@@ -786,8 +826,8 @@ public class OakOfAgesMenuLogic(CampaignGameStarter campaignGameStarter) : TORBa
 
 
         var resource = Hero.MainHero.GetCultureSpecificCustomResource();
-        var cost = Hero.MainHero.StringId == TORConstants.Cultures.BRETONNIA ? 100 : 50;
-        if (Hero.MainHero.GetCultureSpecificCustomResourceValue() < 50)
+        var cost = Hero.MainHero.StringId == TORConstants.Cultures.BRETONNIA ? TravelCost : TravelCost / 2;
+        if (Hero.MainHero.GetCultureSpecificCustomResourceValue() < cost)
         {
             args.IsEnabled = false;
             var notEnoughText = TORTextHelper.GetTextObject("tor_oak_of_ages_not_enough_resource", "Not enough {RESOURCE_NAME}, requires {COST}.");
